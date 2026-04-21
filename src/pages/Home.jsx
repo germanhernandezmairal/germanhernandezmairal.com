@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-import { FaArrowDown, FaClock, FaLaptopCode, FaYoutube, FaHeart } from 'react-icons/fa';
+import { FaArrowDown, FaLaptopCode, FaYoutube, FaUsers } from 'react-icons/fa';
 
 /* ─── Hero Section ─── */
 const HeroSection = () => (
@@ -9,36 +9,18 @@ const HeroSection = () => (
       <div className="flex flex-col md:flex-row items-center gap-10 md:gap-16">
         {/* Text */}
         <div className="flex-1 text-center md:text-left order-2 md:order-1">
-          <p className="font-montserrat font-bold text-3xl sm:text-4xl lg:text-5xl text-gray-900 opacity-0 animate-fade-up leading-tight">
-            Sé más productivo.
-          </p>
-          <p className="font-montserrat font-bold text-3xl sm:text-4xl lg:text-5xl text-gray-900 opacity-0 animate-fade-up-1 leading-tight mt-1">
-            Aumenta tu confianza.
-          </p>
-          <p className="font-montserrat font-bold text-3xl sm:text-4xl lg:text-5xl text-gray-900 opacity-0 animate-fade-up-2 leading-tight mt-1">
-            Mejora tus relaciones.
-          </p>
-
-          <div className="mt-8 opacity-0 animate-fade-up-3">
-            <p className="font-inter text-lg md:text-xl text-gray-700 leading-relaxed">
-              ¡Hola! Soy <span className="highlight-amber font-semibold">Germán</span>, graduado en
-              Desarrollo de Aplicaciones Web y Móviles, y Community Builder apasionado.
+          <div className="opacity-0 animate-fade-up">
+            <p className="font-montserrat font-bold text-3xl sm:text-4xl lg:text-5xl text-gray-900 leading-tight">
+              Hola, soy Germán, Programador y Community Manager.
             </p>
-            <p className="font-inter text-lg md:text-xl text-gray-700 leading-relaxed mt-3">
-              Cada semana en mi canal de YouTube comparto ideas para ayudarte a acercarte
-              a tu mejor versión.{' '}
-              <a
-                href="https://youtube.com/@germanhernandezmairal"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-montserrat font-bold underline-amber hover:text-brand-amber transition-colors"
-              >
-                ¿Te vienes?
-              </a>
+            <p className="font-inter text-lg md:text-xl text-gray-700 leading-relaxed mt-6">
+              Ayudo a <strong>empresas y creadores</strong> a <strong>crecer</strong> a través de{' '}
+              <strong>contenido orgánico en redes sociales</strong> y{' '}
+              <strong>estrategias centradas en la construcción de comunidad</strong>.
             </p>
           </div>
 
-          <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center md:justify-start opacity-0 animate-fade-up-3">
+          <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center md:justify-start opacity-0 animate-fade-up-1">
             <Link
               to="/services"
               className="bg-brand-blue text-white font-montserrat font-semibold px-6 py-3 rounded-lg hover:bg-blue-900 transition-colors duration-200 text-center"
@@ -56,12 +38,14 @@ const HeroSection = () => (
 
         {/* Image */}
         <div className="flex-1 order-1 md:order-2 flex justify-center">
-          <img
-            src="/imgs/ImagenComunicandoDefinitivaBannerCanal.webp"
-            alt="Germán Hernández Mairal"
-            className="w-64 sm:w-80 md:w-full max-w-md rounded-2xl border-2 border-gray-200 shadow-card object-cover"
-            loading="eager"
-          />
+          <div className="w-64 sm:w-80 md:w-full max-w-sm aspect-[4/5] overflow-hidden rounded-2xl border-2 border-gray-200 shadow-card">
+            <img
+              src="/imgs/Imagen Página Web Actualizada.png"
+              alt="Germán Hernández Mairal"
+              className="w-full h-full object-cover object-top"
+              loading="eager"
+            />
+          </div>
         </div>
       </div>
 
@@ -78,28 +62,25 @@ const HeroSection = () => (
 /* ─── How I Can Help ─── */
 const HELP_CARDS = [
   {
-    icon: <FaClock className="text-5xl md:text-6xl text-brand-blue mb-4" />,
-    title: 'Sé más',
-    highlight: 'productivo',
-    link: '/youtube',
-  },
-  {
-    icon: <FaLaptopCode className="text-5xl md:text-6xl text-brand-blue mb-4" />,
-    title: 'Potencia tu página',
-    highlight: 'web',
+    icon: <FaUsers className="text-5xl md:text-6xl text-brand-blue mb-4" />,
+    title: 'Gestiona una',
+    highlight: 'Comunidad Online',
+    description: 'Tu presencia digital, gestionada con estrategia, coherencia y calidad profesional.',
     link: '/services',
   },
   {
     icon: <FaYoutube className="text-5xl md:text-6xl text-brand-blue mb-4" />,
-    title: 'Crece un canal de',
-    highlight: 'YouTube',
+    title: 'Crece una',
+    highlight: 'Marca Personal',
+    description: 'Convierte tu atención en autoridad y autoridad en crecimiento sostenible.',
     link: '/services',
   },
   {
-    icon: <FaHeart className="text-5xl md:text-6xl text-brand-blue mb-4" />,
-    title: 'Construye buenos',
-    highlight: 'hábitos',
-    link: '/youtube',
+    icon: <FaLaptopCode className="text-5xl md:text-6xl text-brand-blue mb-4" />,
+    title: 'Crea tu',
+    highlight: 'web o app',
+    description: 'Tu activo digital, construido para posicionar, estructurar y escalar.',
+    link: '/services',
   },
 ];
 
@@ -114,8 +95,8 @@ const HowIHelpSection = () => (
         Estas son las principales áreas en las que puedo aportarte valor.
       </p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {HELP_CARDS.map(({ icon, title, highlight, link }) => (
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        {HELP_CARDS.map(({ icon, title, highlight, description, link }) => (
           <Link
             key={highlight}
             to={link}
@@ -126,6 +107,7 @@ const HowIHelpSection = () => (
               {title}{' '}
               <span className="underline-amber">{highlight}</span>
             </h3>
+            <p className="font-inter text-sm text-gray-600 mt-2">{description}</p>
           </Link>
         ))}
       </div>

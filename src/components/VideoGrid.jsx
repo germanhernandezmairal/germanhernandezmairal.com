@@ -2,7 +2,7 @@ import { useEffect, useState, useMemo, useCallback } from 'react';
 import axios from 'axios';
 import { FaChevronLeft, FaChevronRight, FaYoutube } from 'react-icons/fa';
 
-const API_KEY = 'AIzaSyBRd_8kCzTFwJ0nc9kZhJrjhmdycirn7s0';
+const API_KEY = import.meta.env.VITE_YOUTUBE_API_KEY;
 
 const PLAYLISTS = {
   productividad: 'PLm6JN36t1vNzC0KLk6htDnG9xXrzyO7pd',

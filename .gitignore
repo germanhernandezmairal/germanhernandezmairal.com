@@ -24,3 +24,9 @@ dist-ssr
 *.sw?
 
 .vercel
+stripe-images
+
+# Environment variables — never commit these
+.env
+.env.local
+.env.production

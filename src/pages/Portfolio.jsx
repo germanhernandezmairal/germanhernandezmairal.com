@@ -7,58 +7,22 @@ const PROJECTS = [
   {
     id: 1,
     title: 'Página Web Marca Personal',
-    category: 'web',
+    category: 'webapp',
     description:
       'Sitio web personal de marca completo con React, Tailwind CSS, React Router y Firebase. Incluye páginas de servicios, portafolio, YouTube y contacto con formulario protegido por reCAPTCHA.',
-    image: '/imgs/ImagenComunicandoDefinitivaBannerCanal.webp',
+    image: '/imgs/WebMarcaPersonal-Preview.png',
     tech: ['React', 'Tailwind CSS', 'Firebase', 'Vercel', 'reCAPTCHA'],
     liveUrl: 'https://www.germanhernandezmairal.com',
     githubUrl: null,
     featured: true,
   },
   {
-    id: 2,
-    title: 'React E-Commerce Storefront',
-    category: 'web',
-    description:
-      'Tienda online completa construida con React, con carrito de compras, filtros de productos, sistema de autenticación y pasarela de pagos integrada.',
-    image: null,
-    tech: ['React', 'Node.js', 'CSS Modules', 'REST API'],
-    liveUrl: null,
-    githubUrl: null,
-    featured: false,
-  },
-  {
-    id: 3,
-    title: 'Recipe Page',
-    category: 'web',
-    description:
-      'Página de recetas con diseño limpio y responsivo. Desafío de Frontend Mentor completado con atención al detalle en tipografía, espaciado y accesibilidad.',
-    image: null,
-    tech: ['HTML5', 'CSS3', 'Responsive Design'],
-    liveUrl: null,
-    githubUrl: null,
-    featured: false,
-  },
-  {
-    id: 4,
-    title: '3D Animation Creator',
-    category: 'mobile',
-    description:
-      'Aplicación móvil para crear y exportar animaciones 3D desde dispositivos móviles. Interfaz intuitiva con controles táctiles optimizados para la experiencia de usuario.',
-    image: null,
-    tech: ['React Native', 'Three.js', 'Expo'],
-    liveUrl: null,
-    githubUrl: null,
-    featured: false,
-  },
-  {
     id: 5,
-    title: 'Canal YouTube @germanhernandezmairal',
+    title: 'Marca Personal - Germán Hernández Mairal',
     category: 'youtube',
     description:
       'Canal de YouTube con contenido sobre productividad, hábitos y estilo de vida. Estrategia de contenido, edición de vídeos, optimización SEO y crecimiento orgánico de audiencia.',
-    image: '/imgs/MiniaturaTríadaDelTriunfo.webp',
+    image: '/imgs/Miniatura Definitiva Las 7 Habilidades que Me Sacaron de la Desmotivación.png',
     tech: ['YouTube Studio', 'Adobe Premiere', 'Canva', 'SEO'],
     liveUrl: 'https://youtube.com/@germanhernandezmairal',
     githubUrl: null,
@@ -66,11 +30,11 @@ const PROJECTS = [
   },
   {
     id: 6,
-    title: 'Community Building & Social Media',
+    title: 'Marca Corporativa - Tarragona Jove',
     category: 'community',
     description:
       'Gestión y crecimiento de comunidades online. Estrategia de contenido, calendario editorial, análisis de métricas y engagement en redes sociales (LinkedIn, Instagram, YouTube).',
-    image: null,
+    image: '/imgs/Tarragona Jove Concert.jpg',
     tech: ['LinkedIn', 'Instagram', 'Analytics', 'Content Strategy'],
     liveUrl: 'https://www.linkedin.com/in/germ%C3%A1n-hern%C3%A1ndez-mairal-7584741ab/',
     githubUrl: null,
@@ -80,8 +44,7 @@ const PROJECTS = [
 
 const CATEGORIES = [
   { key: 'all', label: 'Todos' },
-  { key: 'web', label: 'Web' },
-  { key: 'mobile', label: 'Apps Móviles' },
+  { key: 'webapp', label: 'Web/App' },
   { key: 'youtube', label: 'YouTube' },
   { key: 'community', label: 'Community' },
 ];
@@ -180,8 +143,10 @@ const Portfolio = () => {
             Mi <span className="highlight-amber">Portafolio</span>
           </h1>
           <p className="font-inter text-blue-200 text-lg max-w-2xl mx-auto">
-            Una selección de los proyectos más representativos de mi trayectoria profesional como
-            desarrollador, creador de contenido y community builder.
+            Con <span className="text-white font-semibold">+4 años</span> gestionando marcas digitales
+            y más de <span className="text-white font-semibold">500 piezas de contenido</span> publicadas,
+            he trabajado tanto en instituciones públicas como en mi propia marca personal —
+            convirtiendo atención orgánica en comunidades comprometidas.
           </p>
         </div>
       </section>
