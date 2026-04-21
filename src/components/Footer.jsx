@@ -14,7 +14,7 @@ const Footer = () => (
             GHM
           </Link>
           <p className="mt-3 font-montserrat text-gray-400 text-sm leading-relaxed">
-            Germán Hernández Mairal — Programador y Community Manager
+            Germán Hernández Mairal — Desarrollador Web y Community Manager
           </p>
         </div>
 

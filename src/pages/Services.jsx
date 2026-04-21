@@ -45,16 +45,16 @@ const PACKAGES = [
     name: 'Fundamentos',
     subtitle: 'Presencia Profesional',
     tagline:
-      'Ideal para marcas que quieren construir una presencia digital coherente y profesional desde el inicio.',
+      'Ideal para empezar a publicar con regularidad y dar buena imagen desde el primer día.',
     features: [
-      'Gestión estratégica de redes sociales',
+      'Gestión de tus redes sociales',
       'Producción audiovisual mensual (reels / vídeos clave)',
-      'Diseño visual alineado a identidad',
-      'Copywriting optimizado',
+      'Diseño visual coherente con tu imagen',
+      'Textos claros y directos',
       'Calendario de contenidos',
-      'Seguimiento de métricas clave mensual',
+      'Seguimiento de resultados cada mes',
     ],
-    focus: 'Coherencia y calidad profesional.',
+    focus: 'Presencia clara y consistente.',
     price: 'Desde €900/mes',
     priceRef: 'Ref. US/UK: $1,800/mo',
     stripeKey: 'fundamentos',
@@ -63,18 +63,19 @@ const PACKAGES = [
   {
     id: 'autoridad',
     name: 'Autoridad',
-    subtitle: 'Posicionamiento Estratégico',
+    subtitle: 'Visibilidad y Clientes',
     tagline:
-      'Ideal para fundadores y marcas personales que quieren posicionarse como referentes en su sector.',
+      'Ideal para fundadores y marcas personales que quieren que más personas les encuentren y les contraten.',
+    socialProof: '👉 El más elegido por marcas personales',
     features: [
-      'Sistema de Autoridad Orgánica (Servicio Completo)',
-      'Gestión y producción de contenido',
-      'Delegación estructurada de edición/diseño',
-      'Estrategia de títulos y posicionamiento',
-      'Optimización de distribución',
-      'Informe estratégico mensual',
+      'Sistema completo de contenido para atraer clientes',
+      'Calendario y planificación incluidos',
+      'Edición y diseño incluidos',
+      'Títulos y mensajes que atraen atención',
+      'Publicación en los canales correctos',
+      'Informe de resultados mensual',
     ],
-    focus: 'Convertir atención en autoridad.',
+    focus: 'Más visibilidad y más personas contactándote.',
     price: 'Desde €1,800/mes',
     priceRef: 'Ref. US/UK: $3,500/mo',
     stripeKey: 'autoridad',
@@ -84,18 +85,18 @@ const PACKAGES = [
   {
     id: 'ecosistema',
     name: 'Ecosistema',
-    subtitle: 'Infraestructura Digital',
+    subtitle: 'Contenido + Web',
     tagline:
-      'Ideal para marcas que quieren controlar su autoridad y construir su propia infraestructura digital.',
+      'Ideal para marcas que quieren crecer con contenido y tener una web que convierta visitas en clientes.',
     features: [
-      'Sistema de Autoridad Orgánica (Servicio Completo)',
+      'Sistema completo de contenido para atraer clientes',
       'Gestión integral de redes sociales',
       'Desarrollo web para marca personal',
-      'Optimización técnica (SEO + rendimiento)',
-      'Integración con herramientas de conversión',
-      'Soporte técnico y evolución digital',
+      'SEO y velocidad de carga incluidos',
+      'Botones y formularios listos para recibir contactos',
+      'Soporte técnico continuo',
     ],
-    focus: 'Autoridad + propiedad digital.',
+    focus: 'Contenido que atrae + web que convierte.',
     price: 'Desde €3,200/mes',
     priceRef: 'Ref. US/UK: $6,000/mo',
     stripeKey: 'ecosistema',
@@ -109,12 +110,12 @@ const COMMUNITY_SERVICES = [
     icon: FaCamera,
     name: 'Producción Fotográfica',
     description:
-      'Fotografías profesionales alineadas con la identidad estratégica de tu marca y optimizadas para maximizar el impacto en redes.',
+      'Fotos profesionales para que tu marca dé buena imagen en redes y en cualquier formato.',
     features: [
       'Cobertura de eventos',
       'Fotografía de producto y corporativa',
-      'Edición y optimización para redes sociales',
-      'Adaptación a distintos formatos y plataformas',
+      'Edición lista para publicar en redes',
+      'Adaptada a cada plataforma y formato',
     ],
     price: 'Desde €350',
     priceUnit: '/sesión',
@@ -126,13 +127,12 @@ const COMMUNITY_SERVICES = [
     icon: FaVideo,
     name: 'Producción Audiovisual',
     description:
-      'Vídeos dinámicos optimizados para redes sociales, diseñados para captar atención desde el primer segundo y reforzar tu posicionamiento.',
+      'Vídeos pensados para redes que captan atención desde el primer segundo y refuerzan tu marca.',
     features: [
       'Grabación vertical y horizontal',
       'Reels, vídeos promocionales y de resumen',
       'Cobertura de eventos',
-      'Edición optimizada para cada plataforma',
-      'Adaptación a tendencias actuales',
+      'Vídeos listos para publicar',
     ],
     price: 'Desde €450',
     priceUnit: '/proyecto',
@@ -144,12 +144,12 @@ const COMMUNITY_SERVICES = [
     icon: FaUsers,
     name: 'Gestión de Redes Sociales',
     description:
-      'Gestión de tu presencia digital para asegurar coherencia estratégica, consistencia operativa y crecimiento sostenible.',
+      'Me encargo de tus redes para que publiques con regularidad, des buena imagen y atraigas clientes.',
     features: [
       'Planificación y calendario de contenidos',
-      'Publicación estratégica',
+      'Publicación en los mejores momentos',
       'Gestión de comentarios y mensajes',
-      'Seguimiento de métricas y optimización progresiva',
+      'Seguimiento de resultados y mejoras continuas',
       'Coordinación con equipo creativo',
     ],
     price: 'Desde €700',
@@ -162,13 +162,13 @@ const COMMUNITY_SERVICES = [
     icon: FaPalette,
     name: 'Diseño Visual para Redes',
     description:
-      'Piezas visuales alineadas con tu identidad de marca que transmiten profesionalidad y coherencia en cada publicación.',
+      'Diseños claros y consistentes que hacen que cada publicación se vea profesional y reconocible.',
     features: [
       'Diseño de carruseles y creatividades',
       'Adaptaciones visuales por plataforma',
       'Plantillas reutilizables',
-      'Coherencia gráfica y tipográfica',
-      'Identidad visual adaptable a distintos formatos',
+      'Imagen coherente en todos los formatos',
+      'Coherencia tipográfica y de color',
     ],
     price: 'Desde €450',
     priceUnit: '/mes',
@@ -180,11 +180,11 @@ const COMMUNITY_SERVICES = [
     icon: FaPencilAlt,
     name: 'Copywriting para Redes',
     description:
-      'Textos persuasivos y claros orientados a generar interacción, claridad y posicionamiento de marca en cada publicación.',
+      'Textos claros y directos que generan interacción y comunican exactamente lo que ofreces.',
     features: [
       'Redacción de captions',
-      'Optimización de mensajes clave',
-      'Estructuración de llamadas a la acción',
+      'Mensajes clave claros y directos',
+      'Llamadas a la acción que funcionan',
       'Adaptación de tono según marca',
     ],
     price: 'Desde €350',
@@ -197,13 +197,13 @@ const COMMUNITY_SERVICES = [
     icon: FaDesktop,
     name: 'Producción de Directos',
     description:
-      'Configuración y gestión de transmisiones en directo profesionales para marcas, instituciones y eventos.',
+      'Configuración y gestión de directos profesionales para que tu evento o marca luzca bien en pantalla.',
     features: [
       'Setup técnico (OBS, ATEM, cámaras)',
       'Configuración de overlays y gráficos',
       'Integración de multicámara',
       'Coordinación y supervisión en tiempo real',
-      'Optimización para archivo y reutilización',
+      'Grabación lista para reutilizar',
     ],
     price: 'Desde €800',
     priceUnit: '/evento',
@@ -215,13 +215,13 @@ const COMMUNITY_SERVICES = [
     icon: FaStar,
     name: 'Sistema de Autoridad Orgánica',
     description:
-      'Un sistema estratégico que convierte atención en autoridad y autoridad en crecimiento sostenible para tu marca personal.',
+      'Un proceso completo para que más personas te descubran, confíen en ti y te contacten a través del contenido.',
     features: [
-      'Análisis de mercado y estrategia de atención',
-      'Optimización de setup y presencia a cámara',
-      'Delegación eficiente de edición y diseño',
-      'Publicación estratégica por plataforma',
-      'Construcción progresiva de comunidad',
+      'Análisis de qué contenido atrae a tu cliente ideal',
+      'Mejora de tu presencia a cámara y setup',
+      'Gestión de edición y diseño',
+      'Publicación en los canales donde está tu audiencia',
+      'Más personas descubriendo tu marca cada mes',
     ],
     price: 'Desde €1,500',
     priceUnit: '/mes',
@@ -236,14 +236,14 @@ const WEB_SERVICES = [
     icon: FaLaptopCode,
     name: 'Web para Marca Personal',
     description:
-      'Páginas web profesionales que transforman tu marca personal en una plataforma digital sólida, clara y orientada a conversión.',
+      'Una web clara y profesional para que quien te busque entienda qué ofreces y sepa cómo contactarte.',
     features: [
       'Diseño y desarrollo responsive (mobile-first)',
-      'Estructuración estratégica de secciones',
-      'Optimización de velocidad y rendimiento',
+      'Secciones organizadas para guiar al visitante',
+      'Velocidad de carga optimizada',
       'Integración con herramientas externas',
       'SEO técnico básico',
-      'CTAs orientadas a conversión',
+      'Botones de contacto bien colocados',
     ],
     price: 'Desde €1,800',
     priceUnit: '',
@@ -255,14 +255,14 @@ const WEB_SERVICES = [
     icon: FaCode,
     name: 'Desarrollo de Aplicaciones Web',
     description:
-      'Aplicaciones web funcionales y escalables orientadas a resolver necesidades específicas de tu negocio o comunidad.',
+      'Aplicaciones web a medida para automatizar procesos o resolver una necesidad concreta de tu negocio.',
     features: [
       'Desarrollo frontend y backend',
-      'Arquitectura estructurada y escalable',
+      'Código limpio y preparado para crecer',
       'Integración con APIs externas',
       'Gestión de bases de datos y autenticación',
-      'Optimización de rendimiento',
-      'Preparación para crecimiento y futuras iteraciones',
+      'Rendimiento optimizado',
+      'Preparada para crecer con nuevas funciones',
     ],
     price: 'Desde €3,500',
     priceUnit: '',
@@ -302,12 +302,17 @@ const PackageCard = ({ pkg, onBookCall }) => (
         {pkg.name}
       </h3>
       <p
-        className={`font-inter text-sm leading-relaxed mb-5 ${
+        className={`font-inter text-sm leading-relaxed mb-2 ${
           pkg.highlight ? 'text-blue-200' : 'text-gray-600'
         }`}
       >
         {pkg.tagline}
       </p>
+      {pkg.socialProof && (
+        <p className={`font-inter text-sm font-semibold mb-5 ${pkg.highlight ? 'text-brand-amber' : 'text-brand-blue'}`}>
+          {pkg.socialProof}
+        </p>
+      )}
 
       {/* Price block */}
       <div
@@ -368,7 +373,7 @@ const PackageCard = ({ pkg, onBookCall }) => (
               : 'bg-brand-blue text-white hover:bg-blue-900'
           }`}
         >
-          <FaCalendarAlt /> Reservar llamada gratuita
+          <FaCalendarAlt /> Ver cómo conseguir más clientes
         </button>
         <a
           href={STRIPE_LINKS[pkg.stripeKey]}
@@ -430,7 +435,7 @@ const ServiceCard = ({ service, onBookCall }) => (
         onClick={onBookCall}
         className="flex items-center justify-center gap-2 font-montserrat font-semibold text-sm py-2.5 px-4 rounded-lg bg-brand-blue text-white hover:bg-blue-900 transition-colors"
       >
-        <FaCalendarAlt className="text-xs" /> Reservar llamada
+        <FaCalendarAlt className="text-xs" /> Hablar sobre tu caso
       </button>
       <a
         href={STRIPE_LINKS[service.stripeKey]}
@@ -481,7 +486,7 @@ const Services = () => {
         <title>Servicios – Germán Hernández Mairal</title>
         <meta
           name="description"
-          content="Paquetes y servicios de community management, producción audiovisual, desarrollo web y estrategia digital para marcas y creadores."
+          content="Ayudo a empresas y creadores a conseguir clientes con contenido y webs que convierten."
         />
       </Helmet>
 
@@ -492,7 +497,10 @@ const Services = () => {
             Mis <span className="highlight-amber">Servicios</span>
           </h1>
           <p className="font-inter text-blue-200 text-lg max-w-2xl mx-auto">
-            Soluciones digitales adaptadas a empresas, emprendedores y marcas personales. Desde presencia en redes hasta infraestructura web completa.
+            Te ayudo a conseguir clientes con contenido y webs que convierten.
+          </p>
+          <p className="font-inter text-blue-300 text-sm max-w-2xl mx-auto mt-4">
+            He trabajado creando contenido y gestionando la presencia digital de instituciones y marcas, produciendo cientos de piezas para su presencia online.
           </p>
         </div>
       </section>
@@ -502,14 +510,17 @@ const Services = () => {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <p className="font-montserrat text-sm font-semibold uppercase tracking-widest text-brand-amber-dark mb-2">
-              Soluciones integrales
+              Todo incluido
             </p>
             <h2 className="font-montserrat font-bold text-3xl sm:text-4xl text-gray-900 mb-4">
               Elige tu <span className="highlight-amber">Paquete</span>
             </h2>
             <p className="font-inter text-gray-600 max-w-2xl mx-auto">
-              Tres niveles diseñados para adaptarse al momento en que se encuentra tu marca.
-              Todos incluyen seguimiento continuo y estrategia personalizada.
+              Tres opciones según el nivel en el que estés ahora.
+              Todas incluyen seguimiento continuo y trabajo personalizado.
+            </p>
+            <p className="font-inter text-sm text-gray-500 mt-3 max-w-xl mx-auto">
+              Si no tienes claro cuál elegir, empieza por &apos;Autoridad&apos;. Es el que mejor funciona para la mayoría de marcas personales.
             </p>
           </div>
 
@@ -531,14 +542,13 @@ const Services = () => {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-10">
             <p className="font-montserrat text-sm font-semibold uppercase tracking-widest text-brand-amber-dark mb-2">
-              À la carte
+              Solo lo que necesitas
             </p>
             <h2 className="font-montserrat font-bold text-3xl sm:text-4xl text-gray-900 mb-4">
               Servicios <span className="highlight-amber">Individuales</span>
             </h2>
             <p className="font-inter text-gray-600 max-w-2xl mx-auto">
-              Contrata exactamente lo que necesitas. Cada servicio puede integrarse en una
-              estrategia más amplia o funcionar de forma independiente.
+              Contrata solo lo que necesitas ahora. Cada servicio funciona solo o combinado con otros.
             </p>
           </div>
 
@@ -617,7 +627,7 @@ const Services = () => {
               onClick={openCalendly}
               className="inline-flex items-center gap-2 font-montserrat font-bold text-sm bg-brand-blue text-white py-3 px-6 rounded-lg hover:bg-blue-900 transition-colors"
             >
-              <FaCalendarAlt /> Abrir calendario en ventana
+              <FaCalendarAlt /> Ver disponibilidad y reservar
             </button>
           </div>
         </div>
@@ -634,22 +644,22 @@ const Services = () => {
               {
                 step: '01',
                 title: 'Nos conocemos',
-                desc: 'Conversamos sobre tus objetivos, necesidades y el alcance del proyecto.',
+                desc: 'Hablamos sobre lo que necesitas y qué resultado quieres conseguir.',
               },
               {
                 step: '02',
-                title: 'Diseñamos el plan',
-                desc: 'Defino la estrategia y el plan de trabajo personalizado para tu caso.',
+                title: 'Preparo el plan',
+                desc: 'Te explico qué voy a hacer para ayudarte y cómo lo vamos a trabajar.',
               },
               {
                 step: '03',
                 title: 'Ejecutamos',
-                desc: 'Llevo a cabo el trabajo con calidad, manteniéndote informado en todo momento.',
+                desc: 'Ejecuto el trabajo con calidad y te mantengo al día.',
               },
               {
                 step: '04',
                 title: 'Entregamos y mejoramos',
-                desc: 'Entrego los resultados y estoy disponible para ajustes y mejoras.',
+                desc: 'Entrego los resultados y me quedo disponible para ajustes.',
               },
             ].map(({ step, title, desc }) => (
               <div key={step} className="text-center">
@@ -671,14 +681,14 @@ const Services = () => {
             ¿Tienes un proyecto en mente?
           </h2>
           <p className="font-inter text-brand-blue text-lg mb-8 opacity-80">
-            Cuéntame tu idea y te digo cómo puedo ayudarte a hacerla realidad.
+            Cuéntame lo que necesitas y te explico cómo puedo ayudarte a conseguir más clientes.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
               onClick={openCalendly}
               className="inline-flex items-center justify-center gap-2 bg-brand-blue text-white font-montserrat font-bold px-8 py-4 rounded-lg hover:bg-blue-900 transition-colors text-lg"
             >
-              <FaCalendarAlt /> Reservar llamada
+              <FaCalendarAlt /> Ver cómo conseguir más clientes
             </button>
             <Link
               to="/contact"

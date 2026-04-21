@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-import { FaArrowDown, FaLaptopCode, FaYoutube, FaUsers } from 'react-icons/fa';
+import { FaArrowDown, FaLaptopCode, FaYoutube, FaHandshake } from 'react-icons/fa';
 
 /* ─── Hero Section ─── */
 const HeroSection = () => (
@@ -11,12 +11,11 @@ const HeroSection = () => (
         <div className="flex-1 text-center md:text-left order-2 md:order-1">
           <div className="opacity-0 animate-fade-up">
             <p className="font-montserrat font-bold text-3xl sm:text-4xl lg:text-5xl text-gray-900 leading-tight">
-              Hola, soy Germán, Programador y Community Manager.
+              Hola, soy Germán, Desarrollador Web y Community Manager.
             </p>
             <p className="font-inter text-lg md:text-xl text-gray-700 leading-relaxed mt-6">
-              Ayudo a <strong>empresas y creadores</strong> a <strong>crecer</strong> a través de{' '}
-              <strong>contenido orgánico en redes sociales</strong> y{' '}
-              <strong>estrategias centradas en la construcción de comunidad</strong>.
+              Ayudo a <strong>empresas y creadores</strong> a conseguir clientes con{' '}
+              <strong>contenido y webs que convierten</strong>.
             </p>
           </div>
 
@@ -62,24 +61,24 @@ const HeroSection = () => (
 /* ─── How I Can Help ─── */
 const HELP_CARDS = [
   {
-    icon: <FaUsers className="text-5xl md:text-6xl text-brand-blue mb-4" />,
-    title: 'Gestiona una',
-    highlight: 'Comunidad Online',
-    description: 'Tu presencia digital, gestionada con estrategia, coherencia y calidad profesional.',
-    link: '/services',
-  },
-  {
     icon: <FaYoutube className="text-5xl md:text-6xl text-brand-blue mb-4" />,
-    title: 'Crece una',
-    highlight: 'Marca Personal',
-    description: 'Convierte tu atención en autoridad y autoridad en crecimiento sostenible.',
+    title: 'Atrae más clientes con',
+    highlight: 'contenido que funciona',
+    description: 'Creo y gestiono publicaciones para que más personas te conozcan, confíen en ti y te contacten.',
     link: '/services',
   },
   {
     icon: <FaLaptopCode className="text-5xl md:text-6xl text-brand-blue mb-4" />,
-    title: 'Crea tu',
-    highlight: 'web o app',
-    description: 'Tu activo digital, construido para posicionar, estructurar y escalar.',
+    title: 'Convierte visitas con una',
+    highlight: 'web que funciona',
+    description: 'Diseño tu web para que quien llegue entienda qué ofreces y te contacte.',
+    link: '/services',
+  },
+  {
+    icon: <FaHandshake className="text-5xl md:text-6xl text-brand-blue mb-4" />,
+    title: 'Haz que tu marca',
+    highlight: 'genere confianza',
+    description: 'Cuido que tu imagen en redes y web sea coherente para que el cliente confíe en ti desde el primer vistazo.',
     link: '/services',
   },
 ];
@@ -88,11 +87,11 @@ const HowIHelpSection = () => (
   <section id="how-i-help" className="bg-gray-50 py-20 px-4">
     <div className="max-w-6xl mx-auto">
       <h2 className="font-montserrat text-3xl sm:text-4xl lg:text-5xl font-bold text-center text-gray-900 mb-4">
-        ¿Cómo te puedo{' '}
-        <span className="underline-amber">ayudar</span>?
+        ¿Cómo puedo ayudarte a{' '}
+        <span className="underline-amber">conseguir clientes</span>?
       </h2>
       <p className="font-inter text-gray-600 text-center text-lg mb-14 max-w-2xl mx-auto">
-        Estas son las principales áreas en las que puedo aportarte valor.
+        Creo contenido y webs para que más personas te encuentren y te contacten.
       </p>
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
@@ -132,7 +131,7 @@ const CTABanner = () => (
         ¿Listo para dar el siguiente paso?
       </h2>
       <p className="font-inter text-blue-200 text-lg mb-8">
-        Cuéntame tu proyecto o idea y encontraremos juntos la mejor forma de hacerlo realidad.
+        Si quieres una presencia digital más clara, contenido con intención y una web que te ayude a conseguir clientes, hablemos.
       </p>
       <Link
         to="/contact"
@@ -148,12 +147,12 @@ const CTABanner = () => (
 const Home = () => (
   <>
     <Helmet>
-      <title>Germán Hernández Mairal – Desarrollador Web, Community Builder & Creador</title>
+      <title>Germán Hernández Mairal – Desarrollador Web y Community Manager</title>
       <meta
         name="description"
-        content="Sé más productivo, aumenta tu confianza y mejora tus relaciones con Germán Hernández Mairal — desarrollador web, community builder y creador de contenido."
+        content="Ayudo a empresas y creadores a conseguir clientes con contenido y webs que convierten."
       />
-      <meta name="keywords" content="Germán Hernández Mairal, desarrollador web, community builder, productividad, YouTube" />
+      <meta name="keywords" content="desarrollador web, community manager, contenido y webs que convierten, gestión de redes, marca personal, servicios web" />
     </Helmet>
     <HeroSection />
     <HowIHelpSection />
