@@ -9,7 +9,7 @@ const PROJECTS = [
     title: 'Página Web Marca Personal',
     category: 'webapp',
     description:
-      'Sitio web personal de marca completo con React, Tailwind CSS, React Router y Firebase. Incluye páginas de servicios, portafolio, YouTube y contacto con formulario protegido por reCAPTCHA.',
+      'Web diseñada para posicionar y convertir: páginas de servicios claras, portafolio visual, integración de contenido y formulario de contacto optimizado. Construida con tecnología moderna y orientada a generar confianza desde el primer clic.',
     image: '/imgs/WebMarcaPersonal-Preview.png',
     tech: ['React', 'Tailwind CSS', 'Firebase', 'Vercel', 'reCAPTCHA'],
     liveUrl: 'https://www.germanhernandezmairal.com',
@@ -21,7 +21,7 @@ const PROJECTS = [
     title: 'Marca Personal - Germán Hernández Mairal',
     category: 'youtube',
     description:
-      'Canal de YouTube con contenido sobre productividad, hábitos y estilo de vida. Estrategia de contenido, edición de vídeos, optimización SEO y crecimiento orgánico de audiencia.',
+      'Canal de YouTube construido desde cero sobre hábitos, decisiones y habilidades prácticas aplicadas al crecimiento profesional y digital. Con estrategia de contenido propia, optimización SEO en cada vídeo y crecimiento orgánico de audiencia sin publicidad de pago.',
     image: '/imgs/Miniatura Definitiva Las 7 Habilidades que Me Sacaron de la Desmotivación.png',
     tech: ['YouTube Studio', 'Adobe Premiere', 'Canva', 'SEO'],
     liveUrl: 'https://youtube.com/@germanhernandezmairal',
@@ -33,9 +33,9 @@ const PROJECTS = [
     title: 'Marca Corporativa - Tarragona Jove',
     category: 'community',
     description:
-      'Gestión y crecimiento de comunidades online. Estrategia de contenido, calendario editorial, análisis de métricas y engagement en redes sociales (LinkedIn, Instagram, YouTube).',
+      'Gestión de la presencia digital de una organización pública en Instagram, TikTok, YouTube y Facebook. Estrategia de contenido, calendario editorial y análisis de métricas para aumentar el alcance y consolidar una imagen institucional sólida.',
     image: '/imgs/Tarragona Jove Concert.jpg',
-    tech: ['LinkedIn', 'Instagram', 'Analytics', 'Content Strategy'],
+    tech: ['Instagram', 'TikTok', 'YouTube', 'Facebook', 'Metricool'],
     liveUrl: 'https://www.linkedin.com/in/germ%C3%A1n-hern%C3%A1ndez-mairal-7584741ab/',
     githubUrl: null,
     featured: false,
@@ -132,7 +132,7 @@ const Portfolio = () => {
         <title>Portafolio – Germán Hernández Mairal</title>
         <meta
           name="description"
-          content="Portafolio de proyectos de Germán Hernández Mairal: desarrollo web, apps móviles, canal de YouTube y gestión de comunidades."
+          content="Proyectos reales de desarrollo web y gestión de marca digital — webs que convierten, contenido que atrae y comunidades que generan confianza."
         />
       </Helmet>
 
@@ -140,13 +140,14 @@ const Portfolio = () => {
       <section className="bg-brand-blue pt-28 pb-16 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="font-montserrat font-bold text-4xl sm:text-5xl text-white mb-4">
-            Mi <span className="highlight-amber">Portafolio</span>
+            Proyectos <span className="highlight-amber">Reales</span>
           </h1>
           <p className="font-inter text-blue-200 text-lg max-w-2xl mx-auto">
             Con <span className="text-white font-semibold">+4 años</span> gestionando marcas digitales
             y más de <span className="text-white font-semibold">500 piezas de contenido</span> publicadas,
-            he trabajado tanto en instituciones públicas como en mi propia marca personal —
-            convirtiendo atención orgánica en comunidades comprometidas.
+            he trabajado en instituciones públicas y en mi propia marca personal.
+            Estos proyectos muestran lo que mejor hago: webs que convierten,
+            contenido que atrae y comunidades que crecen.
           </p>
         </div>
       </section>
@@ -184,16 +185,16 @@ const Portfolio = () => {
       <section className="bg-gray-50 py-16 px-4">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="font-montserrat font-bold text-3xl text-gray-900 mb-4">
-            ¿Tienes un proyecto similar en mente?
+            ¿Tu marca necesita una presencia digital que funcione?
           </h2>
           <p className="font-inter text-gray-600 text-lg mb-8">
-            Cuéntame tu idea y valoramos cómo puedo ayudarte.
+            Si quieres atraer más clientes con contenido o una web profesional que convierta visitas en oportunidades, cuéntame tu proyecto.
           </p>
           <Link
             to="/contact"
             className="inline-block bg-brand-blue text-white font-montserrat font-bold px-8 py-4 rounded-lg hover:bg-blue-900 transition-colors duration-200 text-lg"
           >
-            Contactar ahora
+            Hablemos de tu proyecto
           </Link>
         </div>
       </section>

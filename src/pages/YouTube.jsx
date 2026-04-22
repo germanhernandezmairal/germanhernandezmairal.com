@@ -1,6 +1,7 @@
+import { useState, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-import { FaYoutube, FaPlay } from 'react-icons/fa';
+import { FaYoutube, FaPlay, FaRocket, FaHeartbeat, FaUsers } from 'react-icons/fa';
 import VideoGrid from '../components/VideoGrid';
 
 /* ─── Channel Header ─── */
@@ -11,14 +12,15 @@ const ChannelHeader = () => (
         <FaYoutube className="text-6xl text-red-400" />
       </div>
       <h1 className="font-montserrat font-bold text-4xl sm:text-5xl text-white mb-4">
-        Mi Canal de <span className="highlight-amber">YouTube</span>
+        YouTube como <span className="highlight-amber">Activo Digital</span>
       </h1>
       <p className="font-inter text-blue-200 text-lg max-w-2xl mx-auto mb-8">
         En mi canal comparto{' '}
-        <span className="highlight-amber font-semibold">hábitos</span>,{' '}
-        <span className="highlight-amber font-semibold">aprendizajes</span> y{' '}
-        <span className="highlight-amber font-semibold">experiencias</span> para inspirar a los
-        demás a mejorar sus vidas y acercarse a su mejor versión.
+        <span className="text-white font-semibold">hábitos</span>,{' '}
+        <span className="text-white font-semibold">decisiones</span> y{' '}
+        <span className="text-white font-semibold">habilidades prácticas</span> sobre
+        crecimiento profesional, salud y relaciones. Es el espacio donde desarrollo
+        mi visión sobre cómo crecer sin quemarte y sin descuidar lo que más importa.
       </p>
       <a
         href="https://youtube.com/@germanhernandezmairal"
@@ -32,30 +34,58 @@ const ChannelHeader = () => (
   </section>
 );
 
+/* ─── Credibility Strip ─── */
+const CredibilityStrip = () => (
+  <section className="bg-white border-b border-gray-100 py-10 px-4">
+    <div className="max-w-5xl mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
+        <div>
+          <p className="font-montserrat font-bold text-3xl text-brand-blue">+5 años</p>
+          <p className="font-inter text-sm text-gray-600 mt-1">creando contenido</p>
+        </div>
+        <div>
+          <p className="font-montserrat font-bold text-3xl text-brand-blue">+500</p>
+          <p className="font-inter text-sm text-gray-600 mt-1">piezas publicadas</p>
+        </div>
+        <div>
+          <p className="font-montserrat font-bold text-3xl text-brand-blue">Sin anuncios</p>
+          <p className="font-inter text-sm text-gray-600 mt-1">crecimiento orgánico real</p>
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
 /* ─── What You'll Find ─── */
 const TOPICS = [
-  { emoji: '🕒', title: 'Productividad', desc: 'Técnicas y sistemas para hacer más en menos tiempo y con menos estrés.' },
-  { emoji: '🔄', title: 'Hábitos', desc: 'Cómo construir y mantener hábitos que transformen tu vida día a día.' },
-  { emoji: '🌱', title: 'Estilo de Vida', desc: 'Rutinas, mentalidad y prácticas de bienestar para una vida más plena.' },
-  { emoji: '💡', title: 'Crecimiento Personal', desc: 'Reflexiones, libros y experiencias para seguir evolucionando.' },
+  { icon: FaRocket, title: 'Desarrollo Profesional', category: 'desarrolloProfesional', desc: 'Construye hábitos, toma mejores decisiones y desarrolla las habilidades que te permiten crecer sin perder el foco.' },
+  { icon: FaHeartbeat, title: 'Salud', category: 'salud', desc: 'Construye tu carrera sin quemarte. Energía, descanso y bienestar como base del rendimiento sostenible.' },
+  { icon: FaUsers, title: 'Relaciones', category: 'relaciones', desc: 'Avanza sin aislarte. Cómo cuidar tus relaciones mientras persigues tus objetivos.' },
 ];
 
-const TopicsSection = () => (
+const TopicsSection = ({ onTopicClick }) => (
   <section className="bg-gray-50 py-16 px-4">
     <div className="max-w-5xl mx-auto">
       <h2 className="font-montserrat font-bold text-3xl sm:text-4xl text-gray-900 text-center mb-4">
-        ¿Qué encontrarás en el canal?
+        En qué se centra el canal
       </h2>
       <p className="font-inter text-gray-600 text-center text-lg mb-12 max-w-2xl mx-auto">
-        Contenido semanal pensado para ayudarte a crecer en las áreas que más importan.
+        Tres pilares para crecer de forma práctica, sostenible y sin sacrificar lo que más importa.
       </p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {TOPICS.map(({ emoji, title, desc }) => (
-          <div key={title} className="bg-white rounded-2xl p-6 shadow-card text-center">
-            <div className="text-5xl mb-4">{emoji}</div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {TOPICS.map(({ icon: Icon, title, category, desc }) => (
+          <button
+            key={title}
+            onClick={() => onTopicClick(category)}
+            className="bg-blue-100 hover:bg-blue-200 rounded-xl p-6 shadow-card text-center transition-all duration-300 hover:scale-105 hover:shadow-card-hover flex flex-col items-center w-full cursor-pointer"
+          >
+            <Icon className="text-5xl md:text-6xl text-brand-blue mb-4" />
             <h3 className="font-montserrat font-bold text-lg text-gray-900 mb-2">{title}</h3>
-            <p className="font-inter text-gray-600 text-sm leading-relaxed">{desc}</p>
-          </div>
+            <p className="font-inter text-gray-600 text-sm leading-relaxed mb-4 flex-1">{desc}</p>
+            <span className="font-montserrat font-semibold text-sm text-brand-blue mt-auto">
+              Ver vídeos →
+            </span>
+          </button>
         ))}
       </div>
     </div>
@@ -65,19 +95,19 @@ const TopicsSection = () => (
 /* ─── Testimonials ─── */
 const TESTIMONIALS = [
   {
-    text: 'Gracias a los vídeos de Germán empecé a implementar rutinas matutinas. En dos meses noté un cambio brutal en mi energía y productividad.',
+    text: 'Su contenido me ayuda a ordenar mejor mis prioridades y avanzar con más claridad.',
     author: 'María G.',
     role: 'Emprendedora',
   },
   {
-    text: 'Su contenido sobre hábitos es diferente al típico. Muy práctico, sin relleno y aplicable desde el primer día.',
+    text: 'Habla de crecer profesionalmente sin vender fórmulas vacías. Práctico, directo y fácil de aplicar.',
     author: 'Carlos M.',
-    role: 'Desarrollador Web',
+    role: 'Estudiante de Desarrollo Web',
   },
   {
-    text: 'El vídeo sobre la tríada del triunfo me cambió la perspectiva. Sencillo, directo y con mucho valor.',
+    text: 'Contenido que te cambia la perspectiva y con mucho valor práctico.',
     author: 'Laura P.',
-    role: 'Estudiante universitaria',
+    role: 'Estudiante Universitaria',
   },
 ];
 
@@ -85,7 +115,7 @@ const Testimonials = () => (
   <section className="bg-blue-50 py-16 px-4">
     <div className="max-w-5xl mx-auto">
       <h2 className="font-montserrat font-bold text-3xl sm:text-4xl text-gray-900 text-center mb-12">
-        Lo que dice la <span className="underline-amber">comunidad</span>
+        Resultados que genera el <span className="underline-amber">contenido</span>
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {TESTIMONIALS.map(({ text, author, role }) => (
@@ -118,11 +148,11 @@ const FinalCTA = () => (
     <div className="max-w-3xl mx-auto text-center">
       <FaPlay className="text-4xl text-brand-amber mx-auto mb-4" />
       <h2 className="font-montserrat font-bold text-3xl sm:text-4xl text-white mb-4">
-        ¿Quieres que te ayude directamente?
+        Si estoy construyendo mi audiencia desde cero, también puedo ayudarte con la tuya.
       </h2>
       <p className="font-inter text-blue-200 text-lg mb-8">
-        Más allá del canal, ofrezco consultoría y servicios personalizados para ayudarte a
-        alcanzar tus objetivos.
+        Más allá del canal, ayudo a marcas y profesionales a atraer clientes con contenido
+        que genera confianza y webs que convierten.
       </p>
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
         <a
@@ -137,7 +167,7 @@ const FinalCTA = () => (
           to="/contact"
           className="inline-flex items-center justify-center gap-2 bg-brand-amber text-brand-blue font-montserrat font-bold px-6 py-3 rounded-lg hover:bg-brand-amber-dark transition-colors"
         >
-          Contactar
+          Hablemos de tu proyecto
         </Link>
       </div>
     </div>
@@ -145,31 +175,42 @@ const FinalCTA = () => (
 );
 
 /* ─── Page ─── */
-const YouTube = () => (
-  <>
-    <Helmet>
-      <title>Canal de YouTube – Germán Hernández Mairal</title>
-      <meta
-        name="description"
-        content="Explora el canal de YouTube de Germán Hernández Mairal: productividad, hábitos, estilo de vida y crecimiento personal."
-      />
-    </Helmet>
-    <ChannelHeader />
-    <TopicsSection />
-    <section className="bg-white py-16 px-4">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="font-montserrat font-bold text-3xl sm:text-4xl text-gray-900 text-center mb-4">
-          Últimos <span className="underline-amber">vídeos</span>
-        </h2>
-        <p className="font-inter text-gray-600 text-center text-lg mb-10">
-          Explora por categoría y encuentra el contenido que más te interesa.
-        </p>
-        <VideoGrid />
-      </div>
-    </section>
-    <Testimonials />
-    <FinalCTA />
-  </>
-);
+const YouTube = () => {
+  const [activeCategory, setActiveCategory] = useState('desarrolloProfesional');
+  const videosRef = useRef(null);
+
+  const handleTopicClick = (category) => {
+    setActiveCategory(category);
+    videosRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  return (
+    <>
+      <Helmet>
+        <title>Canal de YouTube – Germán Hernández Mairal</title>
+        <meta
+          name="description"
+          content="Canal de YouTube donde comparto contenido práctico sobre crecimiento profesional, salud y relaciones, construido con estrategia y crecimiento orgánico."
+        />
+      </Helmet>
+      <ChannelHeader />
+      <CredibilityStrip />
+      <TopicsSection onTopicClick={handleTopicClick} />
+      <section ref={videosRef} className="bg-white py-16 px-4">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="font-montserrat font-bold text-3xl sm:text-4xl text-gray-900 text-center mb-4">
+            Vídeos para <span className="underline-amber">Crecer Mejor</span>
+          </h2>
+          <p className="font-inter text-gray-600 text-center text-lg mb-10">
+            Desarrollo Profesional, Salud y Relaciones — los temas que exploro de forma consistente en el canal.
+          </p>
+          <VideoGrid externalCategory={activeCategory} />
+        </div>
+      </section>
+      <Testimonials />
+      <FinalCTA />
+    </>
+  );
+};
 
 export default YouTube;

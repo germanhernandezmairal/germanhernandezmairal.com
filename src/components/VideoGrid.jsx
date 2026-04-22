@@ -1,19 +1,25 @@
 import { useEffect, useState, useMemo, useCallback } from 'react';
 import axios from 'axios';
-import { FaChevronLeft, FaChevronRight, FaYoutube } from 'react-icons/fa';
+import { FaChevronLeft, FaChevronRight, FaYoutube, FaRocket, FaHeartbeat, FaUsers } from 'react-icons/fa';
 
 const API_KEY = import.meta.env.VITE_YOUTUBE_API_KEY;
 
 const PLAYLISTS = {
-  productividad: 'PLm6JN36t1vNzC0KLk6htDnG9xXrzyO7pd',
-  habitos: 'PLm6JN36t1vNzznmS8I8Id9qg4arWxAnbf',
-  estiloDeVida: 'PLm6JN36t1vNyj0mFFwVvHCYJoljrU5HZx',
+  desarrolloProfesional: 'PLm6JN36t1vNxeNZm_V5Cqe-SotRVIS59G',
+  salud: 'PLm6JN36t1vNwrHMycHQMPO2euhqx5pDEH',
+  relaciones: 'PLm6JN36t1vNwKQ5lpf-oBp2S6JAgB2j9N',
 };
 
 const CATEGORY_LABELS = {
-  productividad: 'Productividad 🚀',
-  habitos: 'Hábitos 🔥',
-  estiloDeVida: 'Estilo de Vida 🌱',
+  desarrolloProfesional: 'Desarrollo Profesional',
+  salud: 'Salud',
+  relaciones: 'Relaciones',
+};
+
+const CATEGORY_ICONS = {
+  desarrolloProfesional: FaRocket,
+  salud: FaHeartbeat,
+  relaciones: FaUsers,
 };
 
 const getItemsToShow = () => {
@@ -23,15 +29,22 @@ const getItemsToShow = () => {
   return 3;
 };
 
-const VideoGrid = () => {
+const VideoGrid = ({ externalCategory }) => {
   const [videos, setVideos] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState('productividad');
+  const [selectedCategory, setSelectedCategory] = useState(externalCategory || 'desarrolloProfesional');
   const [startIndex, setStartIndex] = useState(0);
   const [itemsToShow, setItemsToShow] = useState(getItemsToShow);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   const playlistId = useMemo(() => PLAYLISTS[selectedCategory], [selectedCategory]);
+
+  useEffect(() => {
+    if (externalCategory && externalCategory !== selectedCategory) {
+      setSelectedCategory(externalCategory);
+      setStartIndex(0);
+    }
+  }, [externalCategory]);
 
   useEffect(() => {
     const handleResize = () => setItemsToShow(getItemsToShow());
@@ -49,9 +62,9 @@ const VideoGrid = () => {
         `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,status&maxResults=8&playlistId=${playlistId}&key=${API_KEY}`
       )
       .then((res) => {
-        const publicVideos = res.data.items.filter(
-          (v) => v.status?.privacyStatus === 'public'
-        );
+        const publicVideos = res.data.items
+          .filter((v) => v.status?.privacyStatus === 'public')
+          .sort((a, b) => new Date(b.snippet.publishedAt) - new Date(a.snippet.publishedAt));
         setVideos(publicVideos);
         setLoading(false);
       })
@@ -78,19 +91,22 @@ const VideoGrid = () => {
     <div>
       {/* Category buttons */}
       <div className="flex justify-center gap-3 mb-8 flex-wrap">
-        {Object.entries(CATEGORY_LABELS).map(([key, label]) => (
-          <button
-            key={key}
-            onClick={() => setSelectedCategory(key)}
-            className={`font-montserrat font-semibold text-sm px-5 py-2 rounded-full transition-all duration-200 shadow-sm ${
-              selectedCategory === key
-                ? 'bg-brand-amber text-brand-blue scale-105'
-                : 'bg-white text-gray-700 hover:bg-brand-amber hover:text-brand-blue border border-gray-200'
-            }`}
-          >
-            {label}
-          </button>
-        ))}
+        {Object.entries(CATEGORY_LABELS).map(([key, label]) => {
+          const Icon = CATEGORY_ICONS[key];
+          return (
+            <button
+              key={key}
+              onClick={() => setSelectedCategory(key)}
+              className={`inline-flex items-center gap-1.5 font-montserrat font-semibold text-sm px-5 py-2 rounded-full transition-all duration-200 shadow-sm ${
+                selectedCategory === key
+                  ? 'bg-brand-amber text-brand-blue scale-105'
+                  : 'bg-white text-gray-700 hover:bg-brand-amber hover:text-brand-blue border border-gray-200'
+              }`}
+            >
+              <Icon className="text-xs" /> {label}
+            </button>
+          );
+        })}
       </div>
 
       {/* Loading */}
