@@ -12,16 +12,17 @@ const AboutHero = () => (
             <span className="highlight-amber">Sobre Mí</span>
           </h1>
           <p className="font-inter text-gray-700 text-lg leading-relaxed mb-4">
-            Soy <strong>Germán</strong>, graduado en Desarrollo de Aplicaciones Web y Móviles,
-            YouTuber en crecimiento y apasionado por la productividad y los hábitos que
-            mejoran el bienestar personal y profesional.
+            Soy <strong>Germán</strong>, desarrollador web graduado en Desarrollo de Aplicaciones
+            Web y Móviles, y Community Manager especializado en crecimiento online para empresas
+            y creadores.
           </p>
           <p className="font-inter text-gray-700 text-lg leading-relaxed">
             Desde{' '}
             <span className="underline-amber font-semibold">2019</span>, he estado{' '}
-            <span className="underline-amber font-semibold">comprometido</span> en{' '}
-            <span className="underline-amber font-semibold">desarrollar mis habilidades</span>{' '}
-            personales y profesionales para poder aportar valor real a los demás.
+            <span className="underline-amber font-semibold">construyendo</span> las habilidades
+            técnicas y de comunicación necesarias para{' '}
+            <span className="underline-amber font-semibold">aportar valor real</span> a negocios
+            y creadores que quieren crecer online.
           </p>
         </div>
 
@@ -42,45 +43,49 @@ const AboutHero = () => (
 /* ─── Bio Story ─── */
 const BIO_ITEMS = [
   {
-    image: '/imgs/Germán-Estilo-de-Vida.webp',
-    imageAlt: 'Germán estilo de vida saludable',
+    image: '/imgs/Germán-Universidad.webp',
+    imageAlt: 'Germán graduado en Desarrollo de Aplicaciones Web y Móviles',
     imageLeft: false,
-    title: 'Hábitos & Bienestar',
+    title: 'La Base Técnica',
     text: (
       <>
-        He construido un estilo de vida basado en{' '}
-        <span className="highlight-blue">hábitos saludables</span> que potencian mi bienestar
-        diario. Progresando constantemente en mi carrera como YouTuber y Programador, siempre
-        buscando el <span className="highlight-blue">crecimiento constante</span>.
+        Me gradué en{' '}
+        <span className="highlight-blue">Desarrollo de Aplicaciones Web y Móviles</span>,
+        una formación que me dio los fundamentos para construir soluciones web funcionales
+        y bien estructurados. Desde el primer proyecto, entendí que el código bien escrito es
+        un activo, no solo una herramienta.
       </>
     ),
   },
   {
-    image: '/imgs/Germán-Universidad.webp',
-    imageAlt: 'Germán en la universidad',
+    image: '/imgs/Germán-Estilo-de-Vida.webp',
+    imageAlt: 'Germán gestionando comunidades online como Community Manager',
     imageLeft: true,
-    title: 'El Salto a la Ingeniería',
+    title: 'Comunicación & Comunidad',
     text: (
       <>
-        Un momento decisivo en mi vida fue el cambio radical de un bachillerato social al mundo
-        de las{' '}
-        <span className="underline-amber font-semibold">ingenierías</span>, una decisión que me
-        retó y me ayudó a descubrir nuevas pasiones. El mundo del código y la tecnología se
-        convirtieron en mi vocación.
+        He trabajado como{' '}
+        <span className="underline-amber font-semibold">Community Manager</span> gestionando la
+        presencia online de instituciones y marcas: comunicación institucional, contenido
+        multiplataforma, cobertura de eventos y estrategia editorial. Ahí confirmé que{' '}
+        <span className="underline-amber font-semibold">comunicar con claridad</span> es tan
+        valioso como construir con técnica.
       </>
     ),
   },
   {
     image: '/imgs/Germán-Italia.webp',
-    imageAlt: 'Germán en Italia, Erasmus',
+    imageAlt: 'Germán construyendo su carrera como desarrollador web',
     imageLeft: false,
-    title: 'Erasmus en Italia',
+    title: 'Desarrollo Web Moderno',
     text: (
       <>
-        También tuve la suerte de vivir en{' '}
-        <span className="underline-amber font-semibold">Italia</span> durante seis meses como
-        estudiante Erasmus, donde me sumergí en la cultura italiana mientras perfeccionaba mi
-        inglés y ampliaba mi visión del mundo.
+        Hoy desarrollo proyectos web con{' '}
+        <span className="highlight-blue">Next.js, React y TypeScript</span>, combinando
+        formación sólida con experiencia real en comunicación y marca. Construyo soluciones orientadas a
+        resultados — funcionales, limpias y diseñadas para{' '}
+        <span className="underline-amber font-semibold">generar impacto real</span> en el
+        negocio del cliente.
       </>
     ),
   },
@@ -119,10 +124,22 @@ const BioSection = () => (
 
 /* ─── Skills ─── */
 const SKILLS = [
-  { category: 'Frontend', items: ['React', 'React Native', 'Tailwind CSS', 'HTML5', 'CSS3', 'JavaScript'] },
-  { category: 'Backend & Deploy', items: ['Node.js', 'Firebase', 'Vercel', 'Netlify', 'REST APIs'] },
-  { category: 'Contenido & Community', items: ['YouTube Studio', 'SEO', 'Estrategia de contenido', 'LinkedIn', 'Instagram', 'Analytics'] },
-  { category: 'Productividad', items: ['GTD', 'Time-blocking', 'Notion', 'Gestión de hábitos', 'Mindset de crecimiento'] },
+  {
+    category: 'Frontend',
+    items: ['Next.js 15', 'React', 'TypeScript', 'Tailwind CSS', 'TanStack Query', 'Framer Motion'],
+  },
+  {
+    category: 'Backend & Deploy',
+    items: ['Node.js', 'PostgreSQL', 'REST APIs', 'Firebase', 'Vercel', 'GitHub', 'Jest', 'React Testing Library'],
+  },
+  {
+    category: 'Contenido & Community',
+    items: ['Estrategia de contenido', 'Community Management', 'SEO', 'LinkedIn', 'Instagram', 'Analytics'],
+  },
+  {
+    category: 'Productividad',
+    items: ['GTD', 'Time-blocking', 'Notion', 'Gestión de proyectos', 'Metodologías ágiles'],
+  },
 ];
 
 const SkillsSection = () => (
@@ -132,7 +149,7 @@ const SkillsSection = () => (
         Habilidades & <span className="underline-amber">Herramientas</span>
       </h2>
       <p className="font-inter text-gray-600 text-center text-lg mb-12 max-w-2xl mx-auto">
-        Estas son las principales áreas de conocimiento con las que trabajo.
+        Las herramientas y áreas con las que construyo soluciones reales para clientes.
       </p>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {SKILLS.map(({ category, items }) => (
@@ -163,17 +180,18 @@ const MissionSection = () => (
         <span className="highlight-amber">Mi Misión</span>
       </h2>
       <p className="font-inter text-gray-800 text-xl leading-relaxed mb-8 max-w-3xl mx-auto">
-        Mi misión es ayudar a emprendedores, empresarios y creadores de contenido a mejorar su{' '}
-        <span className="underline-amber font-semibold">productividad</span>, optimizar su{' '}
-        <span className="underline-amber font-semibold">presencia online</span> y potenciar su{' '}
-        <span className="underline-amber font-semibold">marca personal</span> a través de{' '}
-        <span className="highlight-blue font-semibold">estrategias probadas y personalizadas.</span>
+        Ayudo a empresas y creadores a conseguir clientes con{' '}
+        <span className="underline-amber font-semibold">contenido estratégico</span> y{' '}
+        <span className="underline-amber font-semibold">webs diseñadas para convertir</span>{' '}
+        visitas en oportunidades reales. Construyo presencia online que genera confianza,
+        atrae al público adecuado y produce{' '}
+        <span className="highlight-blue font-semibold">crecimiento sostenible.</span>
       </p>
       <Link
         to="/contact"
         className="inline-block bg-brand-blue text-white font-montserrat font-bold px-8 py-4 rounded-lg hover:bg-blue-900 transition-colors duration-200 text-lg"
       >
-        ¿Necesitas ayuda? ¡Contáctame!
+        Hablemos de tu proyecto
       </Link>
     </div>
   </section>
@@ -186,7 +204,7 @@ const About = () => (
       <title>Quién Soy – Germán Hernández Mairal</title>
       <meta
         name="description"
-        content="Conoce la historia de Germán Hernández Mairal: desarrollador, YouTuber y apasionado de la productividad y los hábitos de vida."
+        content="Germán Hernández — Desarrollador Web y Community Manager. Construyo webs que convierten y estrategias de contenido que atraen clientes. Conoce mi trayectoria y stack técnico."
       />
     </Helmet>
     <AboutHero />
