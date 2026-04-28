@@ -9,22 +9,22 @@ const LetsTalk = () => (
       <span className="highlight-amber">Hablemos</span>
     </h2>
     <p className="font-inter text-gray-700 text-lg leading-relaxed mb-4">
-      ¿Tienes algún{' '}
-      <span className="underline-amber font-semibold">proyecto</span> en mente o quieres
-      saber más sobre cómo puedo ayudarte?
+      ¿Quieres una{' '}
+      <span className="underline-amber font-semibold">web que convierta</span> o contenido
+      que atraiga clientes de forma constante?
     </p>
     <p className="font-inter text-gray-700 text-lg leading-relaxed mb-4">
-      No dudes en{' '}
-      <span className="underline-amber font-semibold">enviarme un mensaje.</span>
+    Este es el primer paso para hacerlo realidad. Cuéntame qué necesitas.{' '}
+      <span className="underline-amber font-semibold">Sin rodeos.</span>
     </p>
     <p className="font-inter text-gray-700 text-lg leading-relaxed">
-      ¡Estaré encantado de hablar contigo!
+      Te respondo en menos de 24 horas.
     </p>
 
     {/* Social links */}
     <div className="mt-10">
       <h3 className="font-montserrat font-bold text-gray-900 mb-4">
-        También me puedes encontrar en:
+        Encuéntrame también en:
       </h3>
       <div className="flex flex-wrap gap-4">
         <a
@@ -67,10 +67,10 @@ const ContactInfo = () => (
   <section className="bg-white py-20 px-4">
     <div className="max-w-4xl mx-auto text-center">
       <h2 className="font-montserrat font-bold text-3xl sm:text-4xl text-gray-900 mb-4">
-        Información de <span className="underline-amber">Contacto</span>
+        ¿Prefieres el <span className="underline-amber">correo directo</span>?
       </h2>
       <p className="font-inter text-gray-600 text-lg mb-8 max-w-xl mx-auto">
-        Puedes contactarme directamente a{' '}
+        Escríbeme directamente a{' '}
         <a
           href="mailto:gerhm19@gmail.com"
           className="highlight-blue font-semibold hover:opacity-90 transition-opacity"
@@ -79,11 +79,11 @@ const ContactInfo = () => (
         </a>
       </p>
       <p className="font-inter text-gray-700 text-xl mb-8">
-        Estoy aquí para{' '}
-        <span className="underline-amber font-semibold">ayudarte</span> en tu próximo proyecto.
+        Si tienes dudas antes de decidir,{' '}
+        <span className="underline-amber font-semibold">también puedo ayudarte</span>.
       </p>
       <p className="font-montserrat font-bold text-gray-900 text-2xl">
-        ¿Listo para comenzar?
+        ¿Empezamos?
       </p>
       <button
         onClick={() => {
@@ -91,7 +91,7 @@ const ContactInfo = () => (
         }}
         className="mt-6 bg-brand-blue text-white font-montserrat font-bold px-8 py-3 rounded-lg hover:bg-blue-900 transition-colors duration-200 text-lg"
       >
-        ¡Hablemos!
+        Cuéntame tu proyecto
       </button>
     </div>
   </section>
@@ -104,7 +104,7 @@ const Contact = () => (
       <title>Contacto – Germán Hernández Mairal</title>
       <meta
         name="description"
-        content="Contacta con Germán Hernández Mairal para hablar sobre tu proyecto, consulta o colaboración."
+        content="¿Tienes un proyecto en mente? Escríbeme. Ayudo a empresas y creadores a conseguir clientes con webs y contenido que convierten."
       />
     </Helmet>
 
@@ -115,8 +115,8 @@ const Contact = () => (
           <span className="highlight-amber">Contacto</span>
         </h1>
         <p className="font-inter text-blue-200 text-lg max-w-xl mx-auto">
-          Estoy disponible para proyectos, colaboraciones y consultas. Escríbeme y te responderé
-          lo antes posible.
+        ¿Tienes un proyecto en mente? Este es el primer paso para hacerlo realidad.
+        Cuéntame qué necesitas y te respondo en menos de 24 horas.{' '}
         </p>
       </div>
     </section>
