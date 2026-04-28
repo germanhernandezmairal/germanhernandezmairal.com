@@ -12,17 +12,13 @@ const AboutHero = () => (
             <span className="highlight-amber">Sobre Mí</span>
           </h1>
           <p className="font-inter text-gray-700 text-lg leading-relaxed mb-4">
-            Soy <strong>Germán</strong>, desarrollador web graduado en Desarrollo de Aplicaciones
-            Web y Móviles, y Community Manager especializado en crecimiento online para empresas
-            y creadores.
+            Soy <strong>Germán</strong>, desarrollador web y Community Manager. Me especializo en ayudar a empresas y creadores a conseguir clientes con contenido y webs que convierten.
           </p>
           <p className="font-inter text-gray-700 text-lg leading-relaxed">
             Desde{' '}
-            <span className="underline-amber font-semibold">2019</span>, he estado{' '}
-            <span className="underline-amber font-semibold">construyendo</span> las habilidades
-            técnicas y de comunicación necesarias para{' '}
-            <span className="underline-amber font-semibold">aportar valor real</span> a negocios
-            y creadores que quieren crecer online.
+            <span className="underline-amber font-semibold">2019</span> llevo{' '}
+            <span className="underline-amber font-semibold">construyendo</span> las habilidades técnicas y de comunicación para{' '}
+            <span className="underline-amber font-semibold">ayudarte a crecer online</span>.
           </p>
         </div>
 
@@ -50,10 +46,8 @@ const BIO_ITEMS = [
     text: (
       <>
         Me gradué en{' '}
-        <span className="highlight-blue">Desarrollo de Aplicaciones Web y Móviles</span>,
-        una formación que me dio los fundamentos para construir soluciones web funcionales
-        y bien estructurados. Desde el primer proyecto, entendí que el código bien escrito es
-        un activo, no solo una herramienta.
+        <span className="highlight-blue">Desarrollo de Aplicaciones Web y Móviles</span>{' '}
+        y desde entonces construyo webs y aplicaciones con criterio técnico: limpias, rápidas y preparadas para crecer.
       </>
     ),
   },
@@ -65,11 +59,8 @@ const BIO_ITEMS = [
     text: (
       <>
         He trabajado como{' '}
-        <span className="underline-amber font-semibold">Community Manager</span> gestionando la
-        presencia online de instituciones y marcas: comunicación institucional, contenido
-        multiplataforma, cobertura de eventos y estrategia editorial. Ahí confirmé que{' '}
-        <span className="underline-amber font-semibold">comunicar con claridad</span> es tan
-        valioso como construir con técnica.
+        <span className="underline-amber font-semibold">Community Manager</span> para instituciones y marcas: gestionando redes, produciendo contenido y cubriendo eventos. Ahí entendí que{' '}
+        <span className="underline-amber font-semibold">comunicar con claridad</span> genera tanta confianza como un buen producto.
       </>
     ),
   },
@@ -81,11 +72,8 @@ const BIO_ITEMS = [
     text: (
       <>
         Hoy desarrollo proyectos web con{' '}
-        <span className="highlight-blue">Next.js, React y TypeScript</span>, combinando
-        formación sólida con experiencia real en comunicación y marca. Construyo soluciones orientadas a
-        resultados — funcionales, limpias y diseñadas para{' '}
-        <span className="underline-amber font-semibold">generar impacto real</span> en el
-        negocio del cliente.
+        <span className="highlight-blue">Next.js, React y TypeScript</span>. Combino formación técnica con experiencia real en comunicación y marca personal. <br></br>El resultado: webs diseñadas para{' '}
+        <span className="underline-amber font-semibold">convertir visitas en oportunidades reales</span>.
       </>
     ),
   },
@@ -134,11 +122,7 @@ const SKILLS = [
   },
   {
     category: 'Contenido & Community',
-    items: ['Estrategia de contenido', 'Community Management', 'SEO', 'LinkedIn', 'Instagram', 'Analytics'],
-  },
-  {
-    category: 'Productividad',
-    items: ['GTD', 'Time-blocking', 'Notion', 'Gestión de proyectos', 'Metodologías ágiles'],
+    items: ['YouTube', 'Instagram', 'TikTok', 'Notion', 'Google Drive', 'Metricool'],
   },
 ];
 
@@ -149,9 +133,9 @@ const SkillsSection = () => (
         Habilidades & <span className="underline-amber">Herramientas</span>
       </h2>
       <p className="font-inter text-gray-600 text-center text-lg mb-12 max-w-2xl mx-auto">
-        Las herramientas y áreas con las que construyo soluciones reales para clientes.
+        Las herramientas con las que construyo webs y ayudo a crecer marcas online.
       </p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
         {SKILLS.map(({ category, items }) => (
           <div key={category} className="bg-white rounded-2xl p-6 shadow-card">
             <h3 className="font-montserrat font-bold text-brand-blue text-lg mb-4 pb-2 border-b-2 border-brand-amber">
@@ -181,11 +165,10 @@ const MissionSection = () => (
       </h2>
       <p className="font-inter text-gray-800 text-xl leading-relaxed mb-8 max-w-3xl mx-auto">
         Ayudo a empresas y creadores a conseguir clientes con{' '}
-        <span className="underline-amber font-semibold">contenido estratégico</span> y{' '}
-        <span className="underline-amber font-semibold">webs diseñadas para convertir</span>{' '}
-        visitas en oportunidades reales. Construyo presencia online que genera confianza,
-        atrae al público adecuado y produce{' '}
-        <span className="highlight-blue font-semibold">crecimiento sostenible.</span>
+        <span className="underline-amber font-semibold">contenido que atrae</span> y{' '}
+        <span className="underline-amber font-semibold">webs diseñadas para convertir</span>.
+        Combino técnica y comunicación para construir presencia online que genera{' '}
+        <span className="highlight-blue font-semibold">confianza, visibilidad y clientes.</span>
       </p>
       <Link
         to="/contact"
@@ -204,7 +187,7 @@ const About = () => (
       <title>Quién Soy – Germán Hernández Mairal</title>
       <meta
         name="description"
-        content="Germán Hernández — Desarrollador Web y Community Manager. Construyo webs que convierten y estrategias de contenido que atraen clientes. Conoce mi trayectoria y stack técnico."
+        content="Germán Hernández — Desarrollador Web y Community Manager. Ayudo a empresas y creadores a conseguir clientes con contenido y webs que convierten. Conoce mi historia y stack técnico."
       />
     </Helmet>
     <AboutHero />
