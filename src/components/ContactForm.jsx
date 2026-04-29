@@ -143,7 +143,7 @@ const ContactForm = () => {
         <button
           type="submit"
           disabled={status === 'loading'}
-          className="w-full flex items-center justify-center gap-2 bg-brand-blue text-white font-montserrat font-bold py-3 px-6 rounded-lg hover:bg-blue-900 disabled:opacity-60 disabled:cursor-not-allowed transition-all duration-200 text-base"
+          className="w-full flex items-center justify-center gap-2 bg-brand-blue text-white font-montserrat font-bold py-3 px-6 rounded-lg hover:bg-blue-900 active:scale-95 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed disabled:active:scale-100 transition-all duration-200 text-base"
         >
           {status === 'loading' ? (
             <>

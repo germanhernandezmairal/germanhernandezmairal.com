@@ -1,5 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { FaLinkedin, FaYoutube, FaInstagram, FaEnvelope } from 'react-icons/fa';
+import { motion } from 'framer-motion';
+import { slideLeft, slideRight } from '../lib/motion';
 import ContactForm from '../components/ContactForm';
 
 /* ─── Let's Talk ─── */
@@ -31,7 +33,7 @@ const LetsTalk = () => (
           href="https://www.linkedin.com/in/germ%C3%A1n-hern%C3%A1ndez-mairal-7584741ab/"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 bg-blue-700 text-white font-montserrat font-semibold text-sm px-4 py-2 rounded-lg hover:bg-blue-800 transition-colors"
+          className="flex items-center gap-2 bg-blue-700 text-white font-montserrat font-semibold text-sm px-4 py-2 rounded-lg hover:bg-blue-800 active:scale-95 transition-colors"
         >
           <FaLinkedin /> LinkedIn
         </a>
@@ -39,7 +41,7 @@ const LetsTalk = () => (
           href="https://youtube.com/@germanhernandezmairal"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 bg-red-500 text-white font-montserrat font-semibold text-sm px-4 py-2 rounded-lg hover:bg-red-600 transition-colors"
+          className="flex items-center gap-2 bg-red-500 text-white font-montserrat font-semibold text-sm px-4 py-2 rounded-lg hover:bg-red-600 active:scale-95 transition-colors"
         >
           <FaYoutube /> YouTube
         </a>
@@ -47,13 +49,13 @@ const LetsTalk = () => (
           href="https://www.instagram.com/germanhernandezmairal/"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 bg-pink-500 text-white font-montserrat font-semibold text-sm px-4 py-2 rounded-lg hover:bg-pink-600 transition-colors"
+          className="flex items-center gap-2 bg-pink-500 text-white font-montserrat font-semibold text-sm px-4 py-2 rounded-lg hover:bg-pink-600 active:scale-95 transition-colors"
         >
           <FaInstagram /> Instagram
         </a>
         <a
           href="mailto:gerhm19@gmail.com"
-          className="flex items-center gap-2 bg-gray-700 text-white font-montserrat font-semibold text-sm px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors"
+          className="flex items-center gap-2 bg-gray-700 text-white font-montserrat font-semibold text-sm px-4 py-2 rounded-lg hover:bg-gray-800 active:scale-95 transition-colors"
         >
           <FaEnvelope /> Email
         </a>
@@ -65,7 +67,13 @@ const LetsTalk = () => (
 /* ─── Contact Info ─── */
 const ContactInfo = () => (
   <section className="bg-white py-20 px-4">
-    <div className="max-w-4xl mx-auto text-center">
+    <motion.div
+      className="max-w-4xl mx-auto text-center"
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+    >
       <h2 className="font-montserrat font-bold text-3xl sm:text-4xl text-gray-900 mb-4">
         ¿Prefieres el <span className="underline-amber">correo directo</span>?
       </h2>
@@ -89,11 +97,11 @@ const ContactInfo = () => (
         onClick={() => {
           document.getElementById('contact-form-section')?.scrollIntoView({ behavior: 'smooth' });
         }}
-        className="mt-6 bg-brand-blue text-white font-montserrat font-bold px-8 py-3 rounded-lg hover:bg-blue-900 transition-colors duration-200 text-lg"
+        className="mt-6 bg-brand-blue text-white font-montserrat font-bold px-8 py-3 rounded-lg hover:bg-blue-900 active:scale-95 cursor-pointer transition-colors duration-200 text-lg"
       >
         Cuéntame tu proyecto
       </button>
-    </div>
+    </motion.div>
   </section>
 );
 
@@ -110,7 +118,12 @@ const Contact = () => (
 
     {/* Header */}
     <section className="bg-brand-blue pt-28 pb-12 px-4">
-      <div className="max-w-4xl mx-auto text-center">
+      <motion.div
+        className="max-w-4xl mx-auto text-center"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+      >
         <h1 className="font-montserrat font-bold text-4xl sm:text-5xl text-white mb-4">
           <span className="highlight-amber">Contacto</span>
         </h1>
@@ -118,16 +131,29 @@ const Contact = () => (
         ¿Tienes un proyecto en mente? Este es el primer paso para hacerlo realidad.
         Cuéntame qué necesitas y te respondo en menos de 24 horas.{' '}
         </p>
-      </div>
+      </motion.div>
     </section>
 
     {/* Let's Talk + Form */}
     <section id="contact-form-section" className="bg-blue-50">
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 min-h-[70vh]">
-        <LetsTalk />
-        <div className="bg-white p-8 md:p-12 flex items-center">
+        <motion.div
+          variants={slideLeft}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          <LetsTalk />
+        </motion.div>
+        <motion.div
+          className="bg-white p-8 md:p-12 flex items-center"
+          variants={slideRight}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
           <ContactForm />
-        </div>
+        </motion.div>
       </div>
     </section>
 

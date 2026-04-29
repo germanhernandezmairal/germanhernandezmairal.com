@@ -16,6 +16,8 @@ import {
   FaLaptopCode,
   FaCode,
 } from 'react-icons/fa';
+import { motion } from 'framer-motion';
+import { staggerContainer, cardVariant } from '../lib/motion';
 
 // ─── Stripe Payment Links ────────────────────────────────────────────────────
 // Replace each value with your real Stripe Payment Link URL from the Stripe dashboard.
@@ -367,7 +369,7 @@ const PackageCard = ({ pkg, onBookCall }) => (
       <div className="flex flex-col gap-3 mt-auto">
         <button
           onClick={onBookCall}
-          className={`flex items-center justify-center gap-2 font-montserrat font-bold text-sm py-3 px-4 rounded-lg transition-colors ${
+          className={`flex items-center justify-center gap-2 font-montserrat font-bold text-sm py-3 px-4 rounded-lg transition-colors active:scale-95 cursor-pointer ${
             pkg.highlight
               ? 'bg-brand-amber text-brand-blue hover:bg-amber-400'
               : 'bg-brand-blue text-white hover:bg-blue-900'
@@ -379,7 +381,7 @@ const PackageCard = ({ pkg, onBookCall }) => (
           href={STRIPE_LINKS[pkg.stripeKey]}
           target="_blank"
           rel="noopener noreferrer"
-          className={`flex items-center justify-center gap-2 font-montserrat font-semibold text-sm py-3 px-4 rounded-lg border-2 transition-colors ${
+          className={`flex items-center justify-center gap-2 font-montserrat font-semibold text-sm py-3 px-4 rounded-lg border-2 transition-colors active:scale-95 ${
             pkg.highlight
               ? 'border-blue-400 text-blue-200 hover:border-brand-amber hover:text-brand-amber'
               : 'border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white'
@@ -433,7 +435,7 @@ const ServiceCard = ({ service, onBookCall }) => (
     <div className="flex flex-col gap-2">
       <button
         onClick={onBookCall}
-        className="flex items-center justify-center gap-2 font-montserrat font-semibold text-sm py-2.5 px-4 rounded-lg bg-brand-blue text-white hover:bg-blue-900 transition-colors"
+        className="flex items-center justify-center gap-2 font-montserrat font-bold text-sm py-2.5 px-4 rounded-lg bg-brand-blue text-white hover:bg-blue-900 active:scale-95 cursor-pointer transition-colors"
       >
         <FaCalendarAlt className="text-xs" /> Hablar sobre tu caso
       </button>
@@ -441,7 +443,7 @@ const ServiceCard = ({ service, onBookCall }) => (
         href={STRIPE_LINKS[service.stripeKey]}
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center justify-center gap-2 font-montserrat font-semibold text-sm py-2.5 px-4 rounded-lg border-2 border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white transition-colors"
+        className="flex items-center justify-center gap-2 font-montserrat font-semibold text-sm py-2.5 px-4 rounded-lg border-2 border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white active:scale-95 transition-colors"
       >
         <FaCreditCard className="text-xs" /> Contratar
       </a>
@@ -492,7 +494,12 @@ const Services = () => {
 
       {/* ── Page Header ── */}
       <section className="bg-brand-blue pt-28 pb-16 px-4">
-        <div className="max-w-4xl mx-auto text-center">
+        <motion.div
+          className="max-w-4xl mx-auto text-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
           <h1 className="font-montserrat font-bold text-4xl sm:text-5xl text-white mb-4">
             Mis <span className="highlight-amber">Servicios</span>
           </h1>
@@ -502,13 +509,19 @@ const Services = () => {
           <p className="font-inter text-blue-300 text-sm max-w-2xl mx-auto mt-4">
             He trabajado creando contenido y gestionando la presencia digital de instituciones y marcas, produciendo cientos de piezas para su presencia online.
           </p>
-        </div>
+        </motion.div>
       </section>
 
       {/* ── Packages Section ── */}
       <section className="bg-gray-50 py-20 px-4" id="paquetes">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
+          <motion.div
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
             <p className="font-montserrat text-sm font-semibold uppercase tracking-widest text-brand-amber-dark mb-2">
               Todo incluido
             </p>
@@ -522,13 +535,21 @@ const Services = () => {
             <p className="font-inter text-sm text-gray-500 mt-3 max-w-xl mx-auto">
               Si no tienes claro cuál elegir, empieza por &apos;Autoridad&apos;. Es el que mejor funciona para la mayoría de marcas personales.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-start">
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-start"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
             {PACKAGES.map((pkg) => (
-              <PackageCard key={pkg.id} pkg={pkg} onBookCall={openCalendly} />
+              <motion.div key={pkg.id} variants={cardVariant}>
+                <PackageCard pkg={pkg} onBookCall={openCalendly} />
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
           <p className="text-center font-inter text-sm text-gray-400 mt-8">
             * Precios orientativos para el mercado español. Mercado US/UK indicado como referencia.
@@ -540,7 +561,13 @@ const Services = () => {
       {/* ── Individual Services Section ── */}
       <section className="bg-white py-20 px-4" id="servicios">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-10">
+          <motion.div
+            className="text-center mb-10"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
             <p className="font-montserrat text-sm font-semibold uppercase tracking-widest text-brand-amber-dark mb-2">
               Solo lo que necesitas
             </p>
@@ -550,14 +577,14 @@ const Services = () => {
             <p className="font-inter text-gray-600 max-w-2xl mx-auto">
               Contrata solo lo que necesitas ahora. Cada servicio funciona solo o combinado con otros.
             </p>
-          </div>
+          </motion.div>
 
           {/* Category tabs */}
           <div className="flex justify-center mb-10">
             <div className="inline-flex bg-gray-100 rounded-xl p-1 gap-1">
               <button
                 onClick={() => setServicesTab('community')}
-                className={`font-montserrat font-semibold text-sm px-5 py-2.5 rounded-lg transition-all ${
+                className={`font-montserrat font-semibold text-sm px-5 py-2.5 rounded-lg transition-all active:scale-95 cursor-pointer ${
                   servicesTab === 'community'
                     ? 'bg-brand-blue text-white shadow-sm'
                     : 'text-gray-600 hover:text-gray-900'
@@ -567,7 +594,7 @@ const Services = () => {
               </button>
               <button
                 onClick={() => setServicesTab('web')}
-                className={`font-montserrat font-semibold text-sm px-5 py-2.5 rounded-lg transition-all ${
+                className={`font-montserrat font-semibold text-sm px-5 py-2.5 rounded-lg transition-all active:scale-95 cursor-pointer ${
                   servicesTab === 'web'
                     ? 'bg-brand-blue text-white shadow-sm'
                     : 'text-gray-600 hover:text-gray-900'
@@ -580,20 +607,36 @@ const Services = () => {
 
           {/* Community services grid */}
           {servicesTab === 'community' && (
-            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+            <motion.div
+              key="community"
+              className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6"
+              variants={staggerContainer}
+              initial="hidden"
+              animate="visible"
+            >
               {COMMUNITY_SERVICES.map((service) => (
-                <ServiceCard key={service.id} service={service} onBookCall={openCalendly} />
+                <motion.div key={service.id} variants={cardVariant}>
+                  <ServiceCard service={service} onBookCall={openCalendly} />
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           )}
 
           {/* Web dev services grid */}
           {servicesTab === 'web' && (
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
+            <motion.div
+              key="web"
+              className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto"
+              variants={staggerContainer}
+              initial="hidden"
+              animate="visible"
+            >
               {WEB_SERVICES.map((service) => (
-                <ServiceCard key={service.id} service={service} onBookCall={openCalendly} />
+                <motion.div key={service.id} variants={cardVariant}>
+                  <ServiceCard service={service} onBookCall={openCalendly} />
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           )}
         </div>
       </section>
@@ -601,7 +644,13 @@ const Services = () => {
       {/* ── Book a Call / Calendly Section ── */}
       <section className="bg-gray-50 py-20 px-4" id="reservar">
         <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-10">
+          <motion.div
+            className="text-center mb-10"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
             <p className="font-montserrat text-sm font-semibold uppercase tracking-widest text-brand-amber-dark mb-2">
               Sin compromiso
             </p>
@@ -612,24 +661,37 @@ const Services = () => {
               Cuéntame tu proyecto, tus objetivos y lo que necesitas. En 30 minutos
               te digo exactamente cómo puedo ayudarte — sin presión ni compromiso.
             </p>
-          </div>
+          </motion.div>
 
           {/* Calendly inline widget */}
-          <div
-            className="calendly-inline-widget w-full rounded-2xl overflow-hidden shadow-card border border-gray-100"
-            data-url={`${CALENDLY_URL}?hide_landing_page_details=1&hide_gdpr_banner=1`}
-            style={{ minWidth: '320px', height: '700px' }}
-          />
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+          >
+            <div
+              className="calendly-inline-widget w-full rounded-2xl overflow-hidden shadow-card border border-gray-100"
+              data-url={`${CALENDLY_URL}?hide_landing_page_details=1&hide_gdpr_banner=1`}
+              style={{ minWidth: '320px', height: '700px' }}
+            />
+          </motion.div>
 
           {/* Fallback button if widget hasn't loaded */}
-          <div className="text-center mt-6">
+          <motion.div
+            className="text-center mt-6"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
             <button
               onClick={openCalendly}
-              className="inline-flex items-center gap-2 font-montserrat font-bold text-sm bg-brand-blue text-white py-3 px-6 rounded-lg hover:bg-blue-900 transition-colors"
+              className="inline-flex items-center gap-2 font-montserrat font-bold text-sm bg-brand-blue text-white py-3 px-6 rounded-lg hover:bg-blue-900 active:scale-95 cursor-pointer transition-colors"
             >
               <FaCalendarAlt /> Ver disponibilidad y reservar
             </button>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -639,7 +701,13 @@ const Services = () => {
           <h2 className="font-montserrat font-bold text-3xl sm:text-4xl text-gray-900 text-center mb-12">
             ¿Cómo trabajamos <span className="underline-amber">juntos</span>?
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <motion.div
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
             {[
               {
                 step: '01',
@@ -662,21 +730,27 @@ const Services = () => {
                 desc: 'Entrego los resultados y me quedo disponible para ajustes.',
               },
             ].map(({ step, title, desc }) => (
-              <div key={step} className="text-center">
+              <motion.div key={step} variants={cardVariant} className="text-center">
                 <div className="w-16 h-16 bg-brand-blue text-white font-montserrat font-bold text-2xl rounded-full flex items-center justify-center mx-auto mb-4">
                   {step}
                 </div>
                 <h3 className="font-montserrat font-bold text-lg text-gray-900 mb-2">{title}</h3>
                 <p className="font-inter text-gray-600 text-sm leading-relaxed">{desc}</p>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* ── CTA ── */}
       <section className="bg-brand-amber py-16 px-4">
-        <div className="max-w-3xl mx-auto text-center">
+        <motion.div
+          className="max-w-3xl mx-auto text-center"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
           <h2 className="font-montserrat font-bold text-3xl text-brand-blue mb-4">
             ¿Tienes un proyecto en mente?
           </h2>
@@ -686,18 +760,18 @@ const Services = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
               onClick={openCalendly}
-              className="inline-flex items-center justify-center gap-2 bg-brand-blue text-white font-montserrat font-bold px-8 py-4 rounded-lg hover:bg-blue-900 transition-colors text-lg"
+              className="inline-flex items-center justify-center gap-2 bg-brand-blue text-white font-montserrat font-bold px-8 py-4 rounded-lg hover:bg-blue-900 active:scale-95 cursor-pointer transition-colors text-lg"
             >
               <FaCalendarAlt /> Ver cómo conseguir más clientes
             </button>
             <Link
               to="/contact"
-              className="inline-flex items-center justify-center gap-2 border-2 border-brand-blue text-brand-blue font-montserrat font-bold px-8 py-4 rounded-lg hover:bg-brand-blue hover:text-white transition-colors text-lg"
+              className="inline-flex items-center justify-center gap-2 border-2 border-brand-blue text-brand-blue font-montserrat font-bold px-8 py-4 rounded-lg hover:bg-brand-blue hover:text-white active:scale-95 transition-colors text-lg"
             >
               Enviar mensaje <FaArrowRight className="text-sm" />
             </Link>
           </div>
-        </div>
+        </motion.div>
       </section>
     </>
   );

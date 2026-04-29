@@ -1,6 +1,8 @@
 import { useEffect, useState, useMemo, useCallback } from 'react';
 import axios from 'axios';
 import { FaChevronLeft, FaChevronRight, FaYoutube, FaRocket, FaHeartbeat, FaUsers } from 'react-icons/fa';
+import { motion } from 'framer-motion';
+import { staggerContainer, cardVariant } from '../lib/motion';
 
 const API_KEY = import.meta.env.VITE_YOUTUBE_API_KEY;
 
@@ -90,14 +92,20 @@ const VideoGrid = ({ externalCategory }) => {
   return (
     <div>
       {/* Category buttons */}
-      <div className="flex justify-center gap-3 mb-8 flex-wrap">
+      <motion.div
+        className="flex justify-center gap-3 mb-8 flex-wrap"
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+      >
         {Object.entries(CATEGORY_LABELS).map(([key, label]) => {
           const Icon = CATEGORY_ICONS[key];
           return (
             <button
               key={key}
               onClick={() => setSelectedCategory(key)}
-              className={`inline-flex items-center gap-1.5 font-montserrat font-semibold text-sm px-5 py-2 rounded-full transition-all duration-200 shadow-sm ${
+              className={`inline-flex items-center gap-1.5 font-montserrat font-semibold text-sm px-5 py-2 rounded-full transition-all duration-200 shadow-sm cursor-pointer ${
                 selectedCategory === key
                   ? 'bg-brand-amber text-brand-blue scale-105'
                   : 'bg-white text-gray-700 hover:bg-brand-amber hover:text-brand-blue border border-gray-200'
@@ -107,7 +115,7 @@ const VideoGrid = ({ externalCategory }) => {
             </button>
           );
         })}
-      </div>
+      </motion.div>
 
       {/* Loading */}
       {loading && (
@@ -146,13 +154,19 @@ const VideoGrid = ({ externalCategory }) => {
           </button>
 
           {/* Grid */}
-          <div className="grid gap-6 px-6"
+          <motion.div
+            key={selectedCategory}
+            className="grid gap-6 px-6"
             style={{ gridTemplateColumns: `repeat(${itemsToShow}, 1fr)` }}
+            variants={staggerContainer}
+            initial="hidden"
+            animate="visible"
           >
             {displayed.map((video, i) =>
               video?.snippet ? (
-                <div
+                <motion.div
                   key={i}
+                  variants={cardVariant}
                   className="bg-white rounded-2xl shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1 overflow-hidden flex flex-col"
                 >
                   {/* Thumbnail */}
@@ -174,7 +188,7 @@ const VideoGrid = ({ externalCategory }) => {
                       href={`https://www.youtube.com/watch?v=${video.snippet.resourceId?.videoId}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 hover:bg-opacity-30 transition-all group"
+                      className="absolute inset-0 flex items-center justify-center bg-black/0 hover:bg-black/30 transition-all group"
                       aria-label={`Ver ${video.snippet.title}`}
                     >
                       <div className="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -200,10 +214,10 @@ const VideoGrid = ({ externalCategory }) => {
                       <FaYoutube /> Ver en YouTube
                     </a>
                   </div>
-                </div>
+                </motion.div>
               ) : null
             )}
-          </div>
+          </motion.div>
 
           {/* Next arrow */}
           <button
@@ -220,17 +234,22 @@ const VideoGrid = ({ externalCategory }) => {
 
       {/* Dots indicator */}
       {!loading && !error && videos.length > itemsToShow && (
-        <div className="flex justify-center gap-2 mt-6">
+        <motion.div
+          className="flex justify-center gap-2 mt-6"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.4, delay: 0.3 }}
+        >
           {Array.from({ length: videos.length - itemsToShow + 1 }).map((_, i) => (
             <button
               key={i}
               onClick={() => setStartIndex(i)}
-              className={`w-2 h-2 rounded-full transition-all ${
+              className={`w-2 h-2 rounded-full transition-all cursor-pointer ${
                 i === startIndex ? 'bg-brand-amber w-5' : 'bg-gray-300'
               }`}
             />
           ))}
-        </div>
+        </motion.div>
       )}
     </div>
   );

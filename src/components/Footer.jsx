@@ -1,8 +1,15 @@
 import { Link } from 'react-router-dom';
 import { FaLinkedin, FaYoutube, FaInstagram, FaEnvelope } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 
 const Footer = () => (
-  <footer className="bg-gray-900 text-white py-10 mt-0">
+  <motion.footer
+    className="bg-gray-900 text-white py-10 mt-0"
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.5, ease: 'easeOut' }}
+  >
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
         {/* Brand */}
@@ -93,7 +100,7 @@ const Footer = () => (
         </p>
       </div>
     </div>
-  </footer>
+  </motion.footer>
 );
 
 export default Footer;

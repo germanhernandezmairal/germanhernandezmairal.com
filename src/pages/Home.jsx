@@ -1,6 +1,8 @@
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { FaArrowDown, FaLaptopCode, FaYoutube, FaHandshake } from 'react-icons/fa';
+import { motion } from 'framer-motion';
+import { fadeUp, staggerContainer, cardVariant } from '../lib/motion';
 
 /* ─── Hero Section ─── */
 const HeroSection = () => (
@@ -8,8 +10,13 @@ const HeroSection = () => (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
       <div className="flex flex-col md:flex-row items-center gap-10 md:gap-16">
         {/* Text */}
-        <div className="flex-1 text-center md:text-left order-2 md:order-1">
-          <div className="opacity-0 animate-fade-up">
+        <motion.div
+          className="flex-1 text-center md:text-left order-2 md:order-1"
+          variants={staggerContainer}
+          initial="hidden"
+          animate="visible"
+        >
+          <motion.div variants={fadeUp}>
             <p className="font-montserrat font-bold text-3xl sm:text-4xl lg:text-5xl text-gray-900 leading-tight">
               Hola, soy Germán, Desarrollador Web y Community Manager.
             </p>
@@ -17,35 +24,43 @@ const HeroSection = () => (
               Ayudo a <strong>empresas y creadores</strong> a conseguir clientes con{' '}
               <strong>contenido y webs que convierten</strong>.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center md:justify-start opacity-0 animate-fade-up-1">
+          <motion.div
+            variants={fadeUp}
+            className="mt-8 flex flex-col sm:flex-row gap-3 justify-center md:justify-start"
+          >
             <Link
               to="/services"
-              className="bg-brand-blue text-white font-montserrat font-semibold px-6 py-3 rounded-lg hover:bg-blue-900 transition-colors duration-200 text-center"
+              className="bg-brand-blue text-white font-montserrat font-semibold px-6 py-3 rounded-lg hover:bg-blue-900 hover:text-white active:scale-95 transition-colors duration-200 text-center"
             >
               Ver mis servicios
             </Link>
             <Link
               to="/contact"
-              className="bg-brand-amber text-brand-blue font-montserrat font-semibold px-6 py-3 rounded-lg hover:bg-brand-amber-dark transition-colors duration-200 text-center"
+              className="bg-brand-amber text-brand-blue font-montserrat font-semibold px-6 py-3 rounded-lg hover:bg-brand-amber-dark active:scale-95 transition-colors duration-200 text-center"
             >
               Hablemos
             </Link>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Image */}
-        <div className="flex-1 order-1 md:order-2 flex justify-center">
-          <div className="w-64 sm:w-80 md:w-full max-w-sm aspect-[4/5] overflow-hidden rounded-2xl border-2 border-gray-200 shadow-card">
+        <motion.div
+          className="flex-1 order-1 md:order-2 flex justify-center"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.7, ease: 'easeOut', delay: 0.1 }}
+        >
+          <div className="relative w-64 sm:w-80 md:w-full max-w-sm aspect-[4/5] overflow-hidden rounded-2xl border-2 border-gray-200 shadow-card">
             <img
-              src="/imgs/Imagen Página Web Actualizada.png"
+              src="/imgs/Imagen Página Web Actualizada Copia.png"
               alt="Germán Hernández Mairal"
-              className="w-full h-full object-cover object-top"
+              className="absolute inset-0 w-full h-full object-contain object-center"
               loading="eager"
             />
           </div>
-        </div>
+        </motion.div>
       </div>
 
       {/* Scroll indicator */}
@@ -86,39 +101,59 @@ const HELP_CARDS = [
 const HowIHelpSection = () => (
   <section id="how-i-help" className="bg-gray-50 py-20 px-4">
     <div className="max-w-6xl mx-auto">
-      <h2 className="font-montserrat text-3xl sm:text-4xl lg:text-5xl font-bold text-center text-gray-900 mb-4">
-        ¿Cómo puedo ayudarte a{' '}
-        <span className="underline-amber">conseguir clientes</span>?
-      </h2>
-      <p className="font-inter text-gray-600 text-center text-lg mb-14 max-w-2xl mx-auto">
-        Creo contenido y webs para que más personas te encuentren y te contacten.
-      </p>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
+        <h2 className="font-montserrat text-3xl sm:text-4xl lg:text-5xl font-bold text-center text-gray-900 mb-4">
+          ¿Cómo puedo ayudarte a{' '}
+          <span className="underline-amber">conseguir clientes</span>?
+        </h2>
+        <p className="font-inter text-gray-600 text-center text-lg mb-14 max-w-2xl mx-auto">
+          Creo contenido y webs para que más personas te encuentren y te contacten.
+        </p>
+      </motion.div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+      <motion.div
+        className="grid grid-cols-1 sm:grid-cols-3 gap-6"
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
         {HELP_CARDS.map(({ icon, title, highlight, description, link }) => (
-          <Link
-            key={highlight}
-            to={link}
-            className="bg-blue-100 hover:bg-blue-200 rounded-xl p-6 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-card-hover group"
-          >
-            {icon}
-            <h3 className="font-montserrat font-semibold text-lg text-gray-900">
-              {title}{' '}
-              <span className="underline-amber">{highlight}</span>
-            </h3>
-            <p className="font-inter text-sm text-gray-600 mt-2">{description}</p>
-          </Link>
+          <motion.div key={highlight} variants={cardVariant}>
+            <Link
+              to={link}
+              className="bg-blue-100 hover:bg-blue-200 rounded-xl p-6 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-card-hover group h-full"
+            >
+              {icon}
+              <h3 className="font-montserrat font-semibold text-lg text-gray-900">
+                {title}{' '}
+                <span className="underline-amber">{highlight}</span>
+              </h3>
+              <p className="font-inter text-sm text-gray-600 mt-2">{description}</p>
+            </Link>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
 
-      <div className="mt-14 text-center">
+      <motion.div
+        className="mt-14 text-center"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: 0.3 }}
+      >
         <Link
           to="/services"
-          className="inline-block bg-brand-blue text-white font-montserrat font-semibold px-8 py-3 rounded-lg hover:bg-blue-900 transition-colors duration-200"
+          className="inline-block bg-brand-blue text-white font-montserrat font-semibold px-8 py-3 rounded-lg hover:bg-blue-900 active:scale-95 transition-colors duration-200"
         >
           Explorar todos los servicios →
         </Link>
-      </div>
+      </motion.div>
     </div>
   </section>
 );
@@ -126,7 +161,13 @@ const HowIHelpSection = () => (
 /* ─── CTA Banner ─── */
 const CTABanner = () => (
   <section className="bg-brand-blue py-16 px-4">
-    <div className="max-w-4xl mx-auto text-center">
+    <motion.div
+      className="max-w-4xl mx-auto text-center"
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+    >
       <h2 className="font-montserrat font-bold text-3xl sm:text-4xl text-white mb-4">
         ¿Listo para dar el siguiente paso?
       </h2>
@@ -135,11 +176,11 @@ const CTABanner = () => (
       </p>
       <Link
         to="/contact"
-        className="inline-block bg-brand-amber text-brand-blue font-montserrat font-bold px-8 py-4 rounded-lg hover:bg-brand-amber-dark transition-colors duration-200 text-lg"
+        className="inline-block bg-brand-amber text-brand-blue font-montserrat font-bold px-8 py-4 rounded-lg hover:bg-brand-amber-dark active:scale-95 transition-colors duration-200 text-lg"
       >
         Contactar ahora
       </Link>
-    </div>
+    </motion.div>
   </section>
 );
 

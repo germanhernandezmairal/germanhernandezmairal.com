@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
+import { motion } from 'framer-motion';
+import { staggerContainer, cardVariant } from '../lib/motion';
 
 const PROJECTS = [
   {
@@ -52,7 +54,6 @@ const CATEGORIES = [
 /* ─── Project Card ─── */
 const ProjectCard = ({ project }) => (
   <div className="bg-white rounded-2xl shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1 overflow-hidden flex flex-col">
-    {/* Image / Placeholder */}
     <div className="relative h-48 bg-gradient-to-br from-brand-blue to-blue-800 flex items-center justify-center overflow-hidden">
       {project.image ? (
         <img
@@ -71,14 +72,12 @@ const ProjectCard = ({ project }) => (
       )}
     </div>
 
-    {/* Content */}
     <div className="p-6 flex flex-col flex-1">
       <h3 className="font-montserrat font-bold text-lg text-gray-900 mb-2">{project.title}</h3>
       <p className="font-inter text-gray-600 text-sm leading-relaxed mb-4 flex-1">
         {project.description}
       </p>
 
-      {/* Tech stack */}
       <div className="flex flex-wrap gap-2 mb-5">
         {project.tech.map((t) => (
           <span
@@ -90,14 +89,13 @@ const ProjectCard = ({ project }) => (
         ))}
       </div>
 
-      {/* Links */}
       <div className="flex gap-3">
         {project.liveUrl && (
           <a
             href={project.liveUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1.5 bg-brand-blue text-white font-montserrat font-semibold text-sm px-4 py-2 rounded-lg hover:bg-blue-900 transition-colors"
+            className="flex items-center gap-1.5 bg-brand-blue text-white font-montserrat font-semibold text-sm px-4 py-2 rounded-lg hover:bg-blue-900 active:scale-95 transition-colors"
           >
             <FaExternalLinkAlt className="text-xs" /> Ver proyecto
           </a>
@@ -107,7 +105,7 @@ const ProjectCard = ({ project }) => (
             href={project.githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1.5 border border-gray-300 text-gray-700 font-montserrat font-semibold text-sm px-4 py-2 rounded-lg hover:border-brand-blue hover:text-brand-blue transition-colors"
+            className="flex items-center gap-1.5 border border-gray-300 text-gray-700 font-montserrat font-semibold text-sm px-4 py-2 rounded-lg hover:border-brand-blue hover:text-brand-blue active:scale-95 transition-colors"
           >
             <FaGithub /> GitHub
           </a>
@@ -138,7 +136,12 @@ const Portfolio = () => {
 
       {/* Header */}
       <section className="bg-brand-blue pt-28 pb-16 px-4">
-        <div className="max-w-4xl mx-auto text-center">
+        <motion.div
+          className="max-w-4xl mx-auto text-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
           <h1 className="font-montserrat font-bold text-4xl sm:text-5xl text-white mb-4">
             Proyectos <span className="highlight-amber">Reales</span>
           </h1>
@@ -149,19 +152,25 @@ const Portfolio = () => {
             Estos proyectos muestran lo que mejor hago: webs que convierten,
             contenido que atrae y comunidades que crecen.
           </p>
-        </div>
+        </motion.div>
       </section>
 
       {/* Filter + Grid */}
       <section className="bg-white py-16 px-4">
         <div className="max-w-6xl mx-auto">
           {/* Category filters */}
-          <div className="flex flex-wrap justify-center gap-3 mb-12">
+          <motion.div
+            className="flex flex-wrap justify-center gap-3 mb-12"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
             {CATEGORIES.map(({ key, label }) => (
               <button
                 key={key}
                 onClick={() => setActiveCategory(key)}
-                className={`font-montserrat font-semibold text-sm px-5 py-2 rounded-full border-2 transition-all duration-200 ${
+                className={`font-montserrat font-semibold text-sm px-5 py-2 rounded-full border-2 transition-all duration-200 active:scale-95 cursor-pointer ${
                   activeCategory === key
                     ? 'bg-brand-blue border-brand-blue text-white'
                     : 'border-gray-300 text-gray-600 hover:border-brand-blue hover:text-brand-blue'
@@ -170,20 +179,34 @@ const Portfolio = () => {
                 {label}
               </button>
             ))}
-          </div>
+          </motion.div>
 
           {/* Project grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <motion.div
+            key={activeCategory}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+            variants={staggerContainer}
+            initial="hidden"
+            animate="visible"
+          >
             {filtered.map((project) => (
-              <ProjectCard key={project.id} project={project} />
+              <motion.div key={project.id} variants={cardVariant}>
+                <ProjectCard project={project} />
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* CTA */}
       <section className="bg-gray-50 py-16 px-4">
-        <div className="max-w-3xl mx-auto text-center">
+        <motion.div
+          className="max-w-3xl mx-auto text-center"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
           <h2 className="font-montserrat font-bold text-3xl text-gray-900 mb-4">
             ¿Tu marca necesita una presencia digital que funcione?
           </h2>
@@ -192,11 +215,11 @@ const Portfolio = () => {
           </p>
           <Link
             to="/contact"
-            className="inline-block bg-brand-blue text-white font-montserrat font-bold px-8 py-4 rounded-lg hover:bg-blue-900 transition-colors duration-200 text-lg"
+            className="inline-block bg-brand-blue text-white font-montserrat font-bold px-8 py-4 rounded-lg hover:bg-blue-900 active:scale-95 transition-colors duration-200 text-lg"
           >
             Hablemos de tu proyecto
           </Link>
-        </div>
+        </motion.div>
       </section>
     </>
   );
