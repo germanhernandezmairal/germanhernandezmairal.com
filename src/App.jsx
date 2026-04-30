@@ -11,6 +11,7 @@ import Portfolio from './pages/Portfolio';
 import YouTube from './pages/YouTube';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import TarragonaJove from './pages/TarragonaJove';
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -29,6 +30,7 @@ const AnimatedRoutes = () => {
           <Route path="/youtube" element={<YouTube />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/portfolio/tarragona-jove" element={<TarragonaJove />} />
         </Routes>
       </motion.div>
     </AnimatePresence>

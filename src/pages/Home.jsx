@@ -17,8 +17,8 @@ const HeroSection = () => (
           animate="visible"
         >
           <motion.div variants={fadeUp}>
-            <p className="font-montserrat font-bold text-3xl sm:text-4xl lg:text-5xl text-gray-900 leading-tight">
-              Hola, soy Germán, Desarrollador Web y Community Manager.
+            <p className="font-montserrat font-bold text-2xl sm:text-3xl lg:text-4xl text-gray-900 leading-tight">
+              Hola, soy Germán, <br />Front-End Developer y Community Manager.
             </p>
             <p className="font-inter text-lg md:text-xl text-gray-700 leading-relaxed mt-6">
               Ayudo a <strong>empresas y creadores</strong> a conseguir clientes con{' '}
@@ -188,12 +188,12 @@ const CTABanner = () => (
 const Home = () => (
   <>
     <Helmet>
-      <title>Germán Hernández Mairal – Desarrollador Web y Community Manager</title>
+      <title>Germán Hernández Mairal – Front-End Developer y Community Manager</title>
       <meta
         name="description"
         content="Ayudo a empresas y creadores a conseguir clientes con contenido y webs que convierten."
       />
-      <meta name="keywords" content="desarrollador web, community manager, contenido y webs que convierten, gestión de redes, marca personal, servicios web" />
+      <meta name="keywords" content="front-end developer, desarrollador web, community manager, contenido y webs que convierten, gestión de redes, marca personal, servicios web" />
     </Helmet>
     <HeroSection />
     <HowIHelpSection />

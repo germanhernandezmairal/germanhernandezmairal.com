@@ -23,7 +23,7 @@ const PROJECTS = [
     title: 'Marca Personal - Germán Hernández Mairal',
     category: 'youtube',
     description:
-      'Canal de YouTube construido desde cero sobre hábitos, decisiones y habilidades prácticas aplicadas al crecimiento profesional y digital. Con estrategia de contenido propia, optimización SEO en cada vídeo y crecimiento orgánico de audiencia sin publicidad de pago.',
+      'Canal de YouTube construido desde cero sobre hábitos, decisiones y habilidades prácticas aplicadas al crecimiento personal y profesional. Con estrategia de contenido propia, optimización SEO en cada vídeo y crecimiento orgánico de audiencia sin publicidad de pago.',
     image: '/imgs/Miniatura Definitiva Las 7 Habilidades que Me Sacaron de la Desmotivación.png',
     tech: ['YouTube Studio', 'Adobe Premiere', 'Canva', 'SEO'],
     liveUrl: 'https://youtube.com/@germanhernandezmairal',
@@ -38,7 +38,8 @@ const PROJECTS = [
       'Gestión de la presencia digital de una organización pública en Instagram, TikTok, YouTube y Facebook. Estrategia de contenido, calendario editorial y análisis de métricas para aumentar el alcance y consolidar una imagen institucional sólida.',
     image: '/imgs/Tarragona Jove Concert.jpg',
     tech: ['Instagram', 'TikTok', 'YouTube', 'Facebook', 'Metricool'],
-    liveUrl: 'https://www.linkedin.com/in/germ%C3%A1n-hern%C3%A1ndez-mairal-7584741ab/',
+    liveUrl: null,
+    detailUrl: '/portfolio/tarragona-jove',
     githubUrl: null,
     featured: false,
   },
@@ -90,7 +91,15 @@ const ProjectCard = ({ project }) => (
       </div>
 
       <div className="flex gap-3">
-        {project.liveUrl && (
+        {project.detailUrl && (
+          <Link
+            to={project.detailUrl}
+            className="flex items-center gap-1.5 bg-brand-blue text-white font-montserrat font-semibold text-sm px-4 py-2 rounded-lg hover:bg-blue-900 active:scale-95 transition-colors"
+          >
+            <FaExternalLinkAlt className="text-xs" /> Ver proyecto
+          </Link>
+        )}
+        {!project.detailUrl && project.liveUrl && (
           <a
             href={project.liveUrl}
             target="_blank"

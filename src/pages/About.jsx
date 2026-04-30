@@ -19,7 +19,7 @@ const AboutHero = () => (
             <span className="highlight-amber">Sobre Mí</span>
           </h1>
           <p className="font-inter text-gray-700 text-lg leading-relaxed mb-4">
-            Soy <strong>Germán</strong>, desarrollador web y Community Manager. Me especializo en ayudar a empresas y creadores a conseguir clientes con contenido y webs que convierten.
+            Soy <strong>Germán</strong>, Front-End Developer y Community Manager. Me especializo en ayudar a empresas y creadores a conseguir clientes con contenido y webs que convierten.
           </p>
           <p className="font-inter text-gray-700 text-lg leading-relaxed">
             Desde{' '}
@@ -37,7 +37,7 @@ const AboutHero = () => (
           animate="visible"
         >
           <img
-            src="/imgs/Germán-Programando.webp"
+            src="/imgs/Imagen Página Web Actualizada Copia.png"
             alt="Germán trabajando"
             className="w-64 sm:w-80 md:w-full max-w-sm rounded-2xl border-2 border-gray-200 shadow-card object-cover"
             loading="eager"
@@ -64,7 +64,8 @@ const BIO_ITEMS = [
     ),
   },
   {
-    image: '/imgs/Germán-Estilo-de-Vida.webp',
+    //image: '/imgs/Germán-Estilo-de-Vida.webp',
+    image: '/imgs/ImagenCreandoContenido - copia.png',
     imageAlt: 'Germán gestionando comunidades online como Community Manager',
     imageLeft: true,
     title: 'Comunicación & Comunidad',
@@ -77,7 +78,7 @@ const BIO_ITEMS = [
     ),
   },
   {
-    image: '/imgs/Germán-Italia.webp',
+    image: '/imgs/Germán Programando Buscando Trabajo.JPG',
     imageAlt: 'Germán construyendo su carrera como desarrollador web',
     imageLeft: false,
     title: 'Desarrollo Web Moderno',
@@ -232,7 +233,7 @@ const About = () => (
       <title>Quién Soy – Germán Hernández Mairal</title>
       <meta
         name="description"
-        content="Germán Hernández — Desarrollador Web y Community Manager. Ayudo a empresas y creadores a conseguir clientes con contenido y webs que convierten. Conoce mi historia y stack técnico."
+        content="Germán Hernández — Front-End Developer y Community Manager. Ayudo a empresas y creadores a conseguir clientes con contenido y webs que convierten. Conoce mi historia y stack técnico."
       />
     </Helmet>
     <AboutHero />
