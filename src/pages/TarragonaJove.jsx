@@ -28,9 +28,9 @@ const VIDEO_RESUMENES = [
     image: '/imgs/Laboratori de folk  Estiu 2025.png',
     url: 'https://www.instagram.com/reel/DMYL1L2iTPe/',
   },
-  {
+  { 
     title: 'Masterclass de K-Pop + Meet&Greet amb Tami Tamako | Estiu 2025',
-    image: '/imgs/Masterclass de K-Pop + Meet&Greet amb Tami Tamako  Estiu 2025.png',
+    image: '/imgs/Masterclass de K-Pop y Meet and Greet amb Tami Tamako  Estiu 2025.png',
     url: 'https://www.instagram.com/reel/DNF1-boCejN/',
   },
   {
