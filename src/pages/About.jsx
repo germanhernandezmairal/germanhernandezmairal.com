@@ -37,7 +37,7 @@ const AboutHero = () => (
           animate="visible"
         >
           <img
-            src="/imgs/Imagen Página Web Actualizada Copia.png"
+            src="/imgs/Imagen Página Web Editada.png"
             alt="Germán trabajando"
             className="w-64 sm:w-80 md:w-full max-w-sm rounded-2xl border-2 border-gray-200 shadow-card object-cover"
             loading="eager"
@@ -65,7 +65,7 @@ const BIO_ITEMS = [
   },
   {
     //image: '/imgs/Germán-Estilo-de-Vida.webp',
-    image: '/imgs/ImagenCreandoContenido - copia.png',
+    image: '/imgs/ImagenCreandoContenidoEditada.png',
     imageAlt: 'Germán gestionando comunidades online como Community Manager',
     imageLeft: true,
     title: 'Comunicación & Comunidad',
@@ -78,7 +78,7 @@ const BIO_ITEMS = [
     ),
   },
   {
-    image: '/imgs/Germán Programando Buscando Trabajo.JPG',
+    image: '/imgs/Germán Programando Buscando Trabajo Editada.png',
     imageAlt: 'Germán construyendo su carrera como desarrollador web',
     imageLeft: false,
     title: 'Desarrollo Web Moderno',

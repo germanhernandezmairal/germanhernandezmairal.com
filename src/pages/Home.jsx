@@ -54,7 +54,7 @@ const HeroSection = () => (
         >
           <div className="relative w-64 sm:w-80 md:w-full max-w-sm aspect-[4/5] overflow-hidden rounded-2xl border-2 border-gray-200 shadow-card">
             <img
-              src="/imgs/Imagen Página Web Actualizada Copia.png"
+              src="/imgs/Imagen Página Web Editada.png"
               alt="Germán Hernández Mairal"
               className="absolute inset-0 w-full h-full object-contain object-center"
               loading="eager"

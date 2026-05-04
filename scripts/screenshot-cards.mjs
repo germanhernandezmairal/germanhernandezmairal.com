@@ -5,7 +5,7 @@ import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const OUTPUT_DIR = join(__dirname, '..', 'stripe-images');
-const BASE_URL = 'http://localhost:5174';
+const BASE_URL = 'http://localhost:5173';
 
 // Maps index → filename for each card group
 const PACKAGE_NAMES    = ['fundamentos', 'autoridad', 'ecosistema'];

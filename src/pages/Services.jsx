@@ -20,21 +20,19 @@ import { motion } from 'framer-motion';
 import { staggerContainer, cardVariant } from '../lib/motion';
 
 // ─── Stripe Payment Links ────────────────────────────────────────────────────
-// Replace each value with your real Stripe Payment Link URL from the Stripe dashboard.
-// Example: https://buy.stripe.com/live_XXXXXXXXXXXX
 const STRIPE_LINKS = {
-  fundamentos:      'https://buy.stripe.com/REPLACE_fundamentos',
-  autoridad:        'https://buy.stripe.com/REPLACE_autoridad',
-  ecosistema:       'https://buy.stripe.com/REPLACE_ecosistema',
-  fotografia:       'https://buy.stripe.com/REPLACE_fotografia',
-  audiovisual:      'https://buy.stripe.com/REPLACE_audiovisual',
-  redes:            'https://buy.stripe.com/REPLACE_redes',
-  diseno:           'https://buy.stripe.com/REPLACE_diseno',
-  copywriting:      'https://buy.stripe.com/REPLACE_copywriting',
-  directos:         'https://buy.stripe.com/REPLACE_directos',
-  autoridadOrganica:'https://buy.stripe.com/REPLACE_autoridad_organica',
-  webMarca:         'https://buy.stripe.com/REPLACE_web_marca',
-  webApp:           'https://buy.stripe.com/REPLACE_web_app',
+  fundamentos:      'https://buy.stripe.com/aFa7sN9h43gNg3HfKB5gc00',
+  autoridad:        'https://buy.stripe.com/6oU14pbpcdVr3gV7e55gc01',
+  ecosistema:       'https://buy.stripe.com/aFa8wR8d07x3dVzdCt5gc02',
+  fotografia:       'https://buy.stripe.com/cNi00lgJw3gN7xb2XP5gc03',
+  audiovisual:      'https://buy.stripe.com/dRm8wR1OCaJf8BfgOF5gc04',
+  redes:            'https://buy.stripe.com/14A7sN0Ky2cJ8BfgOF5gc05',
+  diseno:           'https://buy.stripe.com/9B6aEZdxk6sZeZDcyp5gc06',
+  copywriting:      'https://buy.stripe.com/cNiaEZal89Fb5p3fKB5gc07',
+  directos:         'https://buy.stripe.com/dRm8wRctg04B4kZ0PH5gc08',
+  autoridadOrganica:'https://buy.stripe.com/5kQ3cx1OC18FaJn2XP5gc09',
+  webMarca:         'https://buy.stripe.com/9B6eVfgJw7x318NgOF5gc0a',
+  webApp:           'https://buy.stripe.com/5kQ5kF9h43gN04J55X5gc0b',
 };
 
 const CALENDLY_URL = 'https://calendly.com/gerhm19';

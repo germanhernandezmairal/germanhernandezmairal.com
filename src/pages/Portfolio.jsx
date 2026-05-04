@@ -12,7 +12,7 @@ const PROJECTS = [
     category: 'webapp',
     description:
       'Web diseñada para posicionar y convertir: páginas de servicios claras, portafolio visual, integración de contenido y formulario de contacto optimizado. Construida con tecnología moderna y orientada a generar confianza desde el primer clic.',
-    image: '/imgs/WebMarcaPersonal-Preview-2.png',
+    image: '/imgs/WebMarcaPersonal-Preview-3.png',
     tech: ['React', 'Tailwind CSS', 'Firebase', 'Vercel', 'reCAPTCHA'],
     liveUrl: 'https://www.germanhernandezmairal.com',
     githubUrl: null,
