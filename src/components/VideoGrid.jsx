@@ -1,27 +1,24 @@
 import { useEffect, useState, useMemo, useCallback } from 'react';
 import axios from 'axios';
-import { FaChevronLeft, FaChevronRight, FaYoutube, FaRocket, FaHeartbeat, FaUsers } from 'react-icons/fa';
+import { FaChevronLeft, FaChevronRight, FaYoutube, FaRocket, FaHeartbeat } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { staggerContainer, cardVariant } from '../lib/motion';
 
 const API_KEY = import.meta.env.VITE_YOUTUBE_API_KEY;
 
 const PLAYLISTS = {
-  desarrolloProfesional: 'PLm6JN36t1vNxeNZm_V5Cqe-SotRVIS59G',
-  salud: 'PLm6JN36t1vNwrHMycHQMPO2euhqx5pDEH',
-  relaciones: 'PLm6JN36t1vNwKQ5lpf-oBp2S6JAgB2j9N',
+  habitos: 'PLm6JN36t1vNwrHMycHQMPO2euhqx5pDEH',
+  habilidades: 'PLm6JN36t1vNxeNZm_V5Cqe-SotRVIS59G',
 };
 
 const CATEGORY_LABELS = {
-  desarrolloProfesional: 'Desarrollo Profesional',
-  salud: 'Salud',
-  relaciones: 'Relaciones',
+  habitos: 'Hábitos',
+  habilidades: 'Habilidades',
 };
 
 const CATEGORY_ICONS = {
-  desarrolloProfesional: FaRocket,
-  salud: FaHeartbeat,
-  relaciones: FaUsers,
+  habitos: FaHeartbeat,
+  habilidades: FaRocket,
 };
 
 const getItemsToShow = () => {
@@ -33,7 +30,7 @@ const getItemsToShow = () => {
 
 const VideoGrid = ({ externalCategory }) => {
   const [videos, setVideos] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState(externalCategory || 'desarrolloProfesional');
+  const [selectedCategory, setSelectedCategory] = useState(externalCategory || 'habitos');
   const [startIndex, setStartIndex] = useState(0);
   const [itemsToShow, setItemsToShow] = useState(getItemsToShow);
   const [loading, setLoading] = useState(true);

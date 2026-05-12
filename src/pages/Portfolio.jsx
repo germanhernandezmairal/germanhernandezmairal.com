@@ -23,7 +23,7 @@ const PROJECTS = [
     title: 'Marca Personal - Germán Hernández Mairal',
     category: 'youtube',
     description:
-      'Canal de YouTube construido desde cero sobre hábitos, decisiones y habilidades prácticas aplicadas al crecimiento personal y profesional. Con estrategia de contenido propia, optimización SEO en cada vídeo y crecimiento orgánico de audiencia sin publicidad de pago.',
+      'Canal de YouTube construido desde cero para programadores que buscan su primer trabajo en el sector tecnológico, con contenido sobre hábitos y habilidades prácticas. Responsable de la estrategia de contenido, SEO y crecimiento orgánico sin publicidad de pago.',
     image: '/imgs/Miniatura Definitiva Las 7 Habilidades que Me Sacaron de la Desmotivación.png',
     tech: ['YouTube Studio', 'Adobe Premiere', 'Canva', 'SEO'],
     liveUrl: 'https://youtube.com/@germanhernandezmairal',

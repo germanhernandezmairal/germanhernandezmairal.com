@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-import { FaYoutube, FaPlay, FaRocket, FaHeartbeat, FaUsers } from 'react-icons/fa';
+import { FaYoutube, FaPlay, FaRocket, FaHeartbeat } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { staggerContainer, cardVariant, fadeUp } from '../lib/motion';
 import VideoGrid from '../components/VideoGrid';
@@ -21,13 +21,11 @@ const ChannelHeader = () => (
       <h1 className="font-montserrat font-bold text-4xl sm:text-5xl text-white mb-4">
         YouTube como <span className="highlight-amber">Activo Digital</span>
       </h1>
-      <p className="font-inter text-blue-200 text-lg max-w-2xl mx-auto mb-8">
+      <p className="font-inter text-blue-200 text-lg max-w-3xl mx-auto mb-8">
         En mi canal comparto{' '}
-        <span className="text-white font-semibold">hábitos</span>,{' '}
-        <span className="text-white font-semibold">decisiones</span> y{' '}
-        <span className="text-white font-semibold">habilidades prácticas</span> sobre
-        crecimiento profesional, salud y relaciones. Es el espacio donde desarrollo
-        mi visión sobre cómo crecer sin quemarte y sin descuidar lo que más importa.
+        <span className="text-white font-semibold">hábitos</span> y{' '}
+        <span className="text-white font-semibold">habilidades prácticas</span> para programadores que quieren conseguir su primer trabajo en el sector tecnológico.{' '}
+        Es el espacio donde desarrollo mi visión sobre cómo crecer sin quemarte y sin descuidar lo que más importa.
       </p>
       <a
         href="https://youtube.com/@germanhernandezmairal"
@@ -69,9 +67,8 @@ const CredibilityStrip = () => (
 
 /* ─── What You'll Find ─── */
 const TOPICS = [
-  { icon: FaRocket, title: 'Desarrollo Profesional', category: 'desarrolloProfesional', desc: 'Construye hábitos, toma mejores decisiones y desarrolla las habilidades que te permiten crecer sin perder el foco.' },
-  { icon: FaHeartbeat, title: 'Salud', category: 'salud', desc: 'Construye tu carrera sin quemarte. Energía, descanso y bienestar como base del rendimiento sostenible.' },
-  { icon: FaUsers, title: 'Relaciones', category: 'relaciones', desc: 'Avanza sin aislarte. Cómo cuidar tus relaciones mientras persigues tus objetivos.' },
+  { icon: FaHeartbeat, title: 'Hábitos', category: 'habitos', desc: 'Las rutinas que te mantienen constante y enfocado. Aprende a gestionar tu energía, tu tiempo y tu mentalidad para avanzar sin quemarte mientras consigues tu primer trabajo.' },
+  { icon: FaRocket, title: 'Habilidades', category: 'habilidades', desc: 'Las competencias técnicas y profesionales que las empresas buscan. Contenido práctico para destacar en los procesos de selección y dar el salto al sector tecnológico.' },
 ];
 
 const TopicsSection = ({ onTopicClick }) => (
@@ -88,12 +85,12 @@ const TopicsSection = ({ onTopicClick }) => (
           En qué se centra el canal
         </h2>
         <p className="font-inter text-gray-600 text-lg max-w-2xl mx-auto">
-          Tres pilares para crecer de forma práctica, sostenible y sin sacrificar lo que más importa.
+            Dos pilares para crecer en el sector tecnológico de forma práctica, sostenible y sin sacrificar lo que más importa.
         </p>
       </motion.div>
 
       <motion.div
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+        className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto"
         variants={staggerContainer}
         initial="hidden"
         whileInView="visible"
@@ -122,19 +119,19 @@ const TopicsSection = ({ onTopicClick }) => (
 /* ─── Testimonials ─── */
 const TESTIMONIALS = [
   {
-    text: 'Su contenido me ayuda a ordenar mejor mis prioridades y avanzar con más claridad.',
-    author: 'María G.',
-    role: 'Emprendedora',
-  },
-  {
-    text: 'Habla de crecer profesionalmente sin vender fórmulas vacías. Práctico, directo y fácil de aplicar.',
-    author: 'Carlos M.',
+    text: 'Desde que sigo el canal estudio con mucha más constancia. Los hábitos que comparte Germán me han ayudado a organizar mi tiempo y no quemarme en el proceso.',
+    author: 'Lucía M.',
     role: 'Estudiante de Desarrollo Web',
   },
   {
-    text: 'Contenido que te cambia la perspectiva y con mucho valor práctico.',
-    author: 'Laura P.',
-    role: 'Estudiante Universitaria',
+    text: 'Me ha cambiado la forma de aprender. Ahora no acumulo tutoriales sin rumbo — tengo un proceso claro para mejorar mis habilidades y prepararme de verdad para conseguir trabajo.',
+    author: 'Pablo G.',
+    role: 'Estudiante de Bootcamp',
+  },
+  {
+    text: 'El canal me recuerda que conseguir el primer trabajo es un proceso, no una carrera de velocidad. Me ayuda a mantenerme motivada y enfocada en lo que importa.',
+    author: 'Andrea T.',
+    role: 'Estudiante de DAW',
   },
 ];
 
@@ -223,7 +220,7 @@ const FinalCTA = () => (
 
 /* ─── Page ─── */
 const YouTube = () => {
-  const [activeCategory, setActiveCategory] = useState('desarrolloProfesional');
+  const [activeCategory, setActiveCategory] = useState('habitos');
   const videosRef = useRef(null);
 
   const handleTopicClick = (category) => {
@@ -253,10 +250,10 @@ const YouTube = () => {
             className="text-center mb-10"
           >
             <h2 className="font-montserrat font-bold text-3xl sm:text-4xl text-gray-900 mb-4">
-              Vídeos para <span className="underline-amber">Crecer Mejor</span>
+              Vídeos para <span className="underline-amber">tu Primer Trabajo</span>
             </h2>
             <p className="font-inter text-gray-600 text-lg">
-              Desarrollo Profesional, Salud y Relaciones — los temas que exploro de forma consistente en el canal.
+              Hábitos y habilidades prácticas — filtra por el pilar que más necesitas ahora mismo.
             </p>
           </motion.div>
           <VideoGrid externalCategory={activeCategory} />
