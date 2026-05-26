@@ -51,8 +51,8 @@ A personal brand site built to do one thing well: turn a profile visit into a co
 ## Local setup
 
 ```bash
-git clone https://github.com/gerhm19/german-hernandez-portfolio.git
-cd german-hernandez-portfolio
+git clone https://github.com/germanhernandezmairal/germanhernandezmairal.com.git
+cd germanhernandezmairal.com
 npm install
 ```
 
