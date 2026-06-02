@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Style Guide — Germán Hernández Mairal</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ── Design tokens (mirrored from index.css @theme) ── */
+    :root {
+      --font-montserrat: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+      --font-inter: 'Inter', ui-sans-serif, system-ui, sans-serif;
+      --font-signature: 'Great Vibes', cursive;
+
+      --color-brand-blue:       #003366;
+      --color-brand-amber:      #ffc107;
+      --color-brand-amber-dark: #ffb300;
+      --color-body-text:        #1a1a1a;
+      --color-bg:               #ffffff;
+
+      /* Tailwind grays used in components */
+      --gray-50:  #f9fafb;
+      --gray-200: #e5e7eb;
+      --gray-400: #9ca3af;
+      --gray-500: #6b7280;
+      --gray-600: #4b5563;
+      --gray-700: #374151;
+      --gray-800: #1f2937;
+      --gray-900: #111827;
+
+      /* Blues */
+      --blue-100: #dbeafe;
+      --blue-200: #bfdbfe;
+      --blue-900: #1e3a8a;
+
+      /* Shadows */
+      --shadow-card:       0 4px 20px rgba(0, 51, 102, 0.10);
+      --shadow-card-hover: 0 8px 30px rgba(0, 51, 102, 0.18);
+    }
+
+    /* ── Guide shell ── */
+    body {
+      font-family: var(--font-inter);
+      background: #f4f4f5;
+      color: var(--color-body-text);
+      line-height: 1.6;
+      padding: 2rem 1.25rem 4rem;
+    }
+
+    .guide-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .guide-header .logo {
+      font-family: var(--font-signature);
+      font-size: 3.5rem;
+      color: var(--color-brand-blue);
+    }
+    .guide-header h1 {
+      font-family: var(--font-montserrat);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--gray-500);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-top: 0.25rem;
+    }
+
+    .section {
+      background: #fff;
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      max-width: 960px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .section-title {
+      font-family: var(--font-montserrat);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--gray-200);
+      padding-bottom: 0.5rem;
+    }
+
+    /* ── Color palette ── */
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 1rem;
+    }
+    .color-chip {
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--gray-200);
+    }
+    .color-swatch {
+      height: 72px;
+    }
+    .color-meta {
+      padding: 0.5rem 0.6rem;
+      background: #fff;
+    }
+    .color-name {
+      font-family: var(--font-montserrat);
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--gray-700);
+      display: block;
+    }
+    .color-hex {
+      font-family: monospace;
+      font-size: 0.7rem;
+      color: var(--gray-500);
+    }
+    .color-token {
+      font-family: monospace;
+      font-size: 0.62rem;
+      color: var(--gray-400);
+      display: block;
+      margin-top: 2px;
+    }
+
+    /* ── Typography ── */
+    .type-row {
+      display: flex;
+      align-items: baseline;
+      gap: 1.5rem;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid var(--gray-50);
+    }
+    .type-row:last-child { border-bottom: none; }
+    .type-meta {
+      min-width: 180px;
+      flex-shrink: 0;
+    }
+    .type-label {
+      font-family: monospace;
+      font-size: 0.7rem;
+      color: var(--gray-400);
+      display: block;
+    }
+    .type-value {
+      font-family: monospace;
+      font-size: 0.68rem;
+      color: var(--color-brand-blue);
+    }
+
+    /* ── Buttons ── */
+    .btn-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+    }
+    .btn {
+      font-family: var(--font-montserrat);
+      font-weight: 600;
+      border: none;
+      cursor: default;
+      border-radius: 8px;
+      padding: 0.625rem 1.5rem;
+      font-size: 0.9rem;
+      line-height: 1;
+      display: inline-block;
+    }
+    .btn-primary   { background: var(--color-brand-blue);  color: #fff; }
+    .btn-amber     { background: var(--color-brand-amber); color: var(--color-brand-blue); }
+    .btn-amber-dk  { background: var(--color-brand-amber-dark); color: var(--color-brand-blue); }
+    .btn-ghost-nav { background: transparent; color: var(--color-brand-amber); font-weight: 500; font-size: 0.875rem; padding: 0.25rem 0.75rem; }
+    .btn-outline   { background: transparent; color: var(--color-brand-blue); border: 2px solid var(--color-brand-blue); }
+
+    /* ── Custom utilities showcase ── */
+    .util-row {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      padding: 0.8rem 0;
+      border-bottom: 1px solid var(--gray-50);
+      flex-wrap: wrap;
+    }
+    .util-row:last-child { border-bottom: none; }
+    .util-code {
+      font-family: monospace;
+      font-size: 0.72rem;
+      background: var(--gray-50);
+      color: var(--color-brand-blue);
+      border: 1px solid var(--gray-200);
+      border-radius: 4px;
+      padding: 2px 6px;
+      min-width: 160px;
+      flex-shrink: 0;
+    }
+
+    /* ── Actual custom utilities (copied from index.css) ── */
+    .highlight-amber {
+      background-color: #ffc107;
+      color: #003366;
+      padding: 0 0.375rem;
+    }
+    .highlight-blue {
+      background-color: #003366;
+      color: #ffc107;
+      padding: 0 0.375rem;
+    }
+    .underline-amber {
+      position: relative;
+      display: inline-block;
+      color: #003366;
+    }
+    .underline-amber::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 2px;
+      width: 100%;
+      height: 2px;
+      background-color: #ffc107;
+    }
+    .section-padding {
+      padding: 4rem 1.5rem;
+    }
+
+    /* ── Shadows ── */
+    .shadow-grid {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .shadow-chip {
+      width: 160px;
+      height: 90px;
+      border-radius: 10px;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+    }
+    .shadow-chip .s-label {
+      font-family: monospace;
+      font-size: 0.65rem;
+      color: var(--gray-500);
+    }
+
+    /* ── Animations ── */
+    .anim-grid {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .anim-box {
+      width: 120px;
+      height: 80px;
+      background: var(--blue-100);
+      border: 1px solid var(--blue-200);
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.25rem;
+      cursor: pointer;
+      user-select: none;
+      position: relative;
+    }
+    .anim-box .a-name {
+      font-family: var(--font-montserrat);
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--color-brand-blue);
+    }
+    .anim-box .a-val {
+      font-family: monospace;
+      font-size: 0.6rem;
+      color: var(--gray-500);
+    }
+
+    /* Keyframes (mirrored from index.css) */
+    @keyframes fadeInUp {
+      0%   { opacity: 0; transform: translateY(24px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideInLeft {
+      0%   { opacity: 0; transform: translateX(-32px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes slideInRight {
+      0%   { opacity: 0; transform: translateX(32px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+    .run-fade-up   { animation: fadeInUp   0.7s ease both; }
+    .run-slide-l   { animation: slideInLeft  0.7s ease both; }
+    .run-slide-r   { animation: slideInRight 0.7s ease both; }
+
+    /* ── Breakpoints table ── */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+    th {
+      font-family: var(--font-montserrat);
+      font-weight: 700;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--gray-500);
+      text-align: left;
+      padding: 0.4rem 0.75rem;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    td {
+      font-family: monospace;
+      font-size: 0.78rem;
+      color: var(--gray-700);
+      padding: 0.55rem 0.75rem;
+      border-bottom: 1px solid var(--gray-50);
+    }
+    tr:last-child td { border-bottom: none; }
+    td:first-child { color: var(--color-brand-blue); font-weight: 600; }
+
+    /* ── Component preview ── */
+    .card-preview {
+      background: var(--blue-100);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      max-width: 260px;
+      box-shadow: var(--shadow-card);
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+    .card-preview:hover {
+      box-shadow: var(--shadow-card-hover);
+      transform: scale(1.03);
+    }
+    .card-preview .card-icon {
+      font-size: 2.5rem;
+      color: var(--color-brand-blue);
+      margin-bottom: 0.75rem;
+    }
+    .card-preview h3 {
+      font-family: var(--font-montserrat);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--gray-900);
+    }
+    .card-preview p {
+      font-family: var(--font-inter);
+      font-size: 0.8rem;
+      color: var(--gray-600);
+      margin-top: 0.4rem;
+    }
+
+    .header-preview {
+      background: var(--gray-800);
+      color: #fff;
+      border-radius: 10px;
+      padding: 0 1.25rem;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .header-preview .logo {
+      font-family: var(--font-signature);
+      font-size: 1.75rem;
+      color: #fff;
+    }
+    .header-preview nav {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+    .header-preview .nav-link {
+      font-family: var(--font-montserrat);
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #fff;
+    }
+    .header-preview .nav-link.active {
+      color: var(--color-brand-amber);
+    }
+    .header-preview .nav-cta {
+      font-family: var(--font-montserrat);
+      font-size: 0.78rem;
+      font-weight: 700;
+      background: var(--color-brand-amber);
+      color: var(--color-brand-blue);
+      border-radius: 7px;
+      padding: 0.35rem 0.85rem;
+    }
+
+    .footer-preview {
+      background: var(--gray-900);
+      border-radius: 10px;
+      padding: 1.5rem;
+      color: #fff;
+    }
+    .footer-preview .f-logo {
+      font-family: var(--font-signature);
+      font-size: 2rem;
+      color: #fff;
+    }
+    .footer-preview .f-tagline {
+      font-family: var(--font-montserrat);
+      font-size: 0.75rem;
+      color: var(--gray-400);
+      margin-top: 0.25rem;
+    }
+    .footer-preview .f-heading {
+      font-family: var(--font-montserrat);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--color-brand-amber);
+      margin-bottom: 0.5rem;
+    }
+    .footer-preview .f-link {
+      font-family: var(--font-montserrat);
+      font-size: 0.75rem;
+      color: var(--gray-400);
+      display: block;
+      line-height: 1.8;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Guide Header -->
+  <div class="guide-header">
+    <div class="logo">GHM</div>
+    <h1>Style Guide — german-hernandez-v2</h1>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       1. COLOR PALETTE
+  ════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-title">01 — Color Palette</div>
+    <div class="color-grid">
+
+      <div class="color-chip">
+        <div class="color-swatch" style="background:#003366;"></div>
+        <div class="color-meta">
+          <span class="color-name">Brand Blue</span>
+          <span class="color-hex">#003366</span>
+          <span class="color-token">--color-brand-blue</span>
+        </div>
+      </div>
+
+      <div class="color-chip">
+        <div class="color-swatch" style="background:#ffc107;"></div>
+        <div class="color-meta">
+          <span class="color-name">Brand Amber</span>
+          <span class="color-hex">#ffc107</span>
+          <span class="color-token">--color-brand-amber</span>
+        </div>
+      </div>
+
+      <div class="color-chip">
+        <div class="color-swatch" style="background:#ffb300;"></div>
+        <div class="color-meta">
+          <span class="color-name">Amber Dark</span>
+          <span class="color-hex">#ffb300</span>
+          <span class="color-token">--color-brand-amber-dark</span>
+        </div>
+      </div>
+
+      <div class="color-chip">
+        <div class="color-swatch" style="background:#1a1a1a;"></div>
+        <div class="color-meta">
+          <span class="color-name">Body Text</span>
+          <span class="color-hex">#1a1a1a</span>
+          <span class="color-token">--color-body-text</span>
+        </div>
+      </div>
+
+      <div class="color-chip">
+        <div class="color-swatch" style="background:#ffffff; border-bottom:1px solid #e5e7eb;"></div>
+        <div class="color-meta">
+          <span class="color-name">Background</span>
+          <span class="color-hex">#ffffff</span>
+          <span class="color-token">base bg</span>
+        </div>
+      </div>
+
+      <div class="color-chip">
+        <div class="color-swatch" style="background:#111827;"></div>
+        <div class="color-meta">
+          <span class="color-name">Gray 900</span>
+          <span class="color-hex">#111827</span>
+          <span class="color-token">header / footer</span>
+        </div>
+      </div>
+
+      <div class="color-chip">
+        <div class="color-swatch" style="background:#1f2937;"></div>
+        <div class="color-meta">
+          <span class="color-name">Gray 800</span>
+          <span class="color-hex">#1f2937</span>
+          <span class="color-token">header default</span>
+        </div>
+      </div>
+
+      <div class="color-chip">
+        <div class="color-swatch" style="background:#374151;"></div>
+        <div class="color-meta">
+          <span class="color-name">Gray 700</span>
+          <span class="color-hex">#374151</span>
+          <span class="color-token">body copy</span>
+        </div>
+      </div>
+
+      <div class="color-chip">
+        <div class="color-swatch" style="background:#4b5563;"></div>
+        <div class="color-meta">
+          <span class="color-name">Gray 600</span>
+          <span class="color-hex">#4b5563</span>
+          <span class="color-token">descriptions</span>
+        </div>
+      </div>
+
+      <div class="color-chip">
+        <div class="color-swatch" style="background:#9ca3af;"></div>
+        <div class="color-meta">
+          <span class="color-name">Gray 400</span>
+          <span class="color-hex">#9ca3af</span>
+          <span class="color-token">muted / footer links</span>
+        </div>
+      </div>
+
+      <div class="color-chip">
+        <div class="color-swatch" style="background:#f9fafb; border-bottom:1px solid #e5e7eb;"></div>
+        <div class="color-meta">
+          <span class="color-name">Gray 50</span>
+          <span class="color-hex">#f9fafb</span>
+          <span class="color-token">section bg alt</span>
+        </div>
+      </div>
+
+      <div class="color-chip">
+        <div class="color-swatch" style="background:#dbeafe;"></div>
+        <div class="color-meta">
+          <span class="color-name">Blue 100</span>
+          <span class="color-hex">#dbeafe</span>
+          <span class="color-token">card bg</span>
+        </div>
+      </div>
+
+      <div class="color-chip">
+        <div class="color-swatch" style="background:#bfdbfe;"></div>
+        <div class="color-meta">
+          <span class="color-name">Blue 200</span>
+          <span class="color-hex">#bfdbfe</span>
+          <span class="color-token">CTA subtext</span>
+        </div>
+      </div>
+
+      <div class="color-chip">
+        <div class="color-swatch" style="background:#1e3a8a;"></div>
+        <div class="color-meta">
+          <span class="color-name">Blue 900</span>
+          <span class="color-hex">#1e3a8a</span>
+          <span class="color-token">btn hover</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       2. TYPOGRAPHY
+  ════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-title">02 — Font Families</div>
+
+    <div class="type-row">
+      <div class="type-meta">
+        <span class="type-label">--font-montserrat</span>
+        <span class="type-value">Montserrat</span>
+      </div>
+      <span style="font-family:'Montserrat',sans-serif; font-size:1.4rem; font-weight:700; color:#003366;">
+        Headings · Navigation · Buttons · Labels
+      </span>
+    </div>
+
+    <div class="type-row">
+      <div class="type-meta">
+        <span class="type-label">--font-inter</span>
+        <span class="type-value">Inter</span>
+      </div>
+      <span style="font-family:'Inter',sans-serif; font-size:1rem; color:#374151;">
+        Body copy · Descriptions · Paragraphs
+      </span>
+    </div>
+
+    <div class="type-row">
+      <div class="type-meta">
+        <span class="type-label">--font-signature</span>
+        <span class="type-value">Great Vibes</span>
+      </div>
+      <span style="font-family:'Great Vibes',cursive; font-size:2.2rem; color:#003366;">
+        GHM — Logo / Signature
+      </span>
+    </div>
+  </div>
+
+  <!-- TYPE SCALE -->
+  <div class="section">
+    <div class="section-title">03 — Type Scale (Montserrat)</div>
+
+    <div class="type-row">
+      <div class="type-meta">
+        <span class="type-label">text-5xl · lg:text-5xl</span>
+        <span class="type-value">48px / bold</span>
+      </div>
+      <span style="font-family:'Montserrat',sans-serif; font-size:2.5rem; font-weight:700; color:#111827; line-height:1.2;">
+        Sección Principal
+      </span>
+    </div>
+
+    <div class="type-row">
+      <div class="type-meta">
+        <span class="type-label">text-4xl</span>
+        <span class="type-value">36px / bold</span>
+      </div>
+      <span style="font-family:'Montserrat',sans-serif; font-size:2rem; font-weight:700; color:#111827; line-height:1.2;">
+        Encabezado de sección
+      </span>
+    </div>
+
+    <div class="type-row">
+      <div class="type-meta">
+        <span class="type-label">text-3xl</span>
+        <span class="type-value">30px / bold</span>
+      </div>
+      <span style="font-family:'Montserrat',sans-serif; font-size:1.75rem; font-weight:700; color:#111827;">
+        Título secundario
+      </span>
+    </div>
+
+    <div class="type-row">
+      <div class="type-meta">
+        <span class="type-label">text-2xl</span>
+        <span class="type-value">24px / bold</span>
+      </div>
+      <span style="font-family:'Montserrat',sans-serif; font-size:1.35rem; font-weight:700; color:#111827;">
+        Hola, soy Germán
+      </span>
+    </div>
+
+    <div class="type-row">
+      <div class="type-meta">
+        <span class="type-label">text-xl</span>
+        <span class="type-value">20px / semibold</span>
+      </div>
+      <span style="font-family:'Montserrat',sans-serif; font-size:1.2rem; font-weight:600; color:#111827;">
+        Subtítulo / intro
+      </span>
+    </div>
+
+    <div class="type-row">
+      <div class="type-meta">
+        <span class="type-label">text-lg</span>
+        <span class="type-value">18px / semibold</span>
+      </div>
+      <span style="font-family:'Montserrat',sans-serif; font-size:1.05rem; font-weight:600; color:#111827;">
+        Card title · CTA large
+      </span>
+    </div>
+
+    <div class="type-row">
+      <div class="type-meta">
+        <span class="type-label">text-base</span>
+        <span class="type-value">16px / medium</span>
+      </div>
+      <span style="font-family:'Montserrat',sans-serif; font-size:1rem; font-weight:500; color:#374151;">
+        Navigation links (lg breakpoint)
+      </span>
+    </div>
+
+    <div class="type-row">
+      <div class="type-meta">
+        <span class="type-label">text-sm</span>
+        <span class="type-value">14px / medium</span>
+      </div>
+      <span style="font-family:'Montserrat',sans-serif; font-size:0.875rem; font-weight:500; color:#374151;">
+        Nav links (default) · Footer · Meta
+      </span>
+    </div>
+  </div>
+
+  <!-- INTER SCALE -->
+  <div class="section">
+    <div class="section-title">04 — Type Scale (Inter — body)</div>
+
+    <div class="type-row">
+      <div class="type-meta">
+        <span class="type-label">text-xl · leading-relaxed</span>
+        <span class="type-value">20px / 400</span>
+      </div>
+      <span style="font-family:'Inter',sans-serif; font-size:1.2rem; color:#374151; line-height:1.75;">
+        Ayudo a empresas y creadores a conseguir clientes.
+      </span>
+    </div>
+
+    <div class="type-row">
+      <div class="type-meta">
+        <span class="type-label">text-lg</span>
+        <span class="type-value">18px / 400</span>
+      </div>
+      <span style="font-family:'Inter',sans-serif; font-size:1.05rem; color:#4b5563;">
+        Creo contenido y webs para que más personas te encuentren.
+      </span>
+    </div>
+
+    <div class="type-row">
+      <div class="type-meta">
+        <span class="type-label">text-base</span>
+        <span class="type-value">16px / 400</span>
+      </div>
+      <span style="font-family:'Inter',sans-serif; font-size:1rem; color:#4b5563;">
+        Paragraph body — descriptions, services, portfolio text.
+      </span>
+    </div>
+
+    <div class="type-row">
+      <div class="type-meta">
+        <span class="type-label">text-sm</span>
+        <span class="type-value">14px / 400</span>
+      </div>
+      <span style="font-family:'Inter',sans-serif; font-size:0.875rem; color:#6b7280;">
+        Card descriptions · Footer tagline · Meta copy
+      </span>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       5. BUTTONS
+  ════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-title">05 — Buttons</div>
+    <div class="btn-grid">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;">
+        <button class="btn btn-primary">Ver mis servicios</button>
+        <span style="font-family:monospace;font-size:0.65rem;color:#9ca3af;">btn-primary · brand-blue</span>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;">
+        <button class="btn btn-amber">Hablemos</button>
+        <span style="font-family:monospace;font-size:0.65rem;color:#9ca3af;">btn-amber · CTA primary</span>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;">
+        <button class="btn btn-amber-dk">Contactar ahora</button>
+        <span style="font-family:monospace;font-size:0.65rem;color:#9ca3af;">btn-amber-dark · hover state</span>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;">
+        <div style="background:#1f2937;padding:0.5rem;border-radius:6px;">
+          <span class="btn btn-ghost-nav">Portafolio</span>
+        </div>
+        <span style="font-family:monospace;font-size:0.65rem;color:#9ca3af;">nav active · on dark</span>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;">
+        <button class="btn btn-outline">Explorar →</button>
+        <span style="font-family:monospace;font-size:0.65rem;color:#9ca3af;">outline variant</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       6. CUSTOM UTILITIES
+  ════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-title">06 — Custom CSS Utilities</div>
+
+    <div class="util-row">
+      <code class="util-code">.highlight-amber</code>
+      <span style="font-family:'Montserrat',sans-serif;font-size:1rem;font-weight:600;">
+        Consigue clientes con <span class="highlight-amber">webs que convierten</span>
+      </span>
+    </div>
+
+    <div class="util-row">
+      <code class="util-code">.highlight-blue</code>
+      <span style="font-family:'Montserrat',sans-serif;font-size:1rem;font-weight:600;">
+        Tu marca <span class="highlight-blue">genera confianza</span>
+      </span>
+    </div>
+
+    <div class="util-row">
+      <code class="util-code">.underline-amber</code>
+      <span style="font-family:'Montserrat',sans-serif;font-size:1.1rem;font-weight:600;">
+        ¿Cómo puedo ayudarte a <span class="underline-amber">conseguir clientes</span>?
+      </span>
+    </div>
+
+    <div class="util-row">
+      <code class="util-code">.section-padding</code>
+      <span style="font-family:'Inter',sans-serif;font-size:0.82rem;color:#6b7280;">
+        padding: 4rem 1.5rem — applied to full-width section wrappers
+      </span>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       7. SHADOWS
+  ════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-title">07 — Shadows</div>
+    <div class="shadow-grid">
+      <div>
+        <div class="shadow-chip" style="box-shadow: var(--shadow-card);">
+          <span class="s-label">--shadow-card</span>
+          <span class="s-label">0 4px 20px rgba(0,51,102,0.10)</span>
+        </div>
+        <p style="font-family:monospace;font-size:0.65rem;color:#9ca3af;margin-top:0.4rem;text-align:center;">default card</p>
+      </div>
+      <div>
+        <div class="shadow-chip" style="box-shadow: var(--shadow-card-hover);">
+          <span class="s-label">--shadow-card-hover</span>
+          <span class="s-label">0 8px 30px rgba(0,51,102,0.18)</span>
+        </div>
+        <p style="font-family:monospace;font-size:0.65rem;color:#9ca3af;margin-top:0.4rem;text-align:center;">hover state</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       8. ANIMATIONS
+  ════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-title">08 — Animations (click to replay)</div>
+    <div class="anim-grid">
+      <div class="anim-box" id="box-fade" onclick="replay('box-fade','run-fade-up')">
+        <span class="a-name">fadeInUp</span>
+        <span class="a-val">0.7s ease</span>
+      </div>
+      <div class="anim-box" id="box-left" onclick="replay('box-left','run-slide-l')">
+        <span class="a-name">slideInLeft</span>
+        <span class="a-val">0.7s ease</span>
+      </div>
+      <div class="anim-box" id="box-right" onclick="replay('box-right','run-slide-r')">
+        <span class="a-name">slideInRight</span>
+        <span class="a-val">0.7s ease</span>
+      </div>
+    </div>
+    <p style="font-family:monospace;font-size:0.7rem;color:#9ca3af;margin-top:1rem;">
+      Delays available: 0s · 0.15s · 0.3s · 0.45s — staggered via --animate-fade-up-{1,2,3}
+    </p>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       9. BREAKPOINTS
+  ════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-title">09 — Breakpoints</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Token</th>
+          <th>Value</th>
+          <th>Purpose</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>xs</td><td>320px</td><td>Custom — small mobile (SE)</td></tr>
+        <tr><td>sm-xs</td><td>375px</td><td>Custom — standard mobile</td></tr>
+        <tr><td>md-xs</td><td>425px</td><td>Custom — large mobile</td></tr>
+        <tr><td>sm</td><td>640px</td><td>Tailwind default</td></tr>
+        <tr><td>md</td><td>768px</td><td>Tailwind default — tablet / desktop split</td></tr>
+        <tr><td>lg</td><td>1024px</td><td>Tailwind default</td></tr>
+        <tr><td>xl</td><td>1280px</td><td>Tailwind default</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       10. LAYOUT CONTAINER
+  ════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-title">10 — Layout Containers</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Class</th>
+          <th>Max-width</th>
+          <th>Used in</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>max-w-6xl</td><td>72rem / 1152px</td><td>All main page sections</td></tr>
+        <tr><td>max-w-4xl</td><td>56rem / 896px</td><td>CTA banner</td></tr>
+        <tr><td>max-w-2xl</td><td>42rem / 672px</td><td>Section subtitles / centered copy</td></tr>
+        <tr><td>max-w-sm</td><td>24rem / 384px</td><td>Hero portrait image</td></tr>
+      </tbody>
+    </table>
+    <p style="font-family:monospace;font-size:0.72rem;color:#9ca3af;margin-top:0.75rem;">
+      Horizontal padding: px-4 → sm:px-6 → lg:px-8 (1rem → 1.5rem → 2rem)
+    </p>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       11. COMPONENT PREVIEWS
+  ════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-title">11 — Component Previews</div>
+
+    <!-- Header -->
+    <p style="font-family:monospace;font-size:0.7rem;color:#9ca3af;margin-bottom:0.5rem;">Header (scrolled state)</p>
+    <div class="header-preview" style="margin-bottom:1.5rem;">
+      <div class="logo">GHM</div>
+      <nav>
+        <span class="nav-link">Servicios</span>
+        <span class="nav-link active">Portafolio</span>
+        <span class="nav-link">YouTube</span>
+        <span class="nav-cta">Hablemos</span>
+      </nav>
+    </div>
+
+    <!-- Service Card -->
+    <p style="font-family:monospace;font-size:0.7rem;color:#9ca3af;margin-bottom:0.75rem;">Service card (hover to see shadow)</p>
+    <div class="card-preview" style="margin-bottom:1.5rem;">
+      <div class="card-icon">💻</div>
+      <h3>Convierte visitas con una <span class="underline-amber">web que funciona</span></h3>
+      <p>Diseño tu web para que quien llegue entienda qué ofreces y te contacte.</p>
+    </div>
+
+    <!-- Footer -->
+    <p style="font-family:monospace;font-size:0.7rem;color:#9ca3af;margin-bottom:0.5rem;">Footer</p>
+    <div class="footer-preview">
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5rem;">
+        <div>
+          <div class="f-logo">GHM</div>
+          <p class="f-tagline">Germán Hernández Mairal —<br>Front-End Developer y Community Manager</p>
+        </div>
+        <div>
+          <p class="f-heading">Navegación</p>
+          <span class="f-link">Inicio</span>
+          <span class="f-link">Servicios</span>
+          <span class="f-link">Portafolio</span>
+          <span class="f-link">Contacto</span>
+        </div>
+        <div>
+          <p class="f-heading">Conectemos</p>
+          <span class="f-link">gerhm19@gmail.com</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Replay animation on click
+    function replay(id, cls) {
+      const el = document.getElementById(id);
+      el.classList.remove(cls);
+      void el.offsetWidth; // reflow
+      el.classList.add(cls);
+    }
+    // Auto-play all on load
+    document.getElementById('box-fade').classList.add('run-fade-up');
+    document.getElementById('box-left').classList.add('run-slide-l');
+    document.getElementById('box-right').classList.add('run-slide-r');
+  </script>
+</body>
+</html>
