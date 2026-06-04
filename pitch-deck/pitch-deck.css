@@ -1,0 +1,341 @@
+/* =============================================================
+   pitch-deck.css  —  Styles for "Sigamos Construyendo" pitch deck
+   ============================================================= */
+
+
+/* ── Design tokens ──────────────────────────────────────────── */
+/* All colour, font, and timing values live here as CSS custom
+   properties (variables).  Changing one value here updates the
+   entire deck — no hunting through the file. */
+:root {
+  --blue:        #003366;   /* brand navy — light slide backgrounds, headings */
+  --amber:       #ffc107;   /* brand gold — accents, highlights, numbers */
+  --amber-dk:    #ffb300;   /* slightly deeper gold for better contrast on white */
+  --g900:        #111827;   /* near-black — dark slide background */
+  --g700:        #374151;
+  --g600:        #4b5563;
+  --g500:        #6b7280;
+  --g400:        #9ca3af;
+  --g200:        #e5e7eb;
+  --g50:         #f9fafb;   /* off-white — light slide background */
+  --montserrat:  "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --inter:       "Inter", ui-sans-serif, system-ui, sans-serif;
+  /* Custom easing curves */
+  --ease-out:    cubic-bezier(0.22, 1, 0.36, 1);    /* smooth deceleration */
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1); /* slight overshoot → "bouncy" feel */
+  --color-body-text: #1a1a1a;
+  --dur:         0.48s;  /* base duration for slide transitions */
+}
+
+
+/* ── Base reset ─────────────────────────────────────────────── */
+/* Normalise box model across all browsers; wipe default margin/padding. */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* overflow:hidden prevents scrollbars from appearing during transitions */
+html, body { width: 100%; height: 100%; overflow: hidden; background: #000; }
+
+/* .deck is the full-viewport container that all slides are stacked inside */
+.deck { position: relative; width: 100%; height: 100%; }
+
+
+/* ── Keyframe animations ────────────────────────────────────── */
+/* These are referenced by the content-entry rules below and by
+   the dot + hint elements. */
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes scaleIn  { from { opacity: 0; transform: scale(0.88); }      to { opacity: 1; transform: scale(1); } }
+@keyframes growLine { from { width: 0; }                                  to { width: 60px; } }
+@keyframes dotPop   { 0% { transform: scale(1); } 40% { transform: scale(1.6); } 100% { transform: scale(1.4); } }
+@keyframes hintFade { 0% { opacity: 0; transform: translateY(6px); } 15% { opacity: 1; transform: translateY(0); } 75% { opacity: 1; } 100% { opacity: 0; transform: translateY(-6px); } }
+
+
+/* ── Slide transition system ────────────────────────────────── */
+/*
+   All 12 slides exist in the DOM simultaneously, stacked with
+   position:absolute.  Only the .active slide is visible; the rest
+   have opacity:0 + visibility:hidden so screen readers and pointer
+   events ignore them.
+
+   The "visibility 0s linear <delay>" trick:
+   • Hiding  → visibility switches to hidden AFTER the opacity fade
+     finishes (delay = --dur), so the outgoing slide stays tappable
+     during its fade-out without blocking the incoming slide.
+   • Showing → visibility becomes visible at 0s delay (no wait),
+     so the element becomes interactive the moment it starts to
+     fade in.
+*/
+.slide {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  padding: 3vw 5vw; overflow: hidden;
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transform: translateY(10px);
+  transition:
+    opacity    var(--dur) var(--ease-out),
+    transform  var(--dur) var(--ease-out),
+    visibility 0s linear  var(--dur);   /* delayed hide */
+  z-index: 0;
+}
+.slide.active {
+  opacity: 1; visibility: visible; pointer-events: auto;
+  transform: translateY(0);
+  transition:
+    opacity    var(--dur) var(--ease-out),
+    transform  var(--dur) var(--ease-out),
+    visibility 0s linear  0s;           /* instant show */
+  z-index: 1;
+}
+
+
+/* ── Content entry animations ───────────────────────────────── */
+/*
+   When a slide becomes active, its child elements animate in with
+   staggered delays — each layer appears slightly after the previous
+   one, creating a choreographed reveal.
+
+   "animation-fill-mode: both" keeps each element at its final
+   animated state before AND after the animation runs, preventing
+   a flash back to the unanimated position.
+*/
+.slide.active .slide-label                         { animation: fadeInUp 0.40s var(--ease-out)    0.05s both; }
+.slide.active h2.title,
+.slide.active h2.title-dark                        { animation: fadeInUp 0.45s var(--ease-out)    0.12s both; }
+.slide.active .amber-line                          { animation: growLine 0.40s var(--ease-out)    0.22s both; }
+.slide.active .subtitle                            { animation: fadeInUp 0.40s var(--ease-out)    0.28s both; }
+.slide.active .bullet-list                         { animation: fadeInUp 0.40s var(--ease-out)    0.32s both; }
+.slide.active .two-col                             { animation: fadeInUp 0.45s var(--ease-out)    0.18s both; }
+.slide.active .bm-grid                             { animation: fadeInUp 0.45s var(--ease-out)    0.24s both; }
+.slide.active .timeline                            { animation: fadeInUp 0.45s var(--ease-out)    0.24s both; }
+.slide.active .comp-row                            { animation: fadeInUp 0.35s var(--ease-out)    0.20s both; }
+.slide.active .cover-logo                          { animation: scaleIn  0.55s var(--ease-spring) 0.10s both; }
+
+/* Stat/pillar/team cards each pop in one at a time using :nth-child */
+.slide.active .stats-row .stat-card:nth-child(1)   { animation: scaleIn 0.38s var(--ease-spring) 0.30s both; }
+.slide.active .stats-row .stat-card:nth-child(2)   { animation: scaleIn 0.38s var(--ease-spring) 0.40s both; }
+.slide.active .stats-row .stat-card:nth-child(3)   { animation: scaleIn 0.38s var(--ease-spring) 0.50s both; }
+.slide.active .stats-row .stat-card:nth-child(4)   { animation: scaleIn 0.38s var(--ease-spring) 0.60s both; }
+.slide.active .pillar-card:nth-child(1),
+.slide.active .team-card:nth-child(1)              { animation: scaleIn 0.38s var(--ease-spring) 0.30s both; }
+.slide.active .pillar-card:nth-child(2),
+.slide.active .team-card:nth-child(2)              { animation: scaleIn 0.38s var(--ease-spring) 0.44s both; }
+.slide.active .pillar-card:nth-child(3),
+.slide.active .team-card:nth-child(3)              { animation: scaleIn 0.38s var(--ease-spring) 0.58s both; }
+
+
+/* ── Typography ─────────────────────────────────────────────── */
+/*
+   clamp(min, preferred, max) makes font sizes fluid — they scale
+   with the viewport width between a hard floor and ceiling.
+   Example: clamp(1.5rem, 4vw, 3.2rem) means:
+     • never smaller than 1.5rem
+     • ideally 4% of viewport width
+     • never larger than 3.2rem
+*/
+.slide-label {
+  font-family: var(--montserrat);
+  font-size: clamp(0.55rem, 1.1vw, 0.8rem);
+  font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--amber); margin-bottom: 0.8em;
+}
+h2.title {
+  font-family: var(--montserrat);
+  font-size: clamp(1.5rem, 4vw, 3.2rem);
+  font-weight: 800; line-height: 1.1; color: #fff;
+}
+h2.title-dark {
+  font-family: var(--montserrat);
+  font-size: clamp(1.4rem, 3.5vw, 2.8rem);
+  font-weight: 800; line-height: 1.15; color: var(--blue);
+}
+.subtitle {
+  font-family: var(--inter);
+  font-size: clamp(0.9rem, 1.8vw, 1.25rem);
+  color: rgba(255,255,255,0.8); line-height: 1.6;
+}
+.amber      { color: var(--amber); }
+.amber-line { width: 60px; height: 4px; background: var(--amber); border-radius: 2px; margin: 1.2vh 0 1.8vh; }
+
+
+/* ── Layout helpers ─────────────────────────────────────────── */
+/* .content-wrap: constrains max-width and stacks children vertically */
+.content-wrap { width: 100%; max-width: 1200px; display: flex; flex-direction: column; }
+
+/* .two-col: equal-width two-column grid; gap scales with viewport */
+.two-col      { display: grid; grid-template-columns: 1fr 1fr; gap: 4vw; width: 100%; align-items: center; }
+
+
+/* ── Stat cards ─────────────────────────────────────────────── */
+.stats-row {
+  display: flex; gap: 2vw; flex-wrap: wrap;
+  justify-content: center; margin-top: 2vh;
+}
+.stat-card {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,193,7,0.3);
+  border-radius: 12px; padding: 1.5vw 2vw;
+  text-align: center; flex: 1; min-width: 140px;
+  transition: transform 0.25s var(--ease-spring), background 0.2s;
+}
+.stat-card:hover { transform: translateY(-4px) scale(1.03); background: rgba(255,255,255,0.13); }
+.stat-num   { font-family: var(--montserrat); font-size: clamp(1.5rem,3.5vw,2.8rem); font-weight: 800; color: var(--amber); }
+.stat-label { font-family: var(--inter); font-size: clamp(0.65rem,1.1vw,0.85rem); color: rgba(255,255,255,0.7); margin-top: 0.3em; }
+
+
+/* ── Images ─────────────────────────────────────────────────── */
+.img-wrap     { border-radius: 16px; overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.35); }
+.img-wrap img { width: 100%; height: auto; display: block; }
+
+
+/* ── Business model cards ───────────────────────────────────── */
+.bm-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.2vw; width: 100%; }
+.bm-card {
+  background: #fff; border-radius: 10px; padding: 1.2vw;
+  box-shadow: 0 2px 12px rgba(0,51,102,0.08);
+  border-left: 3px solid var(--amber);
+  transition: transform 0.22s var(--ease-spring), box-shadow 0.22s;
+}
+.bm-card:hover     { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,51,102,0.16); }
+.bm-card-title     { font-family: var(--montserrat); font-weight: 700; font-size: clamp(0.55rem,0.9vw,0.75rem); color: var(--blue); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.4em; }
+.bm-card-body      { font-family: var(--inter); font-size: clamp(0.6rem,0.95vw,0.8rem); color: var(--g700); line-height: 1.5; }
+.bm-metric         { font-family: var(--montserrat); font-weight: 800; font-size: clamp(0.8rem,1.4vw,1.1rem); color: var(--amber-dk); display: block; margin-top: 0.3em; }
+
+
+/* ── Bullet list ─────────────────────────────────────────────── */
+/* Custom bullet via ::before pseudo-element — an amber filled circle.
+   padding-left:1.6em leaves space for the absolute-positioned dot. */
+.bullet-list    { list-style: none; margin-top: 1.5vh; }
+.bullet-list li {
+  font-family: var(--inter); font-size: clamp(0.85rem,1.5vw,1.1rem);
+  color: rgba(255,255,255,0.88); line-height: 1.6;
+  padding: 0.4em 0 0.4em 1.6em; position: relative;
+}
+.bullet-list li::before {
+  content: ""; position: absolute;
+  left: 0; top: 0.72em;
+  width: 8px; height: 8px;
+  border-radius: 50%; background: var(--amber);
+}
+
+
+/* ── Timeline ───────────────────────────────────────────────── */
+.timeline { display: grid; grid-template-columns: repeat(4,1fr); gap: 2vw; width: 100%; margin-top: 2vh; }
+.tl-item  { text-align: center; }
+.tl-year  { font-family: var(--montserrat); font-weight: 800; font-size: clamp(1rem,2vw,1.6rem); color: var(--amber); }
+.tl-bar   { height: 4px; background: var(--amber); opacity: 0.4; border-radius: 2px; margin: 0.5em 0; }
+.tl-text  { font-family: var(--inter); font-size: clamp(0.6rem,0.95vw,0.78rem); color: rgba(255,255,255,0.75); line-height: 1.5; }
+
+
+/* ── YouTube badge ──────────────────────────────────────────── */
+.yt-badge      { display: inline-flex; align-items: center; gap: 0.5em; background: #FF0000; border-radius: 6px; padding: 0.3em 0.8em; margin-bottom: 1vh; }
+.yt-badge svg  { width: 1.2em; height: 1.2em; }
+.yt-badge span { font-family: var(--montserrat); font-weight: 700; font-size: clamp(0.65rem,1.1vw,0.85rem); color: #fff; }
+
+
+/* ── Comparison table ───────────────────────────────────────── */
+/* grid-template-columns: 1.5fr 1fr 1fr 1fr — feature column is wider */
+.comp-row { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 1.5vw; align-items: center; padding: 0.8vw 1vw; border-radius: 8px; margin-bottom: 0.6vh; }
+.comp-row.header                { background: var(--blue); margin-bottom: 1vh; }
+.comp-row.header span           { font-family: var(--montserrat); font-weight: 700; font-size: clamp(0.55rem,0.9vw,0.75rem); color: var(--amber); text-transform: uppercase; letter-spacing: 0.1em; }
+.comp-row.data                  { background: rgba(255,255,255,0.06); }
+.comp-row.data.highlight        { background: rgba(255,193,7,0.12); border: 1px solid rgba(255,193,7,0.3); }
+.comp-row.data span             { font-family: var(--inter); font-size: clamp(0.65rem,1vw,0.82rem); color: rgba(255,255,255,0.85); }
+.comp-row.data.highlight span   { color: #fff; font-weight: 600; }
+.check { color: var(--amber); font-weight: 700; }
+.cross { color: var(--g500); }
+
+
+/* ── Pillar cards ───────────────────────────────────────────── */
+.pillar-card       { background: rgba(255,255,255,0.08); border-radius: 14px; padding: 2vw 3vw; text-align: center; flex: 1; min-width: 200px; transition: transform 0.25s var(--ease-spring), background 0.2s; }
+.pillar-card:hover { transform: translateY(-5px); background: rgba(255,255,255,0.14); }
+.pillar-icon       { font-size: 2rem; margin-bottom: 0.5em; }
+.pillar-title      { font-family: var(--montserrat); font-weight: 700; color: var(--amber); font-size: clamp(0.9rem,1.5vw,1.2rem); }
+.pillar-body       { font-family: var(--inter); color: rgba(255,255,255,0.7); font-size: clamp(0.7rem,1.1vw,0.9rem); margin-top: 0.4em; }
+
+
+/* ── Team cards ─────────────────────────────────────────────── */
+.team-card       { background: #fff; border-radius: 16px; padding: 2.5vw; box-shadow: 0 4px 20px rgba(0,51,102,0.10); flex: 1; min-width: 180px; max-width: 240px; text-align: center; border-top: 4px solid var(--g200); transition: transform 0.25s var(--ease-spring), box-shadow 0.25s; }
+.team-card:hover { transform: translateY(-5px); box-shadow: 0 12px 32px rgba(0,51,102,0.18); }
+.team-icon       { font-size: 2.5rem; margin-bottom: 0.5em; }
+.team-name       { font-family: var(--montserrat); font-weight: 800; color: var(--blue); font-size: clamp(0.9rem,1.4vw,1.1rem); }
+.team-role       { font-family: var(--inter); color: var(--g600); font-size: clamp(0.65rem,1vw,0.82rem); margin-top: 0.4em; }
+
+
+/* ── Cover logo ─────────────────────────────────────────────── */
+.cover-logo { max-width: min(400px,60vw); max-height: 60vh; object-fit: contain; border: 3px solid #ffc107; border-radius: 12px; }
+
+
+/* ── Navigation bar ─────────────────────────────────────────── */
+/* Fixed at the bottom-centre of the viewport, above the dots */
+#deck-nav { position: fixed; bottom: 2.4vh; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 1.5vw; z-index: 100; }
+.nav-btn {
+  background: rgba(255,193,7,0.12); border: 1px solid rgba(255,193,7,0.35);
+  color: var(--amber); border-radius: 8px; padding: 0.5em 1.4em; cursor: pointer;
+  font-family: var(--montserrat); font-weight: 700; font-size: clamp(0.7rem,1.1vw,0.9rem);
+  transition: background 0.2s, transform 0.15s var(--ease-spring);
+}
+.nav-btn:hover         { background: rgba(255,193,7,0.28); transform: scale(1.05); }
+.nav-btn:active        { transform: scale(0.96); }
+.nav-btn:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
+
+
+/* ── Light slide overrides  (s1, s5, s10 — gray-50 backgrounds) ─ */
+/*
+   Three slides use a light background (#f9fafb).  On those slides
+   the amber nav buttons would be near-invisible, so JavaScript adds
+   "light-slide" to <body> and we swap them to navy here.
+*/
+body.light-slide .nav-btn            { background: var(--blue); border-color: var(--blue); color: #fff; }
+body.light-slide .nav-btn:hover      { background: #1e3a8a; border-color: #1e3a8a; }
+body.light-slide .stat-num           { color: var(--color-body-text); }
+body.light-slide .bm-metric          { color: var(--color-body-text); }
+body.light-slide #counter            { color: var(--color-body-text); }
+#counter { font-family: var(--montserrat); font-weight: 700; font-size: clamp(0.65rem,1vw,0.8rem); color: rgba(255,255,255,0.45); min-width: 4em; text-align: center; }
+
+
+/* ── Progress dots ──────────────────────────────────────────── */
+/* Fixed on the right edge.  Clicking a dot calls go(i) in JS. */
+#dots { position: fixed; bottom: 3vh; right: 2.5vw; display: flex; flex-direction: column; gap: 7px; z-index: 100; }
+.dot        { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.2); transition: background 0.3s, transform 0.3s var(--ease-spring); cursor: pointer; }
+.dot:hover  { background: rgba(255,193,7,0.5); }
+.dot.active { background: var(--amber); animation: dotPop 0.35s var(--ease-spring) both; }
+
+
+/* ── Keyboard hint ──────────────────────────────────────────── */
+/* Plays once when the page loads (hintFade runs automatically), then is
+   gone.  pointer-events:none ensures it never blocks clicks beneath it. */
+#hint { position: fixed; bottom: 7vh; left: 50%; transform: translateX(-50%); font-family: var(--montserrat); font-size: 0.72rem; font-weight: 600; color: rgba(255,255,255,0.45); letter-spacing: 0.1em; animation: hintFade 3.5s ease 0.8s both; pointer-events: none; z-index: 100; white-space: nowrap; }
+
+
+/* ── Per-slide backgrounds ──────────────────────────────────── */
+/*
+   Light slides: s1, s5, s10  →  trigger body.light-slide via JS
+   Dark slides:  --g900 (near-black)
+   Branded:      --blue or gradient
+*/
+#s1  { background: #f9fafb; }
+#s2  { background: var(--g900); }
+#s3  { background: linear-gradient(135deg, var(--blue) 0%, #00254d 100%); }
+#s4  { background: var(--g900); }
+#s5  { background: #f9fafb; }
+#s6  { background: var(--blue); }
+#s7  { background: var(--g900); }
+#s8  { background: var(--g900); }
+#s9  { background: linear-gradient(135deg, var(--blue) 0%, #001a33 100%); }
+#s10 { background: #f9fafb; }
+#s11 { background: var(--blue); }
+#s12 { background: var(--g900); }
+
+
+/* ── Reduced motion ─────────────────────────────────────────── */
+/*
+   Respects the OS/browser "Reduce Motion" accessibility setting.
+   Disables slide transforms, all entry animations, and hover lifts
+   so nothing moves for users who need it.
+*/
+@media (prefers-reduced-motion: reduce) {
+  .slide { transition: opacity 0.15s linear; transform: none !important; }
+  .slide.active * { animation: none !important; }
+  .stat-card:hover, .bm-card:hover, .pillar-card:hover, .team-card:hover, .nav-btn:hover { transform: none; }
+  #hint { display: none; }
+}
