@@ -227,7 +227,7 @@ h2.title-dark {
 
 
 /* ── YouTube badge ──────────────────────────────────────────── */
-.yt-badge      { display: inline-flex; align-items: center; gap: 0.5em; background: #FF0000; border-radius: 6px; padding: 0.3em 0.8em; margin-bottom: 1vh; }
+.yt-badge      { display: inline-flex; align-items: center; gap: 0.5em; background: #FF0000; border-radius: 6px; padding: 0.3em 0.8em; margin: 1.2vh 0 2.2vh; }
 .yt-badge svg  { width: 1.2em; height: 1.2em; }
 .yt-badge span { font-family: var(--montserrat); font-weight: 700; font-size: clamp(0.65rem,1.1vw,0.85rem); color: #fff; }
 

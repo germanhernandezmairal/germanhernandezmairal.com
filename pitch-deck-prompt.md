@@ -65,7 +65,7 @@ I'm **Germán Hernández Mairal**. I need you to build a final version of my pit
 - **Producto**
   - Mostrar un vídeo de YouTube (screenshot del canal + logo de YouTube)
 - **Modelo de Negocio**
-  1. **Segmentos de Clientes:** Programadores.
+  1. **Segmentos de Clientes:** Programadores sin experiencia laboral que buscan su primer empleo en el sector tecnológico.
   2. **Proposición de Valor:** *Ayudo a Programadores a Conseguir su Primer Trabajo en el Sector Tecnológico mediante hábitos y habilidades prácticas.*
      - Hábitos: Saludables, Relacionales
      - Habilidades Prácticas: Desarrollo de Software, Marca Personal, Inglés, Aprendizaje
