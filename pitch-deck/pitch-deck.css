@@ -219,11 +219,11 @@ h2.title-dark {
 
 
 /* ── Timeline ───────────────────────────────────────────────── */
-.timeline { display: grid; grid-template-columns: repeat(4,1fr); gap: 2vw; width: 100%; margin-top: 2vh; }
+.timeline { display: grid; grid-template-columns: repeat(4,1fr); gap: 2.5vw; width: 100%; margin-top: 4vh; }
 .tl-item  { text-align: center; }
-.tl-year  { font-family: var(--montserrat); font-weight: 800; font-size: clamp(1rem,2vw,1.6rem); color: var(--amber); }
-.tl-bar   { height: 4px; background: var(--amber); opacity: 0.4; border-radius: 2px; margin: 0.5em 0; }
-.tl-text  { font-family: var(--inter); font-size: clamp(0.6rem,0.95vw,0.78rem); color: rgba(255,255,255,0.75); line-height: 1.5; }
+.tl-year  { font-family: var(--montserrat); font-weight: 800; font-size: clamp(1.3rem,2.8vw,2.2rem); color: var(--amber); }
+.tl-bar   { height: 5px; background: var(--amber); opacity: 0.4; border-radius: 2px; margin: 0.7em 0; }
+.tl-text  { font-family: var(--inter); font-size: clamp(0.72rem,1.2vw,0.98rem); color: rgba(255,255,255,0.78); line-height: 1.55; }
 
 
 /* ── YouTube badge ──────────────────────────────────────────── */
