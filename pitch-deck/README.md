@@ -7,18 +7,21 @@ helping programmers land their first job in tech, moving *de creador a comunidad
 ## Structure
 
 ```
-pitch-deck/
+public/pitch-deck/    — deployed with the website (Vite copies public/ verbatim)
 ├── index.html        — markup: the 12 slides + navigation controls
 ├── styles.css        — all styles (design tokens, slide transitions, components)
 ├── script.js         — navigation logic (buttons, dots, keyboard, swipe)
-├── assets/
-│   └── images/       — optimized WebP images used by the deck
+└── assets/
+    └── images/       — optimized WebP images used by the deck
+
+pitch-deck/           — source material and docs (not deployed)
 └── README.md
 ```
 
 ## How to Run
 
-Open `index.html` in any modern browser — that's it. No server or build required.
+Open `public/pitch-deck/index.html` in any modern browser — that's it. No server
+or build required.
 
 When deployed, the deck is served from `germanhernandezmairal.com/pitch-deck/`
 (the `index.html` filename makes the trailing-slash URL resolve automatically).
