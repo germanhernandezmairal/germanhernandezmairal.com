@@ -4,7 +4,7 @@ A personal brand site built to do one thing well: turn a profile visit into a co
 
 **Live → [germanhernandezmairal.com](https://www.germanhernandezmairal.com)**
 
-![Site preview](public/imgs/WebMarcaPersonal-Preview-1.png)
+![Site preview](public/imgs/WebMarcaPersonal-Preview-3.png)
 
 ---
 

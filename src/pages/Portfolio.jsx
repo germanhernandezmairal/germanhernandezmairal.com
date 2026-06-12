@@ -12,7 +12,7 @@ const PROJECTS = [
     category: 'webapp',
     description:
       'Web diseñada para posicionar y convertir: páginas de servicios claras, portafolio visual, integración de contenido y formulario de contacto optimizado. Construida con tecnología moderna y orientada a generar confianza desde el primer clic.',
-    image: '/imgs/WebMarcaPersonal-Preview-3.png',
+    image: '/imgs/WebMarcaPersonal-Preview-3.webp',
     tech: ['React', 'Tailwind CSS', 'Firebase', 'Vercel', 'reCAPTCHA'],
     liveUrl: 'https://www.germanhernandezmairal.com',
     githubUrl: null,
@@ -24,7 +24,7 @@ const PROJECTS = [
     category: 'youtube',
     description:
       'Canal de YouTube construido desde cero para programadores que buscan su primer trabajo en el sector tecnológico, con contenido sobre hábitos y habilidades prácticas. Responsable de la estrategia de contenido, SEO y crecimiento orgánico sin publicidad de pago.',
-    image: '/imgs/Miniatura Definitiva Las 7 Habilidades que Me Sacaron de la Desmotivación.png',
+    image: '/imgs/Miniatura Definitiva Las 7 Habilidades que Me Sacaron de la Desmotivación.webp',
     tech: ['YouTube Studio', 'Adobe Premiere', 'Canva', 'SEO'],
     liveUrl: 'https://youtube.com/@germanhernandezmairal',
     githubUrl: null,
@@ -36,7 +36,7 @@ const PROJECTS = [
     category: 'community',
     description:
       'Gestión de la presencia digital de una organización pública en Instagram, TikTok, YouTube y Facebook. Estrategia de contenido, calendario editorial y análisis de métricas para aumentar el alcance y consolidar una imagen institucional sólida.',
-    image: '/imgs/Tarragona Jove Concert.jpg',
+    image: '/imgs/Tarragona Jove Concert.webp',
     tech: ['Instagram', 'TikTok', 'YouTube', 'Facebook', 'Metricool'],
     liveUrl: null,
     detailUrl: '/portfolio/tarragona-jove',

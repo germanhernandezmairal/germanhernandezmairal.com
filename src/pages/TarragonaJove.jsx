@@ -7,17 +7,17 @@ import { staggerContainer, cardVariant, fadeUp } from '../lib/motion';
 const STREAMINGS = [
   {
     title: 'Las de la Chiri | Cultura Kesse | Hivern 2025',
-    image: '/imgs/Las de la Chiri  Cultura Kesse  Hivern 2025.jpg',
+    image: '/imgs/Las de la Chiri  Cultura Kesse  Hivern 2025.webp',
     url: 'https://www.youtube.com/watch?v=HLbs_h3VNNw',
   },
   {
     title: 'El pitjor espectacle de màgia… o no 🎩💥',
-    image: '/imgs/El pitjor espectacle de màgia… o no.jpg',
+    image: '/imgs/El pitjor espectacle de màgia… o no.webp',
     url: 'https://www.youtube.com/watch?v=NeoUK3pi6Ts',
   },
   {
     title: "CK | Ona Mae, Fusió World d'Autora",
-    image: "/imgs/CK  Ona Mae Fusió World d’Autora.jpg",
+    image: "/imgs/CK  Ona Mae Fusió World d’Autora.webp",
     url: 'https://www.youtube.com/watch?v=JkK5pKb0I9U',
   },
 ];
@@ -25,17 +25,17 @@ const STREAMINGS = [
 const VIDEO_RESUMENES = [
   {
     title: 'Laboratori de folk | Estiu 2025',
-    image: '/imgs/Laboratori de folk  Estiu 2025.png',
+    image: '/imgs/Laboratori de folk  Estiu 2025.webp',
     url: 'https://www.instagram.com/reel/DMYL1L2iTPe/',
   },
   { 
     title: 'Masterclass de K-Pop + Meet&Greet amb Tami Tamako | Estiu 2025',
-    image: '/imgs/Masterclass de K-Pop y Meet and Greet amb Tami Tamako  Estiu 2025.png',
+    image: '/imgs/Masterclass de K-Pop y Meet and Greet amb Tami Tamako  Estiu 2025.webp',
     url: 'https://www.instagram.com/reel/DNF1-boCejN/',
   },
   {
     title: "Capturant l'aigua. Taller de fotografia | Tardor 2025",
-    image: "/imgs/Capturant l’aigua Taller de fotografia  Tardor 2025.png",
+    image: "/imgs/Capturant l’aigua Taller de fotografia  Tardor 2025.webp",
     url: 'https://www.instagram.com/reel/DPreEMjD_Bk/',
   },
 ];
@@ -43,17 +43,17 @@ const VIDEO_RESUMENES = [
 const FOTOS_EVENTO = [
   {
     title: 'Aula de costura creativa. Recrea la teva roba | Tardor 2025',
-    image: '/imgs/Aula de costura creativa. Recrea la teva roba  Tardor 2025.jpg',
+    image: '/imgs/Aula de costura creativa. Recrea la teva roba  Tardor 2025.webp',
     url: 'https://flic.kr/s/aHBqjCvZ9Y',
   },
   {
     title: "CK | Geografia d'un retorn. Calcària | Tardor 2025",
-    image: "/imgs/CK  Geografia d’un retorn Calcària  Tardor 2025.jpg",
+    image: "/imgs/CK  Geografia d’un retorn Calcària  Tardor 2025.webp",
     url: 'https://flic.kr/s/aHBqjCxJAY',
   },
   {
     title: 'Curs de Teatre Musical des de la interpretació actoral | CasalxNadal 25',
-    image: '/imgs/Curs de Teatre Musical des de la interpretació actoral  CasalxNadal 25.jpg',
+    image: '/imgs/Curs de Teatre Musical des de la interpretació actoral  CasalxNadal 25.webp',
     url: 'https://flic.kr/s/aHBqjCF7Va',
   },
 ];
