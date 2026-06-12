@@ -5,7 +5,7 @@ A personal brand site built to do one thing well: turn a profile visit into a co
 ![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-7.1-646CFF?logo=vite&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.1-06B6D4?logo=tailwindcss&logoColor=white)
-![Vercel](https://img.shields.io/badge/Vercel-Deployed-black?logo=vercel)
+![Vercel](https://img.shields.io/badge/Vercel-Deploy-black?logo=vercel)
 
 **Live → [germanhernandezmairal.com](https://www.germanhernandezmairal.com)**
 
