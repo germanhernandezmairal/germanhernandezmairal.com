@@ -162,7 +162,7 @@ const Testimonials = () => (
             className="bg-white rounded-2xl p-6 shadow-card hover:shadow-card-hover transition-shadow"
           >
             <p className="font-inter text-gray-700 text-sm leading-relaxed mb-4 italic">
-              "{text}"
+              &quot;{text}&quot;
             </p>
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-brand-blue rounded-full flex items-center justify-center text-white font-montserrat font-bold text-sm">

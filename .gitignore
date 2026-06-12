@@ -31,6 +31,13 @@ stripe-images
 .env.local
 .env.production
 
+# Local archive of unused/source assets — never publish
+_archive/
+
+# Heavy source material kept locally but out of git (originals for deck/site images)
+pitch-deck/source/
+pitch-deck/imgs/
+
 # Private monetization deck — NEVER publish (pitch-deck Phase 2/3)
 pitch-deck/monetizacion.html
 pitch-deck/Metodolog*.md
