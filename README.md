@@ -2,6 +2,11 @@
 
 A personal brand site built to do one thing well: turn a profile visit into a conversation. It covers who I am, what I do, the work I've shipped, and how to get in touch — all in one fast, animated, mobile-first experience.
 
+![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?logo=tailwindcss&logoColor=white)
+![Vercel](https://img.shields.io/badge/Vercel-black?logo=vercel)
+
 **Live → [germanhernandezmairal.com](https://www.germanhernandezmairal.com)**
 
 ![Site preview](public/imgs/WebMarcaPersonal-Preview-3.png)
