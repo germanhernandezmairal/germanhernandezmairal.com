@@ -1,3 +1,4 @@
+import { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 
@@ -6,12 +7,15 @@ import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 
 import Home from './pages/Home';
-import Services from './pages/Services';
-import Portfolio from './pages/Portfolio';
-import YouTube from './pages/YouTube';
-import About from './pages/About';
-import Contact from './pages/Contact';
-import TarragonaJove from './pages/TarragonaJove';
+
+// Code-split every route except Home so the initial bundle stays lean
+const Services = lazy(() => import('./pages/Services'));
+const Portfolio = lazy(() => import('./pages/Portfolio'));
+const YouTube = lazy(() => import('./pages/YouTube'));
+const About = lazy(() => import('./pages/About'));
+const Contact = lazy(() => import('./pages/Contact'));
+const TarragonaJove = lazy(() => import('./pages/TarragonaJove'));
+const NotFound = lazy(() => import('./pages/NotFound'));
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -23,15 +27,18 @@ const AnimatedRoutes = () => {
         animate={{ opacity: 1, transition: { duration: 0.3, ease: 'easeOut' } }}
         exit={{ opacity: 0, transition: { duration: 0.2 } }}
       >
-        <Routes location={location}>
-          <Route path="/" element={<Home />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/portfolio" element={<Portfolio />} />
-          <Route path="/youtube" element={<YouTube />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/portfolio/tarragona-jove" element={<TarragonaJove />} />
-        </Routes>
+        <Suspense fallback={null}>
+          <Routes location={location}>
+            <Route path="/" element={<Home />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/portfolio" element={<Portfolio />} />
+            <Route path="/youtube" element={<YouTube />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/portfolio/tarragona-jove" element={<TarragonaJove />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Suspense>
       </motion.div>
     </AnimatePresence>
   );
