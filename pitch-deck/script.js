@@ -1,10 +1,10 @@
 /* =============================================================
-   pitch-deck.js  —  Navigation logic for "Sigamos Construyendo"
+   script.js  —  Navigation logic for "Sigamos Construyendo"
 
    How the deck works at a high level
    ────────────────────────────────────────────────────────────
-   All 12 slides are in the DOM at once, stacked on top of each
-   other with position:absolute (see pitch-deck.css).
+   All slides are in the DOM at once, stacked on top of each
+   other with position:absolute (see styles.css).
 
    Only the slide with class "active" is visible — CSS handles
    the fade + translateY transition automatically.
@@ -13,7 +13,7 @@
      1. Remove "active" from the current slide and its dot.
      2. Clamp n so navigation wraps around at both ends.
      3. Add "active" to the new slide and its dot.
-     4. Update the "X / 12" counter text.
+     4. Update the "X / total" counter text.
      5. Swap the nav colour scheme for light-background slides.
 
    Input sources that all call go():
@@ -33,14 +33,18 @@
   const slides  = Array.from(document.querySelectorAll('.slide'));
   const dots    = Array.from(document.querySelectorAll('.dot'));
   const counter = document.getElementById('counter');
-  const total   = slides.length;  /* 12 */
+  const total   = slides.length;
   let   cur     = 0;              /* index of the currently visible slide */
 
-  /* Slides whose background is light (gray-50, #f9fafb).
-     When one of these is active, <body> gets the "light-slide" class
-     so CSS flips the nav buttons and counter from amber to navy —
-     they'd be near-invisible on a white background otherwise. */
-  const LIGHT_SLIDES = new Set([0, 4, 9]); /* s1, s5, s10 (0-based) */
+  /* Slides whose background is light (gray-50, #f9fafb) carry a
+     data-light attribute in the HTML. When one of these is active,
+     <body> gets the "light-slide" class so CSS flips the nav buttons
+     and counter from amber to navy — they'd be near-invisible on a
+     white background otherwise. Reading the attribute (instead of
+     hardcoding indices) lets any deck reuse this script unchanged. */
+  const LIGHT_SLIDES = new Set(
+    slides.map((s, i) => (s.hasAttribute('data-light') ? i : -1)).filter(i => i !== -1)
+  );
 
 
   /* ── Core navigation ────────────────────────────────────── */
@@ -62,10 +66,10 @@
     slides[cur].classList.add('active');
     dots[cur].classList.add('active');
 
-    /* Update the "X / 12" counter (display is 1-based) */
+    /* Update the "X / total" counter (display is 1-based) */
     counter.textContent = (cur + 1) + ' / ' + total;
 
-    /* Toggle the light-slide body class for the three light slides */
+    /* Toggle the light-slide body class for slides marked data-light */
     document.body.classList.toggle('light-slide', LIGHT_SLIDES.has(cur));
   }
 

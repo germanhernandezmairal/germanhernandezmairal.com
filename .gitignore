@@ -30,3 +30,9 @@ stripe-images
 .env
 .env.local
 .env.production
+
+# Private monetization deck — NEVER publish (pitch-deck Phase 2/3)
+pitch-deck/monetizacion.html
+pitch-deck/Metodolog*.md
+docs/superpowers/specs/2026-06-11-monetization-deck-design.md
+docs/superpowers/plans/2026-06-11-monetization-deck.md
