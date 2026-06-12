@@ -1,5 +1,4 @@
 import { useEffect, useState, useMemo, useCallback } from 'react';
-import axios from 'axios';
 import { FaChevronLeft, FaChevronRight, FaYoutube, FaRocket, FaHeartbeat } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { staggerContainer, cardVariant } from '../lib/motion';
@@ -56,12 +55,15 @@ const VideoGrid = ({ externalCategory }) => {
     setError(null);
     setStartIndex(0);
 
-    axios
-      .get(
-        `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,status&maxResults=8&playlistId=${playlistId}&key=${API_KEY}`
-      )
+    fetch(
+      `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,status&maxResults=8&playlistId=${playlistId}&key=${API_KEY}`
+    )
       .then((res) => {
-        const publicVideos = res.data.items
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.json();
+      })
+      .then((data) => {
+        const publicVideos = data.items
           .filter((v) => v.status?.privacyStatus === 'public')
           .sort((a, b) => new Date(b.snippet.publishedAt) - new Date(a.snippet.publishedAt));
         setVideos(publicVideos);
