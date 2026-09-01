@@ -27,10 +27,12 @@ const Logo = ({ className = 'h-7 md:h-8' }) => (
       strokeWidth="4"
     />
     {/* Braces placed symmetrically about the square's centre (x=27) so the
-        mark stays optically centered regardless of font metrics. */}
+        mark stays optically centered regardless of font metrics. y is nudged
+        above the geometric centre (28) because Montserrat's braces sit low in
+        the em box — this evens out the top/bottom gap inside the square. */}
     <text
       x="20"
-      y="28.5"
+      y="25.5"
       textAnchor="middle"
       dominantBaseline="central"
       fontFamily="'Montserrat', ui-sans-serif, system-ui, sans-serif"
@@ -42,7 +44,7 @@ const Logo = ({ className = 'h-7 md:h-8' }) => (
     </text>
     <text
       x="34"
-      y="28.5"
+      y="25.5"
       textAnchor="middle"
       dominantBaseline="central"
       fontFamily="'Montserrat', ui-sans-serif, system-ui, sans-serif"
