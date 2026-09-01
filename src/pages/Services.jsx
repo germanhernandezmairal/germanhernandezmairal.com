@@ -488,6 +488,7 @@ const Services = () => {
           name="description"
           content="Ayudo a empresas y creadores a conseguir clientes con contenido y webs que convierten."
         />
+        <meta name="robots" content="noindex" />
       </Helmet>
 
       {/* ── Page Header ── */}

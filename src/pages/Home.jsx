@@ -1,8 +1,10 @@
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-import { FaArrowDown, FaLaptopCode, FaYoutube, FaHandshake } from 'react-icons/fa';
+import { FaArrowDown, FaCode, FaRegCalendarCheck } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { fadeUp, staggerContainer, cardVariant } from '../lib/motion';
+
+const YOUTUBE_URL = 'https://youtube.com/@germanhernandezmairal';
 
 /* ─── Hero Section ─── */
 const HeroSection = () => (
@@ -18,11 +20,12 @@ const HeroSection = () => (
         >
           <motion.div variants={fadeUp}>
             <p className="font-montserrat font-bold text-2xl sm:text-3xl lg:text-4xl text-gray-900 leading-tight">
-              Hola, soy Germán, <br />Front-End Developer y Community Manager.
+              Hola, soy Germán, <br />Fullstack Developer.
             </p>
             <p className="font-inter text-lg md:text-xl text-gray-700 leading-relaxed mt-6">
-              Ayudo a <strong>empresas y creadores</strong> a conseguir clientes con{' '}
-              <strong>contenido y webs que convierten</strong>.
+              Estoy consiguiendo mi primer trabajo como programador desde cero y en
+              Internet comparto <strong>hábitos y habilidades prácticas</strong> con el
+              fin de ayudarte a conseguir lo mismo.
             </p>
           </motion.div>
 
@@ -30,17 +33,19 @@ const HeroSection = () => (
             variants={fadeUp}
             className="mt-8 flex flex-col sm:flex-row gap-3 justify-center md:justify-start"
           >
-            <Link
-              to="/services"
+            <a
+              href={YOUTUBE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="bg-brand-blue text-white font-montserrat font-semibold px-6 py-3 rounded-lg hover:bg-blue-900 hover:text-white active:scale-95 transition-colors duration-200 text-center"
             >
-              Ver mis servicios
-            </Link>
+              Ver canal de YouTube
+            </a>
             <Link
               to="/contact"
               className="bg-brand-amber text-brand-blue font-montserrat font-semibold px-6 py-3 rounded-lg hover:bg-brand-amber-dark active:scale-95 transition-colors duration-200 text-center"
             >
-              Hablemos
+              Habla conmigo
             </Link>
           </motion.div>
         </motion.div>
@@ -76,25 +81,16 @@ const HeroSection = () => (
 /* ─── How I Can Help ─── */
 const HELP_CARDS = [
   {
-    icon: <FaYoutube className="text-5xl md:text-6xl text-brand-blue mb-4" />,
-    title: 'Atrae más clientes con',
-    highlight: 'contenido que funciona',
-    description: 'Creo y gestiono publicaciones para que más personas te conozcan, confíen en ti y te contacten.',
-    link: '/services',
+    icon: <FaRegCalendarCheck className="text-5xl md:text-6xl text-brand-blue mb-4" />,
+    highlight: 'Hábitos',
+    description:
+      'Las rutinas diarias que aplico para aprender, construir proyectos, crear relaciones en el sector y conseguir entrevistas.',
   },
   {
-    icon: <FaLaptopCode className="text-5xl md:text-6xl text-brand-blue mb-4" />,
-    title: 'Convierte visitas con una',
-    highlight: 'web que funciona',
-    description: 'Diseño tu web para que quien llegue entienda qué ofreces y te contacte.',
-    link: '/services',
-  },
-  {
-    icon: <FaHandshake className="text-5xl md:text-6xl text-brand-blue mb-4" />,
-    title: 'Haz que tu marca',
-    highlight: 'genere confianza',
-    description: 'Cuido que tu imagen en redes y web sea coherente para que el cliente confíe en ti desde el primer vistazo.',
-    link: '/services',
+    icon: <FaCode className="text-5xl md:text-6xl text-brand-blue mb-4" />,
+    highlight: 'Habilidades',
+    description:
+      'Los lenguajes, técnicas y metodologías que más demandan las empresas — y cómo los aprendo en la práctica.',
   },
 ];
 
@@ -109,29 +105,30 @@ const HowIHelpSection = () => (
       >
         <h2 className="font-montserrat text-3xl sm:text-4xl lg:text-5xl font-bold text-center text-gray-900 mb-4">
           ¿Cómo puedo ayudarte a{' '}
-          <span className="underline-amber">conseguir clientes</span>?
+          <span className="underline-amber">conseguir tu primer trabajo</span> como
+          programador?
         </h2>
         <p className="font-inter text-gray-600 text-center text-lg mb-14 max-w-2xl mx-auto">
-          Creo contenido y webs para que más personas te encuentren y te contacten.
+          Creo contenido sobre hábitos y habilidades prácticas para conseguir tus
+          primeras entrevistas.
         </p>
       </motion.div>
 
       <motion.div
-        className="grid grid-cols-1 sm:grid-cols-3 gap-6"
+        className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto"
         variants={staggerContainer}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
       >
-        {HELP_CARDS.map(({ icon, title, highlight, description, link }) => (
+        {HELP_CARDS.map(({ icon, highlight, description }) => (
           <motion.div key={highlight} variants={cardVariant}>
             <Link
-              to={link}
+              to="/youtube"
               className="bg-blue-100 hover:bg-blue-200 rounded-xl p-6 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-card-hover group h-full"
             >
               {icon}
               <h3 className="font-montserrat font-semibold text-lg text-gray-900">
-                {title}{' '}
                 <span className="underline-amber">{highlight}</span>
               </h3>
               <p className="font-inter text-sm text-gray-600 mt-2">{description}</p>
@@ -147,12 +144,14 @@ const HowIHelpSection = () => (
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.3 }}
       >
-        <Link
-          to="/services"
+        <a
+          href={YOUTUBE_URL}
+          target="_blank"
+          rel="noopener noreferrer"
           className="inline-block bg-brand-blue text-white font-montserrat font-semibold px-8 py-3 rounded-lg hover:bg-blue-900 active:scale-95 transition-colors duration-200"
         >
-          Explorar todos los servicios →
-        </Link>
+          Ver canal de YouTube
+        </a>
       </motion.div>
     </div>
   </section>
@@ -169,16 +168,17 @@ const CTABanner = () => (
       transition={{ duration: 0.6 }}
     >
       <h2 className="font-montserrat font-bold text-3xl sm:text-4xl text-white mb-4">
-        ¿Listo para dar el siguiente paso?
+        ¿Listo para conseguir tu primer trabajo?
       </h2>
       <p className="font-inter text-blue-200 text-lg mb-8">
-        Si quieres una presencia digital más clara, contenido con intención y una web que te ayude a conseguir clientes, hablemos.
+        Si quieres conseguir tus primeras entrevistas, crear un portafolio con
+        proyectos de alto nivel y construir relaciones en el sector tecnológico.
       </p>
       <Link
         to="/contact"
         className="inline-block bg-brand-amber text-brand-blue font-montserrat font-bold px-8 py-4 rounded-lg hover:bg-brand-amber-dark active:scale-95 transition-colors duration-200 text-lg"
       >
-        Contactar ahora
+        Habla conmigo ahora
       </Link>
     </motion.div>
   </section>
@@ -188,12 +188,12 @@ const CTABanner = () => (
 const Home = () => (
   <>
     <Helmet>
-      <title>Germán Hernández Mairal – Front-End Developer y Community Manager</title>
+      <title>Germán Hernández Mairal – Fullstack Developer</title>
       <meta
         name="description"
-        content="Ayudo a empresas y creadores a conseguir clientes con contenido y webs que convierten."
+        content="Fullstack Developer consiguiendo mi primer trabajo como programador desde cero. Comparto hábitos y habilidades prácticas para ayudarte a conseguir el tuyo."
       />
-      <meta name="keywords" content="front-end developer, desarrollador web, community manager, contenido y webs que convierten, gestión de redes, marca personal, servicios web" />
+      <meta name="keywords" content="fullstack developer, primer trabajo programador, desarrollador junior, hábitos programador, habilidades programador, React, Next.js, TypeScript" />
     </Helmet>
     <HeroSection />
     <HowIHelpSection />
