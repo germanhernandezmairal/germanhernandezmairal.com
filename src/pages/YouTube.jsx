@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { FaYoutube, FaPlay, FaRocket, FaHeartbeat } from 'react-icons/fa';
 import { motion } from 'framer-motion';
-import { staggerContainer, cardVariant, fadeUp } from '../lib/motion';
+import { staggerContainer, cardVariant } from '../lib/motion';
 import VideoGrid from '../components/VideoGrid';
 
 /* ─── Channel Header ─── */
@@ -19,7 +19,8 @@ const ChannelHeader = () => (
         <FaYoutube className="text-6xl text-red-400" />
       </div>
       <h1 className="font-montserrat font-bold text-4xl sm:text-5xl text-white mb-4">
-        YouTube como <span className="highlight-amber">Escaparate de Aprendizajes</span>
+        Aprende a Conseguir{' '}
+        <span className="highlight-amber box-decoration-clone">tu Primer Trabajo</span>
       </h1>
       <p className="font-inter text-blue-200 text-lg max-w-3xl mx-auto mb-8">
         En mi canal comparto{' '}
@@ -35,32 +36,6 @@ const ChannelHeader = () => (
       >
         <FaYoutube /> Suscribirse al canal
       </a>
-    </motion.div>
-  </section>
-);
-
-/* ─── Credibility Strip ─── */
-const STATS = [
-  { value: '+5 años', label: 'creando contenido' },
-  { value: '+500', label: 'piezas publicadas' },
-  { value: 'Sin anuncios', label: 'crecimiento orgánico real' },
-];
-
-const CredibilityStrip = () => (
-  <section className="bg-white border-b border-gray-100 py-10 px-4">
-    <motion.div
-      className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-8 text-center"
-      variants={staggerContainer}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
-    >
-      {STATS.map(({ value, label }) => (
-        <motion.div key={label} variants={fadeUp}>
-          <p className="font-montserrat font-bold text-3xl text-brand-blue">{value}</p>
-          <p className="font-inter text-sm text-gray-600 mt-1">{label}</p>
-        </motion.div>
-      ))}
     </motion.div>
   </section>
 );
@@ -239,7 +214,6 @@ const YouTube = () => {
         />
       </Helmet>
       <ChannelHeader />
-      <CredibilityStrip />
       <TopicsSection onTopicClick={handleTopicClick} />
       <section ref={videosRef} className="bg-white py-16 px-4">
         <div className="max-w-6xl mx-auto">
@@ -251,7 +225,7 @@ const YouTube = () => {
             className="text-center mb-10"
           >
             <h2 className="font-montserrat font-bold text-3xl sm:text-4xl text-gray-900 mb-4">
-              Vídeos para <span className="underline-amber">tu Primer Trabajo</span>
+              Vídeos del <span className="underline-amber">Canal</span>
             </h2>
             <p className="font-inter text-gray-600 text-lg">
               Hábitos y habilidades prácticas — filtra por el pilar que más necesitas ahora mismo.
