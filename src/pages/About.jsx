@@ -19,13 +19,14 @@ const AboutHero = () => (
             <span className="highlight-amber">Sobre Mí</span>
           </h1>
           <p className="font-inter text-gray-700 text-lg leading-relaxed mb-4">
-            Soy <strong>Germán</strong>, Front-End Developer y Community Manager. Me especializo en ayudar a empresas y creadores a conseguir clientes con contenido y webs que convierten.
+            Soy <strong>Germán</strong>, Fullstack Developer. Me gradué en la{' '}
+            <span className="underline-amber font-semibold">Universidad Rovira i Virgili en 2024</span>{' '}
+            y desde entonces estoy creando una metodología para conseguir mi primer
+            trabajo en el sector tecnológico y ayudarte a conseguir lo mismo.
           </p>
           <p className="font-inter text-gray-700 text-lg leading-relaxed">
-            Desde{' '}
-            <span className="underline-amber font-semibold">2019</span> llevo{' '}
-            <span className="underline-amber font-semibold">construyendo</span> las habilidades técnicas y de comunicación para{' '}
-            <span className="underline-amber font-semibold">ayudarte a crecer online</span>.
+            Combino formación técnica en desarrollo con experiencia real en{' '}
+            <span className="underline-amber font-semibold">comunicación y comunidad</span>.
           </p>
         </motion.div>
 
@@ -58,7 +59,7 @@ const BIO_ITEMS = [
     text: (
       <>
         Me gradué en{' '}
-        <span className="highlight-blue">Desarrollo de Aplicaciones Web y Móviles</span>{' '}
+        <span className="highlight-blue">Técnicas de Desarrollo de Aplicaciones Web y Móviles</span>{' '}
         y desde entonces construyo webs y aplicaciones con criterio técnico: limpias, rápidas y preparadas para crecer.
       </>
     ),
@@ -68,25 +69,26 @@ const BIO_ITEMS = [
     image: '/imgs/ImagenCreandoContenidoEditada.webp',
     imageAlt: 'Germán gestionando comunidades online como Community Manager',
     imageLeft: true,
-    title: 'Comunicación & Comunidad',
+    title: 'Comunicación y Comunidad',
     text: (
       <>
         He trabajado como{' '}
         <span className="underline-amber font-semibold">Community Manager</span> para instituciones y marcas: gestionando redes, produciendo contenido y cubriendo eventos. Ahí entendí que{' '}
-        <span className="underline-amber font-semibold">comunicar con claridad</span> genera tanta confianza como un buen producto.
+        <span className="underline-amber font-semibold">comunicar con claridad</span> es tan importante como tus habilidades técnicas de software.
       </>
     ),
   },
   {
     image: '/imgs/Germán Programando Buscando Trabajo Editada.webp',
-    imageAlt: 'Germán construyendo su carrera como desarrollador web',
+    imageAlt: 'Germán construyendo su camino hacia el primer trabajo como desarrollador',
     imageLeft: false,
-    title: 'Desarrollo Web Moderno',
+    title: 'Camino hacia el primer trabajo',
     text: (
       <>
-        Hoy desarrollo proyectos web con{' '}
-        <span className="highlight-blue">Next.js, React y TypeScript</span>. Combino formación técnica con experiencia real en comunicación y marca personal. <br></br>El resultado: webs diseñadas para{' '}
-        <span className="underline-amber font-semibold">convertir visitas en oportunidades reales</span>.
+        Hoy construyo proyectos web con{' '}
+        <span className="highlight-blue">Next.js, React y TypeScript</span>. Estoy creando una metodología,{' '}
+        <span className="underline-amber font-semibold">Software Builder</span>, para conseguir mi primer trabajo como programador desde cero. <br></br>El resultado:{' '}
+        <span className="underline-amber font-semibold">primeras entrevistas con empresas con miles de empleados</span>.
       </>
     ),
   },
@@ -139,15 +141,17 @@ const BioSection = () => (
 const SKILLS = [
   {
     category: 'Frontend',
-    items: ['Next.js 15', 'React', 'TypeScript', 'Tailwind CSS', 'TanStack Query', 'Framer Motion'],
+    items: ['React', 'Next.js', 'TypeScript', 'JavaScript', 'Tailwind CSS', 'Framer Motion'],
   },
   {
     category: 'Backend & Deploy',
-    items: ['Node.js', 'PostgreSQL', 'REST APIs', 'Firebase', 'Vercel', 'GitHub', 'Jest', 'React Testing Library'],
+    items: ['Node.js', 'Python / FastAPI', 'PostgreSQL / Supabase', 'REST APIs', 'Git / GitHub', 'Vercel'],
   },
   {
+    // Kept for reference; filtered out of the render (see SkillsSection).
     category: 'Contenido & Community',
-    items: ['YouTube', 'Instagram', 'TikTok', 'Notion', 'Google Drive', 'Metricool'],
+    items: ['YouTube', 'Instagram', 'TikTok', 'Notion', 'Metricool'],
+    hidden: true,
   },
 ];
 
@@ -165,18 +169,18 @@ const SkillsSection = () => (
           Habilidades & <span className="underline-amber">Herramientas</span>
         </h2>
         <p className="font-inter text-gray-600 text-lg max-w-2xl mx-auto">
-          Las herramientas con las que construyo webs y ayudo a crecer marcas online.
+          Las tecnologías con las que construyo webs y aplicaciones fullstack.
         </p>
       </motion.div>
 
       <motion.div
-        className="grid grid-cols-1 sm:grid-cols-3 gap-6"
+        className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto"
         variants={staggerContainer}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
       >
-        {SKILLS.map(({ category, items }) => (
+        {SKILLS.filter((s) => !s.hidden).map(({ category, items }) => (
           <motion.div key={category} variants={cardVariant} className="bg-white rounded-2xl p-6 shadow-card">
             <h3 className="font-montserrat font-bold text-brand-blue text-lg mb-4 pb-2 border-b-2 border-brand-amber">
               {category}
@@ -210,17 +214,15 @@ const MissionSection = () => (
         <span className="highlight-amber">Mi Misión</span>
       </h2>
       <p className="font-inter text-gray-800 text-xl leading-relaxed mb-8 max-w-3xl mx-auto">
-        Ayudo a empresas y creadores a conseguir clientes con{' '}
-        <span className="underline-amber font-semibold">contenido que atrae</span> y{' '}
-        <span className="underline-amber font-semibold">webs diseñadas para convertir</span>.
-        Combino técnica y comunicación para construir presencia online que genera{' '}
-        <span className="highlight-blue font-semibold">confianza, visibilidad y clientes.</span>
+        Ayudo a programadores a conseguir su primer trabajo en el sector tecnológico
+        mediante <span className="underline-amber font-semibold">hábitos</span> y{' '}
+        <span className="underline-amber font-semibold">habilidades prácticas</span>.
       </p>
       <Link
         to="/contact"
         className="inline-block bg-brand-blue text-white font-montserrat font-bold px-8 py-4 rounded-lg hover:bg-blue-900 active:scale-95 transition-colors duration-200 text-lg"
       >
-        Hablemos de tu proyecto
+        Hablemos de tu situación
       </Link>
     </motion.div>
   </section>
@@ -230,10 +232,10 @@ const MissionSection = () => (
 const About = () => (
   <>
     <Helmet>
-      <title>Quién Soy – Germán Hernández Mairal</title>
+      <title>Sobre mí – Germán Hernández Mairal</title>
       <meta
         name="description"
-        content="Germán Hernández — Front-End Developer y Community Manager. Ayudo a empresas y creadores a conseguir clientes con contenido y webs que convierten. Conoce mi historia y stack técnico."
+        content="Germán Hernández — Fullstack Developer. Graduado en la URV (2024), construyendo una metodología para conseguir mi primer trabajo en tech y ayudarte a conseguir el tuyo."
       />
     </Helmet>
     <AboutHero />

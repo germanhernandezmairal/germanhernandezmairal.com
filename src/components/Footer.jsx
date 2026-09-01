@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { FaLinkedin, FaYoutube, FaInstagram, FaEnvelope } from 'react-icons/fa';
 import { motion } from 'framer-motion';
+import Logo from './Logo';
 
 const Footer = () => (
   <motion.footer
@@ -16,12 +17,13 @@ const Footer = () => (
         <div>
           <Link
             to="/"
-            className="text-3xl font-signature italic text-white hover:text-brand-amber transition-colors"
+            className="inline-block hover:opacity-80 transition-opacity"
+            aria-label="Germán Hernández Mairal — Inicio"
           >
-            GHM
+            <Logo className="h-8" />
           </Link>
           <p className="mt-3 font-montserrat text-gray-400 text-sm leading-relaxed">
-            Germán Hernández Mairal — Front-End Developer y Community Manager
+            Germán Hernández Mairal — Fullstack Developer
           </p>
         </div>
 
@@ -31,9 +33,8 @@ const Footer = () => (
           <ul className="space-y-2">
             {[
               ['/', 'Inicio'],
-              ['/services', 'Servicios'],
-              ['/portfolio', 'Portafolio'],
               ['/youtube', 'YouTube'],
+              ['/portfolio', 'Portafolio'],
               ['/about', 'Quién Soy'],
               ['/contact', 'Contacto'],
             ].map(([to, label]) => (

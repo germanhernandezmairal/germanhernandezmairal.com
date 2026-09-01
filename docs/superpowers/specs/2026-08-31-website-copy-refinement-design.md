@@ -434,6 +434,15 @@ Once no component uses `font-signature`:
 
 ---
 
+## 12b. Implementation Notes (2026-09-01)
+
+Deviations from the plan above, decided during implementation:
+
+- **`Logo.jsx` is pure inline SVG, not `/logo-german.svg`.** The staged `public/logo-german.svg` turned out to be an 80KB PNG-embedded-in-SVG (no real vector paths), so it was unusable and deleted along with `._logo-german.svg`. `Logo.jsx` renders the `{ }` brackets mark + "GERMÁN" wordmark as inline SVG `<text>` in Montserrat — crisp on dark at any size, no extra request. Matches the brand mark in `pitch-deck/imgs/mvp logo title Dark Blue Background.png`.
+- **`react-helmet-async` downgraded `^3.0.0` → `^2.0.5`.** Pre-existing bug: v3.0.0 does not apply `<Helmet>` tags to the client DOM with React 18 (verified on `master` too — every page kept the `index.html` default `<title>`, so all per-page titles/descriptions/`robots` metadata were inert). v2.0.5 fixes it; verified `/services` now gets `<title>Servicios…</title>` + `<meta name="robots" content="noindex">` at runtime. Without this, the metadata half of the repositioning would have shipped dead.
+- **Home `HELP_CARDS` icons:** `FaRegCalendarCheck` (Hábitos), `FaCode` (Habilidades).
+- **YouTube video-section** heading/intro copy left as-is (spec allowed).
+
 ## 12. Open Items
 
 - ~~Header CTA rename `Hablemos` → `Habla conmigo`~~ — **confirmed by Germán 2026-09-01.**

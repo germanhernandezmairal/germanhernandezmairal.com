@@ -120,6 +120,7 @@ const TarragonaJove = () => (
         name="description"
         content="Gestión de contenido digital para Tarragona Jove: streamings en directo, vídeos resumen y fotografías de evento."
       />
+      <meta name="robots" content="noindex" />
     </Helmet>
 
     {/* Header */}

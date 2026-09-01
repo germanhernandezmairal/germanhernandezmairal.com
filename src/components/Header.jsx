@@ -3,11 +3,11 @@ import { Link, useLocation } from 'react-router-dom';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { AnimatePresence, motion } from 'framer-motion';
 import { menuVariant } from '../lib/motion';
+import Logo from './Logo';
 
 const NAV_LINKS = [
-  { to: '/services', label: 'Servicios' },
-  { to: '/portfolio', label: 'Portafolio' },
   { to: '/youtube', label: 'YouTube' },
+  { to: '/portfolio', label: 'Portafolio' },
   { to: '/about', label: 'Quién Soy' },
   { to: '/contact', label: 'Contacto' },
 ];
@@ -39,12 +39,13 @@ const Header = () => {
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 md:h-18">
-          {/* Logo / Signature */}
+          {/* Logo */}
           <Link
             to="/"
-            className="text-2xl md:text-3xl font-signature italic text-white hover:text-brand-amber transition-colors duration-200"
+            className="hover:opacity-80 transition-opacity duration-200"
+            aria-label="Germán Hernández Mairal — Inicio"
           >
-            GHM
+            <Logo />
           </Link>
 
           {/* Desktop Nav */}
@@ -66,7 +67,7 @@ const Header = () => {
               to="/contact"
               className="ml-2 bg-brand-amber text-brand-blue font-montserrat font-bold text-sm lg:text-base px-4 py-2 rounded-lg hover:bg-brand-amber-dark active:scale-95 transition-colors duration-200"
             >
-              Hablemos
+              Habla conmigo
             </Link>
           </nav>
 
@@ -118,7 +119,7 @@ const Header = () => {
                 to="/contact"
                 className="mt-4 bg-brand-amber text-brand-blue font-montserrat font-bold text-center px-4 py-3 rounded-lg hover:bg-brand-amber-dark active:scale-95 transition-colors duration-200"
               >
-                Hablemos
+                Habla conmigo
               </Link>
             </nav>
           </motion.div>

@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /services
+Disallow: /portfolio/tarragona-jove
 
 Sitemap: https://www.germanhernandezmairal.com/sitemap.xml

@@ -8,64 +8,83 @@ import { staggerContainer, cardVariant } from '../lib/motion';
 const PROJECTS = [
   {
     id: 1,
-    title: 'Página Web Marca Personal',
-    category: 'webapp',
+    title: 'germanhernandezmairal.com',
+    category: 'educacion',
     description:
-      'Web diseñada para posicionar y convertir: páginas de servicios claras, portafolio visual, integración de contenido y formulario de contacto optimizado. Construida con tecnología moderna y orientada a generar confianza desde el primer clic.',
+      'Mi web personal: portafolio, canal y contacto en un mismo sitio. React + Vite, desplegada en Vercel, pensada para cargar rápido y ser fácil de mantener.',
     image: '/imgs/WebMarcaPersonal-Preview-3.webp',
-    tech: ['React', 'Tailwind CSS', 'Firebase', 'Vercel', 'reCAPTCHA'],
+    tech: ['React', 'Vite', 'Tailwind CSS', 'Vercel'],
     liveUrl: 'https://www.germanhernandezmairal.com',
     githubUrl: null,
     featured: true,
   },
   {
-    id: 5,
-    title: 'Marca Personal - Germán Hernández Mairal',
-    category: 'youtube',
+    id: 2,
+    title: 'britenglishacademy.app',
+    category: 'educacion',
     description:
-      'Canal de YouTube construido desde cero para programadores que buscan su primer trabajo en el sector tecnológico, con contenido sobre hábitos y habilidades prácticas. Responsable de la estrategia de contenido, SEO y crecimiento orgánico sin publicidad de pago.',
-    image: '/imgs/Miniatura Definitiva Las 7 Habilidades que Me Sacaron de la Desmotivación.webp',
-    tech: ['YouTube Studio', 'Adobe Premiere', 'Canva', 'SEO'],
-    liveUrl: 'https://youtube.com/@germanhernandezmairal',
-    githubUrl: null,
+      'Aplicación web para una academia de inglés Cambridge en Tarragona: gestión de cursos, alumnos y contenido. Next.js + TypeScript con base de datos PostgreSQL en Supabase.',
+    image: '/imgs/brit-english-academy-preview.webp',
+    tech: ['Next.js', 'TypeScript', 'Supabase', 'PostgreSQL', 'Tailwind CSS'],
+    liveUrl: 'https://brit-english-academy.vercel.app/',
+    githubUrl: 'https://github.com/germanhernandezmairal/britenglishacademy.app',
     featured: true,
   },
   {
-    id: 6,
-    title: 'Marca Corporativa - Tarragona Jove',
-    category: 'community',
+    id: 3,
+    title: 'AI Fitness Trainer',
+    category: 'salud',
     description:
-      'Gestión de la presencia digital de una organización pública en Instagram, TikTok, YouTube y Facebook. Estrategia de contenido, calendario editorial y análisis de métricas para aumentar el alcance y consolidar una imagen institucional sólida.',
-    image: '/imgs/Tarragona Jove Concert.webp',
-    tech: ['Instagram', 'TikTok', 'YouTube', 'Facebook', 'Metricool'],
-    liveUrl: null,
-    detailUrl: '/portfolio/tarragona-jove',
-    githubUrl: null,
+      'Analiza la técnica de un ejercicio a partir de vídeo usando detección de poses. Backend en Python/FastAPI para la visión por computador, frontend en Next.js.',
+    image: '/imgs/ai-fitness-trainer-preview.webp',
+    tech: ['Python', 'FastAPI', 'Next.js', 'TypeScript', 'Computer Vision'],
+    liveUrl: 'https://ai-fitness-trainer-three-rosy.vercel.app',
+    githubUrl: 'https://github.com/germanhernandezmairal/ai-fitness-trainer',
+    featured: false,
+  },
+  {
+    id: 4,
+    title: 'hometown-homepage',
+    category: 'otros',
+    description:
+      'Web estática tipo "Visit Tarragona" para practicar maquetación y despliegue: HTML, CSS y JavaScript sin framework, publicada en Vercel.',
+    image: '/imgs/hometown-homepage-preview.webp',
+    tech: ['HTML', 'CSS', 'JavaScript', 'Vercel'],
+    liveUrl: 'https://hometown-homepage-tgn.vercel.app/',
+    githubUrl: 'https://github.com/germanhernandezmairal/hometown-homepage',
+    featured: false,
+  },
+  {
+    id: 5,
+    title: 'blackjack-game',
+    category: 'otros',
+    description:
+      'Blackjack jugable en el navegador, hecho con JavaScript puro para dominar lógica de estado, eventos y DOM. Desplegado en Vercel.',
+    image: '/imgs/blackjack-game-preview.webp',
+    tech: ['JavaScript', 'HTML', 'CSS', 'Vercel'],
+    liveUrl: 'https://blackjack-game-ghm.vercel.app/',
+    githubUrl: 'https://github.com/germanhernandezmairal/blackjack-game',
     featured: false,
   },
 ];
 
 const CATEGORIES = [
   { key: 'all', label: 'Todos' },
-  { key: 'webapp', label: 'Web/App' },
-  { key: 'youtube', label: 'YouTube' },
-  { key: 'community', label: 'Community' },
+  { key: 'educacion', label: 'Educación' },
+  { key: 'salud', label: 'Salud' },
+  { key: 'otros', label: 'Otros' },
 ];
 
 /* ─── Project Card ─── */
 const ProjectCard = ({ project }) => (
   <div className="bg-white rounded-2xl shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1 overflow-hidden flex flex-col">
     <div className="relative h-48 bg-gradient-to-br from-brand-blue to-blue-800 flex items-center justify-center overflow-hidden">
-      {project.image ? (
-        <img
-          src={project.image}
-          alt={project.title}
-          className="w-full h-full object-cover"
-          loading="lazy"
-        />
-      ) : (
-        <span className="font-signature text-3xl text-white opacity-40">GHM</span>
-      )}
+      <img
+        src={project.image}
+        alt={project.title}
+        className="w-full h-full object-cover"
+        loading="lazy"
+      />
       {project.featured && (
         <span className="absolute top-3 right-3 bg-brand-amber text-brand-blue font-montserrat font-bold text-xs px-2 py-1 rounded-full">
           Destacado
@@ -91,15 +110,7 @@ const ProjectCard = ({ project }) => (
       </div>
 
       <div className="flex gap-3">
-        {project.detailUrl && (
-          <Link
-            to={project.detailUrl}
-            className="flex items-center gap-1.5 bg-brand-blue text-white font-montserrat font-semibold text-sm px-4 py-2 rounded-lg hover:bg-blue-900 active:scale-95 transition-colors"
-          >
-            <FaExternalLinkAlt className="text-xs" /> Ver proyecto
-          </Link>
-        )}
-        {!project.detailUrl && project.liveUrl && (
+        {project.liveUrl && (
           <a
             href={project.liveUrl}
             target="_blank"
@@ -136,10 +147,10 @@ const Portfolio = () => {
   return (
     <>
       <Helmet>
-        <title>Portafolio – Germán Hernández Mairal</title>
+        <title>Proyectos Reales – Germán Hernández Mairal</title>
         <meta
           name="description"
-          content="Proyectos reales de desarrollo web y gestión de marca digital — webs que convierten, contenido que atrae y comunidades que generan confianza."
+          content="Proyectos reales de desarrollo web y fullstack — React, Next.js, TypeScript, Python/FastAPI. Construidos para diferenciarme y conseguir mi primer trabajo en tech."
         />
       </Helmet>
 
@@ -155,11 +166,11 @@ const Portfolio = () => {
             Proyectos <span className="highlight-amber">Reales</span>
           </h1>
           <p className="font-inter text-blue-200 text-lg max-w-2xl mx-auto">
-            Con <span className="text-white font-semibold">+4 años</span> gestionando marcas digitales
-            y más de <span className="text-white font-semibold">500 piezas de contenido</span> publicadas,
-            he trabajado en instituciones públicas y en mi propia marca personal.
-            Estos proyectos muestran lo que mejor hago: webs que convierten,
-            contenido que atrae y comunidades que crecen.
+            En <span className="text-white font-semibold">2024</span> me gradué como
+            Desarrollador Web en la Universidad Rovira i Virgili y desde entonces
+            trabajo en proyectos para diferenciarme de la competencia y adentrarme en
+            el sector tecnológico como{' '}
+            <span className="text-white font-semibold">Desarrollador Fullstack Junior</span>.
           </p>
         </motion.div>
       </section>
@@ -217,16 +228,17 @@ const Portfolio = () => {
           transition={{ duration: 0.6 }}
         >
           <h2 className="font-montserrat font-bold text-3xl text-gray-900 mb-4">
-            ¿Tu marca necesita una presencia digital que funcione?
+            ¿Necesitas conseguir tu primer trabajo como programador?
           </h2>
           <p className="font-inter text-gray-600 text-lg mb-8">
-            Si quieres atraer más clientes con contenido o una web profesional que convierta visitas en oportunidades, cuéntame tu proyecto.
+            Si quieres conseguir tus primeras entrevistas y construir un proyecto que
+            refleje tus habilidades tecnológicas, cuéntame tu situación.
           </p>
           <Link
             to="/contact"
             className="inline-block bg-brand-blue text-white font-montserrat font-bold px-8 py-4 rounded-lg hover:bg-blue-900 active:scale-95 transition-colors duration-200 text-lg"
           >
-            Hablemos de tu proyecto
+            Hablemos de tu situación
           </Link>
         </motion.div>
       </section>

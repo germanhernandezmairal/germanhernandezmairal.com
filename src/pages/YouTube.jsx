@@ -19,13 +19,13 @@ const ChannelHeader = () => (
         <FaYoutube className="text-6xl text-red-400" />
       </div>
       <h1 className="font-montserrat font-bold text-4xl sm:text-5xl text-white mb-4">
-        YouTube como <span className="highlight-amber">Activo Digital</span>
+        YouTube como <span className="highlight-amber">Escaparate de Aprendizajes</span>
       </h1>
       <p className="font-inter text-blue-200 text-lg max-w-3xl mx-auto mb-8">
         En mi canal comparto{' '}
         <span className="text-white font-semibold">hábitos</span> y{' '}
         <span className="text-white font-semibold">habilidades prácticas</span> para programadores que quieren conseguir su primer trabajo en el sector tecnológico.{' '}
-        Es el espacio donde desarrollo mi visión sobre cómo crecer sin quemarte y sin descuidar lo que más importa.
+        Es el espacio donde comparto mis aprendizajes como desarrollador de software.
       </p>
       <a
         href="https://youtube.com/@germanhernandezmairal"
@@ -67,8 +67,8 @@ const CredibilityStrip = () => (
 
 /* ─── What You'll Find ─── */
 const TOPICS = [
-  { icon: FaHeartbeat, title: 'Hábitos', category: 'habitos', desc: 'Las rutinas que te mantienen constante y enfocado. Aprende a gestionar tu energía, tu tiempo y tu mentalidad para avanzar sin quemarte mientras consigues tu primer trabajo.' },
-  { icon: FaRocket, title: 'Habilidades', category: 'habilidades', desc: 'Las competencias técnicas y profesionales que las empresas buscan. Contenido práctico para destacar en los procesos de selección y dar el salto al sector tecnológico.' },
+  { icon: FaHeartbeat, title: 'Hábitos', category: 'habitos', desc: 'Prácticas diarias que aplico para aprender nuevas habilidades, construir proyectos, conectar con nuevas relaciones, mantenerme actualizado en el sector y conseguir entrevistas de trabajo.' },
+  { icon: FaRocket, title: 'Habilidades', category: 'habilidades', desc: 'El resultado de los hábitos aplicados: los nuevos lenguajes, técnicas y metodologías que nacen en el sector y que más demandan las empresas.' },
 ];
 
 const TopicsSection = ({ onTopicClick }) => (
@@ -85,7 +85,7 @@ const TopicsSection = ({ onTopicClick }) => (
           En qué se centra el canal
         </h2>
         <p className="font-inter text-gray-600 text-lg max-w-2xl mx-auto">
-            Dos pilares para crecer en el sector tecnológico de forma práctica, sostenible y sin sacrificar lo que más importa.
+            Dos pilares para crear una carrera en el sector tecnológico como desarrollador de software, de forma práctica, sostenible y realista.
         </p>
       </motion.div>
 
@@ -119,19 +119,19 @@ const TopicsSection = ({ onTopicClick }) => (
 /* ─── Testimonials ─── */
 const TESTIMONIALS = [
   {
-    text: 'Desde que sigo el canal estudio con mucha más constancia. Los hábitos que comparte Germán me han ayudado a organizar mi tiempo y no quemarme en el proceso.',
-    author: 'Lucía M.',
-    role: 'Estudiante de Desarrollo Web',
+    text: 'Tengo el título casi terminado y aun así sentía que no valía para esto. El canal me ha ayudado a ver que conseguir el primer trabajo es un proceso con pasos concretos, no cuestión de suerte.',
+    author: 'Marc A.',
+    role: 'Estudiante de Ingeniería Informática',
   },
   {
-    text: 'Me ha cambiado la forma de aprender. Ahora no acumulo tutoriales sin rumbo — tengo un proceso claro para mejorar mis habilidades y prepararme de verdad para conseguir trabajo.',
-    author: 'Pablo G.',
-    role: 'Estudiante de Bootcamp',
+    text: 'Acabé el grado y me quedé bloqueada sin saber por dónde empezar a buscar. Ahora tengo hábitos semanales para construir portafolio y preparar entrevistas, y por fin siento que avanzo.',
+    author: 'Nerea C.',
+    role: 'Graduada en DAW, buscando trabajo',
   },
   {
-    text: 'El canal me recuerda que conseguir el primer trabajo es un proceso, no una carrera de velocidad. Me ayuda a mantenerme motivada y enfocada en lo que importa.',
-    author: 'Andrea T.',
-    role: 'Estudiante de DAW',
+    text: 'Vengo de otro sector y aprendo por mi cuenta. Ver a alguien conseguir su primer trabajo desde cero, contando lo que funciona y lo que no, me mantiene constante y con la motivación alta.',
+    author: 'Iván R.',
+    role: 'Programador autodidacta',
   },
 ];
 
@@ -192,11 +192,12 @@ const FinalCTA = () => (
     >
       <FaPlay className="text-4xl text-brand-amber mx-auto mb-4" />
       <h2 className="font-montserrat font-bold text-3xl sm:text-4xl text-white mb-4">
-        Si estoy construyendo mi audiencia desde cero, también puedo ayudarte con la tuya.
+        Si estoy consiguiendo mi primer trabajo como programador desde cero, también
+        puedo ayudarte a conseguir el tuyo.
       </h2>
       <p className="font-inter text-blue-200 text-lg mb-8">
-        Más allá del canal, ayudo a marcas y profesionales a atraer clientes con contenido
-        que genera confianza y webs que convierten.
+        Más allá del canal, ayudo a estudiantes de programación y graduados a conseguir
+        sus primeras entrevistas de trabajo.
       </p>
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
         <a
@@ -211,7 +212,7 @@ const FinalCTA = () => (
           to="/contact"
           className="inline-flex items-center justify-center gap-2 bg-brand-amber text-brand-blue font-montserrat font-bold px-6 py-3 rounded-lg hover:bg-brand-amber-dark active:scale-95 transition-colors"
         >
-          Hablemos de tu proyecto
+          Hablemos de tu situación
         </Link>
       </div>
     </motion.div>
@@ -231,10 +232,10 @@ const YouTube = () => {
   return (
     <>
       <Helmet>
-        <title>Canal de YouTube – Germán Hernández Mairal</title>
+        <title>YouTube – Germán Hernández Mairal</title>
         <meta
           name="description"
-          content="Canal de YouTube donde comparto contenido práctico sobre crecimiento profesional, salud y relaciones, construido con estrategia y crecimiento orgánico."
+          content="Comparto hábitos y habilidades prácticas para programadores que quieren conseguir su primer trabajo en el sector tecnológico."
         />
       </Helmet>
       <ChannelHeader />

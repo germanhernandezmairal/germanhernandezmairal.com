@@ -11,9 +11,9 @@ const LetsTalk = () => (
       <span className="highlight-amber">Hablemos</span>
     </h2>
     <p className="font-inter text-gray-700 text-lg leading-relaxed mb-4">
-      ¿Quieres una{' '}
-      <span className="underline-amber font-semibold">web que convierta</span> o contenido
-      que atraiga clientes de forma constante?
+      ¿Quieres conseguir tus{' '}
+      <span className="underline-amber font-semibold">primeras entrevistas</span> o
+      construir un portafolio que llame la atención?
     </p>
     <p className="font-inter text-gray-700 text-lg leading-relaxed mb-4">
     Este es el primer paso para hacerlo realidad. Cuéntame qué necesitas.{' '}
@@ -99,7 +99,7 @@ const ContactInfo = () => (
         }}
         className="mt-6 bg-brand-blue text-white font-montserrat font-bold px-8 py-3 rounded-lg hover:bg-blue-900 active:scale-95 cursor-pointer transition-colors duration-200 text-lg"
       >
-        Cuéntame tu proyecto
+        Cuéntame tu situación
       </button>
     </motion.div>
   </section>
@@ -112,7 +112,7 @@ const Contact = () => (
       <title>Contacto – Germán Hernández Mairal</title>
       <meta
         name="description"
-        content="¿Tienes un proyecto en mente? Escríbeme. Ayudo a empresas y creadores a conseguir clientes con webs y contenido que convierten."
+        content="¿Necesitas ayuda con tu búsqueda de trabajo? Cuéntame qué necesitas y te respondo en menos de 24 horas."
       />
     </Helmet>
 
@@ -128,8 +128,9 @@ const Contact = () => (
           <span className="highlight-amber">Contacto</span>
         </h1>
         <p className="font-inter text-blue-200 text-lg max-w-xl mx-auto">
-        ¿Tienes un proyecto en mente? Este es el primer paso para hacerlo realidad.
-        Cuéntame qué necesitas y te respondo en menos de 24 horas.{' '}
+        ¿Necesitas ayuda con tu búsqueda de trabajo? Este es el primer paso para
+        conseguir tus primeras entrevistas. Cuéntame qué necesitas y te respondo en
+        menos de 24 horas.{' '}
         </p>
       </motion.div>
     </section>
