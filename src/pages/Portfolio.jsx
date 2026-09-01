@@ -12,10 +12,10 @@ const PROJECTS = [
     category: 'educacion',
     description:
       'Mi web personal: portafolio, canal y contacto en un mismo sitio. React + Vite, desplegada en Vercel, pensada para cargar rápido y ser fácil de mantener.',
-    image: '/imgs/WebMarcaPersonal-Preview-3.webp',
+    image: '/imgs/germanhernandezmairal-preview.webp',
     tech: ['React', 'Vite', 'Tailwind CSS', 'Vercel'],
     liveUrl: 'https://www.germanhernandezmairal.com',
-    githubUrl: null,
+    githubUrl: 'https://github.com/germanhernandezmairal/germanhernandezmairal.com',
     featured: true,
   },
   {

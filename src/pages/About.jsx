@@ -86,9 +86,12 @@ const BIO_ITEMS = [
     text: (
       <>
         Hoy construyo proyectos web con{' '}
-        <span className="highlight-blue">Next.js, React y TypeScript</span>. Estoy creando una metodología,{' '}
-        <span className="underline-amber font-semibold">Software Builder</span>, para conseguir mi primer trabajo como programador desde cero. <br></br>El resultado:{' '}
-        <span className="underline-amber font-semibold">primeras entrevistas con empresas con miles de empleados</span>.
+        <span className="highlight-blue">Next.js, React y TypeScript</span> y estoy
+        creando mi propia metodología,{' '}
+        <span className="underline-amber font-semibold">Software Builder</span>, para
+        conseguir mi primer trabajo como programador desde cero. El resultado: mis
+        primeras entrevistas han sido con empresas de{' '}
+        <strong className="text-brand-blue">miles de empleados</strong>.
       </>
     ),
   },

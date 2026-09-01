@@ -26,16 +26,31 @@ const Logo = ({ className = 'h-7 md:h-8' }) => (
       stroke="#ffc107"
       strokeWidth="4"
     />
+    {/* Braces placed symmetrically about the square's centre (x=27) so the
+        mark stays optically centered regardless of font metrics. */}
     <text
-      x="27"
-      y="39"
+      x="20"
+      y="28.5"
       textAnchor="middle"
+      dominantBaseline="central"
       fontFamily="'Montserrat', ui-sans-serif, system-ui, sans-serif"
       fontWeight="700"
-      fontSize="29"
+      fontSize="27"
       fill="#ffc107"
     >
-      {'{ }'}
+      {'{'}
+    </text>
+    <text
+      x="34"
+      y="28.5"
+      textAnchor="middle"
+      dominantBaseline="central"
+      fontFamily="'Montserrat', ui-sans-serif, system-ui, sans-serif"
+      fontWeight="700"
+      fontSize="27"
+      fill="#ffc107"
+    >
+      {'}'}
     </text>
 
     {/* Wordmark */}
